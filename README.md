@@ -1,5 +1,3 @@
-# Statera
+# statera
 
-## ¿Qué es estatera?
-Es el pinchi mejor proyecto del mundo ;)  😎🤙🏼
-🥑
+## O SI SEVERO PROYECTO
