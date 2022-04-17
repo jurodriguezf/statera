@@ -14,7 +14,7 @@ func SetupEndpoints() {
 	})
 
 	router.GET("/hello", func(c *gin.Context) {
-		c.JSON(http.StatusOK, "goodbye")
+		c.JSON(http.StatusOK, "hello")
 	})
 
 	screenEndpoints := router.Group("/")
