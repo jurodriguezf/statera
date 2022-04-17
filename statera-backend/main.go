@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/jurodriguezf/statera/cmd/server"
+	"github.com/jurodriguezf/statera/cmd/db"
 	//! Descomentar esta importación para probar el ejemplo
 	//"go.mongodb.org/mongo-driver/bson"
 )
