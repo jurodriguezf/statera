@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "YoungSerif";
+  src: url("../public/fonts/YoungSerif.otf");
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-5 py-2 bg-wine hover:bg-darkwine text-beige font-manrope font-bold rounded-lg text-base;
+  }
+
+  .btn-secondary {
+    @apply px-5 py-2 text-wine hover:text-darkwine font-manrope font-bold rounded-lg text-base;
+  }
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

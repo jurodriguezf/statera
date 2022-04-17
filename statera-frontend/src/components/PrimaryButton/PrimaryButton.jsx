@@ -1,8 +1,8 @@
 import React from "react";
 
-const PrimaryButton = () => {
+const PrimaryButton = (props) => {
   return (
-    <button>Primary</button>
+    <button className="btn-primary">{props.label}</button>
   );
 };
 

@@ -6,8 +6,9 @@ const Welcome = () => {
     return (
         <div>
             <h1 className="text-3xl font-bold underline">Welcome</h1>
-            <PrimaryButton/>
-            <SecondaryButton/>
+            <br/>
+            <PrimaryButton label="Regístrate"/>
+            <SecondaryButton label={"Inicia sesión"}/>
         </div>
     );
 };
