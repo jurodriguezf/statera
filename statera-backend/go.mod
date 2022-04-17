@@ -2,7 +2,11 @@ module github.com/jurodriguezf/statera
 
 go 1.17
 
-require github.com/gin-gonic/gin v1.7.7
+require (
+	github.com/gin-gonic/gin v1.7.7
+	github.com/rs/cors v1.8.2
+	go.mongodb.org/mongo-driver v1.9.0
+)
 
 require (
 	github.com/gin-contrib/sse v0.1.0 // indirect
@@ -24,7 +28,6 @@ require (
 	github.com/xdg-go/scram v1.0.2 // indirect
 	github.com/xdg-go/stringprep v1.0.2 // indirect
 	github.com/youmark/pkcs8 v0.0.0-20181117223130-1be2e3e5546d // indirect
-	go.mongodb.org/mongo-driver v1.9.0 // indirect
 	golang.org/x/crypto v0.0.0-20201216223049-8b5274cf687f // indirect
 	golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e // indirect
 	golang.org/x/sys v0.0.0-20220406163625-3f8b81556e12 // indirect

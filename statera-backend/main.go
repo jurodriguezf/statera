@@ -1,28 +1,22 @@
 package main
 
 import (
+	"github.com/jurodriguezf/statera/cmd/api/domain/db"
 	"github.com/jurodriguezf/statera/cmd/server"
-	"github.com/jurodriguezf/statera/cmd/db"
+	"log"
 	//! Descomentar esta importación para probar el ejemplo
 	//"go.mongodb.org/mongo-driver/bson"
 )
 
 func main() {
-	client, ctx, cancel, err := connection.Connect("mongodb+srv://admin:admin@stateradb.brnsm.mongodb.net/StateraDB?retryWrites=true&w=majority")
-	if err != nil {
-		panic(err)
+	if db.CheckConnection() == 0 {
+		log.Fatal("Without connection to DB")
+		return
 	}
-
-	defer connection.Close(client, ctx, cancel)
-
-	connection.Ping(client, ctx)
-
+	server.SetupEndpoints()
 	// Ejemplo de inserción de una receta en la base de datos:
 	// db := client.Database("StateraDB")
 	// recipes := db.Collection("Recipes")
 
 	// recipes.InsertOne(ctx,bson.D{{"name","Papitas sin sal"},{"ingredientes",bson.A{"Papitas","Sal"}}});
-
-	server.SetupEndpoints()
-
 }
