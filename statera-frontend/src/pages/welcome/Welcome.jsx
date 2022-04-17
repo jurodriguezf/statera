@@ -5,7 +5,7 @@ import SecondaryButton from "../../components/SecondaryButton/SecondaryButton";
 const Welcome = () => {
     return (
         <div>
-            <h1>Welcome</h1>
+            <h1 className="text-3xl font-bold underline">Welcome</h1>
             <PrimaryButton/>
             <SecondaryButton/>
         </div>
