@@ -13,6 +13,10 @@ func SetupEndpoints() {
 		c.JSON(http.StatusOK, "pong")
 	})
 
+	router.GET("/hello", func(c *gin.Context) {
+		c.JSON(http.StatusOK, "goodbye")
+	})
+
 	screenEndpoints := router.Group("/")
 	{
 		screenEndpoints.GET("/welcome", controller.HandleWelcomeScreen())
