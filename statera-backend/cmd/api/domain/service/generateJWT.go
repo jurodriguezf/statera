@@ -1,0 +1,30 @@
+package service
+
+import (
+	jwt "github.com/dgrijalva/jwt-go"
+	"github.com/jurodriguezf/statera/cmd/api/domain/model"
+	"time"
+)
+
+/*GenerateJWT generates the JWT given user's data payload*/
+func GenerateJWT(user model.User) (string, error) {
+	JWTpassword := []byte("StateraIngesoftII")
+
+	payload := jwt.MapClaims{
+		"email":         user.Email,
+		"name":          user.Name,
+		"family_name":   user.FamilyName,
+		"date_of_birth": user.DoB,
+		"location":      user.Location,
+		"_id":           user.ID.Hex(),
+		"exp":           time.Now().Add(24 * time.Hour).Unix(),
+	}
+
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, payload)
+	tokenStr, err := token.SignedString(JWTpassword)
+	if err != nil {
+		return tokenStr, err
+	}
+
+	return tokenStr, nil
+}
