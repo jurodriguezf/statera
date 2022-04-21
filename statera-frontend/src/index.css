@@ -12,7 +12,7 @@
 
 @layer components {
   .btn-primary {
-    @apply px-5 py-2 bg-wine hover:bg-darkwine text-beige font-manrope font-bold rounded-lg text-base;
+    @apply px-5 py-2 bg-wine hover:bg-darkwine text-beige font-manrope font-bold rounded-lg text-base w-full;
   }
 
   .btn-secondary {

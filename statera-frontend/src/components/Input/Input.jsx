@@ -6,8 +6,8 @@ const Input = (props) => {
 
   return (
     <div className="">
-      <div className="font-manrope font-bold text-sm py-2 ">{props.title}</div>
-      <div className="flex items-center">
+      <div className="font-manrope font-bold text-sm py-2 px-2">{props.title}</div>
+      <div className="flex items-center px-2">
         <input
           type={props.password ? (visibility ? "password" : "text") : "text"}
           placeholder={props.placeholder}
