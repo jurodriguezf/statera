@@ -1,4 +1,5 @@
 import React from 'react';
+import GoogleButton from '../../components/GoogleButton/GoogleButton';
 import Input from '../../components/Input/Input';
 import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
 
@@ -24,6 +25,7 @@ const SignUp = () => {
               </div>
             </form>
             <DivisorLine/>
+            <GoogleButton label="Continue with Google"/>
         </div>
       </div>
     );
@@ -32,9 +34,9 @@ const SignUp = () => {
 const DivisorLine = () => {
     return (
     <div className='w-full space-x-3 flex items-center'>
-        <div className='w-full h-0.5 border-2'></div>
+        <div className='w-full h-0.2 border'></div>
         <p className='text-[#d2d2d2]'>or</p>
-        <div className='w-full h-0.5 border-2'></div>
+        <div className='w-full h-0.2 border'></div>
     </div>)
 }
 
