@@ -1,11 +1,14 @@
 @tailwind base;
-@tailwind components;
 @tailwind utilities;
+@tailwind components;
+
 
 @font-face {
   font-family: "YoungSerif";
   src: url("../public/fonts/YoungSerif.otf");
 }
+
+
 
 @layer components {
   .btn-primary {
@@ -15,7 +18,12 @@
   .btn-secondary {
     @apply px-5 py-2 text-wine hover:text-darkwine font-manrope font-bold rounded-lg text-base;
   }
-}
+
+  .input-type {
+    @apply rounded-lg caret-wine font-manrope px-2 py-2 bg-shadow border-shadow outline-none w-full text-wine font-semibold ;
+  }
+
+  }
 
 body {
   margin: 0;
