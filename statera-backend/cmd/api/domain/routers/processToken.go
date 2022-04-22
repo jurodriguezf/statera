@@ -2,7 +2,7 @@ package routers
 
 import (
 	"errors"
-	jwt "github.com/dgrijalva/jwt-go"
+	jwt "github.com/golang-jwt/jwt/v4"
 	"github.com/jurodriguezf/statera/cmd/api/domain/db"
 	"github.com/jurodriguezf/statera/cmd/api/domain/model"
 )
@@ -13,6 +13,7 @@ var Email string
 /*IDUser stores the ID of a logged user, this variable is used in every endpoint*/
 var IDUser string
 
+/*ProcessToken function that process the given token and its values*/
 func ProcessToken(token string) (*model.Claim, bool, string, error) {
 	JWTPassword := []byte("StateraIngesoftII")
 	claims := &model.Claim{}
