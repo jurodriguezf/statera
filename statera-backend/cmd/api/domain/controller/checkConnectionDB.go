@@ -1,4 +1,4 @@
-package service
+package controller
 
 import (
 	"github.com/jurodriguezf/statera/cmd/api/domain/db"

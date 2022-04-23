@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-/*InsertUser DB routine that inserts a user*/
+/*InsertUser inserts user's data into DB, returns the id of the user inserted*/
 func InsertUser(user model.User) (string, bool, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
@@ -23,6 +23,5 @@ func InsertUser(user model.User) (string, bool, error) {
 	}
 
 	ObjID, _ := result.InsertedID.(primitive.ObjectID)
-
 	return ObjID.String(), true, nil
 }
