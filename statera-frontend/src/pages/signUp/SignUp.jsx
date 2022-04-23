@@ -6,10 +6,10 @@ import DivisorLine from "../../components/Misc/DivisionLine/DivisionLine";
 
 const SignUp = (props) => {
   return (
-    <div {...props}>
-      <div className="my-auto px-20 sm:w-full">
+    <div {...props} className="flex">
+      <div className="relative w-full my-auto px-10 md:px-20 sm:w-full">
         <p className="font-youngserif text-sm my-10">
-          Already have an account?{" "}
+          Already have an account?
           <a href="" className="text-wine">
             Login
           </a>
@@ -32,6 +32,13 @@ const SignUp = (props) => {
         </form>
         <DivisorLine />
         <GoogleButton label="Continue with Google" />
+      </div>
+      <div className="relative hidden md:block w-full h-screen ">
+      <div className="absolute flex items-center justify-end w-full px-10">
+        <img src="logo.png" className="object-scale-down h-24"></img>
+        <p className="font-youngserif text-wine text-xl"> Statera</p>
+      </div>
+        <img src="images/vegetals.jpg" alt="" className="object-cover h-full" />
       </div>
     </div>
   );

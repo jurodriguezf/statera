@@ -4,9 +4,9 @@ import Welcome from "./pages/welcome/Welcome";
 
 function App() {
   return (
-    <div className="App flex">
-      <SignUp className="w-3/6 h-screen"/>
-      <Login className="w-3/6 h-screen"/>
+    <div className="App">
+      <Login className="h-screen"/>
+      <SignUp className="h-screen"></SignUp>
     </div>
   );
 }

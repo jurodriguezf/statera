@@ -6,8 +6,15 @@ import DivisorLine from "../../components/Misc/DivisionLine/DivisionLine";
 
 const Login = (props) => {
   return (
-    <div {...props}>
-      <div className="my-auto px-20 sm:w-full">
+    <div {...props} className="flex">
+      <div className="relative hidden md:block w-full h-screen object-fill ">
+        <div className="absolute flex items-center w-full px-10">
+          <img src="logo.png" className="object-cover h-24"></img>
+          <p className="font-youngserif text-wine text-xl"> Statera</p>
+        </div>
+        <img src="images/bag-vegetals.jpg" alt="" className="h-full w-full object-cover" />
+      </div>
+      <div className="my-auto px-20 w-full">
         <div className="flex justify-end">
           <p className="font-youngserif text-sm mt-10">
             Don’t have an account?
