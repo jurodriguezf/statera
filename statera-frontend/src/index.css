@@ -1,21 +1,33 @@
 @tailwind base;
-@tailwind components;
 @tailwind utilities;
+@tailwind components;
+
 
 @font-face {
   font-family: "YoungSerif";
   src: url("../public/fonts/YoungSerif.otf");
 }
 
+
+
 @layer components {
   .btn-primary {
-    @apply px-5 py-2 bg-wine hover:bg-darkwine text-beige font-manrope font-bold rounded-lg text-base;
+    @apply px-5 py-2 bg-wine hover:bg-darkwine text-beige font-manrope font-bold rounded-lg text-base w-full;
   }
 
   .btn-secondary {
     @apply px-5 py-2 text-wine hover:text-darkwine font-manrope font-bold rounded-lg text-base;
   }
-}
+
+  .btn-google {
+    @apply px-5 py-2 border-2 hover:bg-slate-100 font-manrope font-bold rounded-xl text-base;
+  }
+
+  .input-type {
+    @apply rounded-lg caret-wine font-manrope px-2 py-2 bg-shadow border-shadow outline-none w-full text-wine font-semibold ;
+  }
+
+  }
 
 body {
   margin: 0;
