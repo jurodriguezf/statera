@@ -1,8 +1,8 @@
 import React from "react";
 import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
 import SecondaryButton from "../../components/SecondaryButton/SecondaryButton";
-import { ReactComponent as LogoSvg } from "../../components/Logo/logo.svg";
-import { ReactComponent as LogoWithText } from "../../components/Logo/logo-with-text.svg";
+import HomeButtonText from "../../components/HomeButton/HomeButtonText";
+import HomeButtonNoText from "../../components/HomeButton/HomeButtonNoText";
 
 const Welcome = () => {
     return (
@@ -11,8 +11,8 @@ const Welcome = () => {
             <br/>
             <PrimaryButton label="Regístrate"/>
             <SecondaryButton label={"Inicia sesión"}/>
-            <LogoSvg className={"logo"}/>
-            <LogoWithText className={"logo-with-text"}/>
+            <HomeButtonText/>
+            <HomeButtonNoText/>
         </div>
     );
 };
