@@ -1,6 +1,7 @@
 package server
 
 import (
+	"encoding/json"
 	"github.com/gorilla/mux"
 	"github.com/jurodriguezf/statera/cmd/api/domain/controller"
 	"github.com/jurodriguezf/statera/cmd/api/domain/routers"
@@ -12,6 +13,11 @@ import (
 
 func SetupEndpoints() {
 	router := mux.NewRouter()
+
+	router.HandleFunc("/ping", func(writer http.ResponseWriter, request *http.Request) {
+		writer.WriteHeader(http.StatusCreated)
+		json.NewEncoder(writer).Encode("pong")
+	}).Methods("GET")
 
 	router.HandleFunc("/register", controller.CheckConnectionDB(routers.Register)).Methods("POST")
 	router.HandleFunc("/login", controller.CheckConnectionDB(routers.Login)).Methods("POST")

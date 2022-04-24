@@ -9,9 +9,11 @@ import (
 	"time"
 )
 
+var SearchTimeout time.Duration = 15
+
 /*SearchProfile search a user on the database*/
 func SearchProfile(ID string) (model.User, error) {
-	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), SearchTimeout*time.Second)
 	defer cancel()
 
 	db := MongoCN.Database("StateraDB")
@@ -27,7 +29,7 @@ func SearchProfile(ID string) (model.User, error) {
 	err := col.FindOne(ctx, condition).Decode(&profile)
 	profile.Password = ""
 	if err != nil {
-		fmt.Println("Record No Found. " + err.Error())
+		fmt.Println("Record not found. " + err.Error())
 		return profile, err
 	}
 	return profile, nil

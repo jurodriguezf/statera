@@ -28,7 +28,7 @@ func Register(writer http.ResponseWriter, request *http.Request) {
 	}
 
 	_, found, _ := db.UserExists(user.Email)
-	if found == true {
+	if found {
 		http.Error(writer, "There’s already an existing user with that email ", 400)
 		return
 	}
