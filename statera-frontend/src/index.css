@@ -24,7 +24,15 @@
   }
 
   .input-type {
-    @apply rounded-lg caret-wine font-manrope px-2 py-2 bg-shadow border-shadow outline-none w-full text-wine font-semibold ;
+    @apply rounded-lg caret-wine font-manrope px-2 py-2 bg-shadow border-shadow outline-none w-full text-wine font-semibold;
+  }
+
+  .tab-item {
+    @apply text-base font-manrope font-bold text-gray-900 hover:text-gray-700;
+  }
+
+  .tab-item-active {
+    @apply text-base font-manrope font-extrabold text-wine hover:text-darkwine underline decoration-wine decoration-4 underline-offset-4;
   }
 
   }
