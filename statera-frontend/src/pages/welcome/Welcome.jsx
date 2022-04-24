@@ -21,7 +21,7 @@ const Welcome = () => {
                         </div>
                     </div>
                     <div>
-                        <img src="https://cdn.britannica.com/17/196817-050-6A15DAC3/vegetables.jpg" alt="" className="object-cover h-full w-full rounded-3xl" />
+                        <img src="images/welcome-page-vegetable.jpg" alt="" className="object-cover h-full w-full rounded-3xl" />
                     </div>
 
                 </div>
