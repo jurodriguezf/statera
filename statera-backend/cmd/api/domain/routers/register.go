@@ -19,17 +19,17 @@ func Register(writer http.ResponseWriter, request *http.Request) {
 	}
 
 	if len(user.Email) == 0 {
-		http.Error(writer, "User's email is required "+err.Error(), 400)
+		http.Error(writer, "User's email is required ", 400)
 		return
 	}
 	if len(user.Password) < 6 {
-		http.Error(writer, "Password must be at least 6 characters long "+err.Error(), 400)
+		http.Error(writer, "Password must be at least 6 characters long ", 400)
 		return
 	}
 
 	_, found, _ := db.UserExists(user.Email)
 	if found == true {
-		http.Error(writer, "There’s already an existing user with that email "+err.Error(), 400)
+		http.Error(writer, "There’s already an existing user with that email ", 400)
 		return
 	}
 

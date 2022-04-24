@@ -2,10 +2,10 @@ package db
 
 import (
 	"context"
+	"fmt"
 	"github.com/jurodriguezf/statera/cmd/api/domain/model"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
-	"log"
 	"time"
 )
 
@@ -27,7 +27,7 @@ func SearchProfile(ID string) (model.User, error) {
 	err := col.FindOne(ctx, condition).Decode(&profile)
 	profile.Password = ""
 	if err != nil {
-		log.Fatalln("Record Not Found " + err.Error())
+		fmt.Println("Record No Found. " + err.Error())
 		return profile, err
 	}
 	return profile, nil

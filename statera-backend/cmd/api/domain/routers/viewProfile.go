@@ -11,13 +11,13 @@ func ViewProfile(writer http.ResponseWriter, request *http.Request) {
 
 	ID := request.URL.Query().Get("id")
 	if len(ID) < 1 {
-		http.Error(writer, "You must send the parameter ID", http.StatusBadRequest)
+		http.Error(writer, "You must send the parameter ID. ", http.StatusBadRequest)
 		return
 	}
 
 	profile, err := db.SearchProfile(ID)
 	if err != nil {
-		http.Error(writer, "You must send the parameter ID"+err.Error(), http.StatusBadRequest)
+		http.Error(writer, "You must send the parameter ID. "+err.Error(), http.StatusBadRequest)
 		return
 	}
 
