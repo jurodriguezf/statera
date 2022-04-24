@@ -5,6 +5,7 @@ import (
 	jwt "github.com/golang-jwt/jwt/v4"
 	"github.com/jurodriguezf/statera/cmd/api/domain/db"
 	"github.com/jurodriguezf/statera/cmd/api/domain/model"
+	"github.com/jurodriguezf/statera/cmd/api/domain/utils"
 )
 
 /*Email stores the email of a logged user, this variable is used in most endpoint*/
@@ -15,7 +16,7 @@ var IDUser string
 
 /*ProcessToken function that process the given token and its values*/
 func ProcessToken(token string) (*model.Claim, bool, string, error) {
-	JWTPassword := []byte("StateraIngesoftII")
+	JWTPassword := []byte(utils.GetEnvVariable("JWT_PASSWORD"))
 	claims := &model.Claim{}
 
 	tkn, err := jwt.ParseWithClaims(token, claims, func(token *jwt.Token) (interface{}, error) {

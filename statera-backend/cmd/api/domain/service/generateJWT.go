@@ -3,12 +3,13 @@ package service
 import (
 	jwt "github.com/golang-jwt/jwt/v4"
 	"github.com/jurodriguezf/statera/cmd/api/domain/model"
+	"github.com/jurodriguezf/statera/cmd/api/domain/utils"
 	"time"
 )
 
 /*GenerateJWT generates the JWT given user's data payload*/
 func GenerateJWT(user model.User) (string, error) {
-	JWTpassword := []byte("StateraIngesoftII")
+	JWTpassword := []byte(utils.GetEnvVariable("JWT_PASSWORD"))
 
 	payload := jwt.MapClaims{
 		"email":         user.Email,
