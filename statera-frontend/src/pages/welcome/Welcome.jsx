@@ -17,13 +17,14 @@ const Welcome = () => {
                             Encuentra nuevas ideas para cocinar con los ingredientes que compras habitualmente
                         </p>
                         <div className={"w-48 mb-7"}>
-                            <PrimaryButton label="Comienza ahora"/>
+                            <a href={"https://www.youtube.com/watch?v=dQw4w9WgXcQ"} target="_blank">
+                                <PrimaryButton label="Comienza ahora"/>
+                            </a>
                         </div>
                     </div>
                     <div>
                         <img src="images/welcome-page-vegetable.jpg" alt="" className="object-cover h-full w-full rounded-3xl" />
                     </div>
-
                 </div>
             </Popover>
 
