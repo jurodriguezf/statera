@@ -3,6 +3,7 @@ import React from "react";
 import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
 import GoogleButton from "../../components/GoogleButton/GoogleButton";
 import DivisorLine from "../../components/Misc/DivisionLine/DivisionLine";
+import {Link} from "react-router-dom";
 
 const Login = (props) => {
   return (
@@ -18,12 +19,12 @@ const Login = (props) => {
         <div className="flex justify-end">
           <p className="font-youngserif text-sm mt-10">
             Don’t have an account?
-            <a href="" className="text-wine">
+            <Link to="/signUp" className="text-wine px-1">
               Sign up for free
-            </a>
+            </Link>
           </p>
         </div>
-        <p className="font-youngserif text-4xl my-10">Welcome Back</p>
+        <p className="font-youngserif text-4xl my-10">Welcome back!</p>
         <form className="">
           <Input title="Email" />
           <Input title="Password" password />

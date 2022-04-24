@@ -3,6 +3,7 @@ import GoogleButton from "../../components/GoogleButton/GoogleButton";
 import Input from "../../components/Input/Input";
 import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
 import DivisorLine from "../../components/Misc/DivisionLine/DivisionLine";
+import {Link} from "react-router-dom";
 
 const SignUp = (props) => {
   return (
@@ -10,11 +11,11 @@ const SignUp = (props) => {
       <div className="relative w-full my-auto px-10 md:px-20 sm:w-full">
         <p className="font-youngserif text-sm my-10">
           Already have an account?
-          <a href="" className="text-wine">
+          <Link to="/login" className="text-wine px-1">
             Login
-          </a>
+          </Link>
         </p>
-        <p className="font-youngserif text-4xl my-10">Create Account</p>
+        <p className="font-youngserif text-4xl my-10">Create an account</p>
         <form className="">
           <Input title="Username" />
           <Input title="Email" />
