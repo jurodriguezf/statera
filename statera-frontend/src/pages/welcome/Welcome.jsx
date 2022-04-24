@@ -1,21 +1,33 @@
 import React from "react";
-import Input from "../../components/Input/Input"
+import WelcomeHeader from "../../components/Header/WelcomeHeader";
+import {Popover} from "@headlessui/react";
 import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
-import SecondaryButton from "../../components/SecondaryButton/SecondaryButton";
-import HomeButtonText from "../../components/HomeButton/HomeButtonText";
-import HomeButtonNoText from "../../components/HomeButton/HomeButtonNoText";
 
 const Welcome = () => {
     return (
-        <div>
-            <h1 className="text-3xl font-bold underline">Welcome</h1>
-            <br/>
+        <Popover.Group>
+            <WelcomeHeader/>
+            <Popover className="relative bg-white">
+                <div className={"max-w-7xl px-4 sm:px-6 mt-5 sm:mt-20 mx-auto grid grid-cols-1 md:grid-cols-2 grid-rows-1 md:grid-rows-2"}>
+                    <div>
+                        <h1 className={"font-youngserif text-6xl leading-normal mt-2 sm:mt-10 mb-4"}>
+                            Nuevos sabores, todos los días
+                        </h1>
+                        <p className={"font-manrope font-medium text-lg text-gray-500 mt-3 mb-6 pr-20"}>
+                            Encuentra nuevas ideas para cocinar con los ingredientes que compras habitualmente
+                        </p>
+                        <div className={"w-48 mb-7"}>
+                            <PrimaryButton label="Comienza ahora"/>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="images/welcome-page-vegetable.jpg" alt="" className="object-cover h-full w-full rounded-3xl" />
+                    </div>
 
-            <PrimaryButton label="Regístrate"/>
-            <SecondaryButton label={"Inicia sesión"}/>
-            <HomeButtonText/>
-            <HomeButtonNoText/>
-        </div>
+                </div>
+            </Popover>
+
+        </Popover.Group>
     );
 };
 
