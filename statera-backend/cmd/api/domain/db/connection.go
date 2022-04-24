@@ -2,6 +2,8 @@ package db
 
 import (
 	"context"
+	"fmt"
+	"github.com/jurodriguezf/statera/cmd/api/domain/utils"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"log"
@@ -10,7 +12,9 @@ import (
 /*MongoCN is the object that stores the DB connection*/
 var MongoCN = Connect()
 
-var clientOptions = options.Client().ApplyURI("mongodb+srv://admin:admin@stateradb.brnsm.mongodb.net/StateraDB?retryWrites=true&w=majority")
+var clientOptions = options.Client().ApplyURI(
+	fmt.Sprintf("mongodb+srv://admin:%s@stateradb.brnsm.mongodb.net/StateraDB?retryWrites=true&w=majority",
+		utils.GetEnvVariable("MONGO_PASSWORD")))
 
 /*Connect is the function that allows the DataBase connection*/
 func Connect() *mongo.Client {
