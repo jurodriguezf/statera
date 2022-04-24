@@ -5,8 +5,9 @@ import Welcome from "./pages/welcome/Welcome";
 function App() {
   return (
     <div className="App">
-      <Login className="h-screen"/>
-      <SignUp className="h-screen"></SignUp>
+        <Login className="h-screen"/>
+        <SignUp className="h-screen"></SignUp>
+        <Welcome/>
     </div>
   );
 }
