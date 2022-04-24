@@ -6,8 +6,8 @@ import (
 	"net/http"
 )
 
-/*viewProfile allows to extract values of a user profile*/
-func viewProfile(writer http.ResponseWriter, request *http.Request) {
+/*ViewProfile allows to extract values of a user profile*/
+func ViewProfile(writer http.ResponseWriter, request *http.Request) {
 
 	ID := request.URL.Query().Get("id")
 	if len(ID) < 1 {

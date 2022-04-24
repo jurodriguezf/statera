@@ -1,8 +1,9 @@
 package server
 
 import (
-	"github.com/gin-gonic/gin"
+	"github.com/gorilla/mux"
 	"github.com/jurodriguezf/statera/cmd/api/domain/controller"
+	"github.com/jurodriguezf/statera/cmd/api/domain/routers"
 	"github.com/rs/cors"
 	"log"
 	"net/http"
@@ -10,25 +11,12 @@ import (
 )
 
 func SetupEndpoints() {
-	router := gin.Default()
+	router := mux.NewRouter()
 
-	router.GET("/ping", func(c *gin.Context) {
-		c.JSON(http.StatusOK, "pong")
-	})
-
-	router.GET("/hello", func(c *gin.Context) {
-		c.JSON(http.StatusOK, "hi")
-	})
-
-	screenEndpoints := router.Group("/")
-	{
-		screenEndpoints.GET("/welcome", controller.HandleWelcomeScreen())
-	}
-
-	err := router.Run("localhost:8080")
-	if err != nil {
-		return
-	}
+	router.HandleFunc("/register", controller.CheckConnectionDB(routers.Register)).Methods("POST")
+	router.HandleFunc("/login", controller.CheckConnectionDB(routers.Login)).Methods("POST")
+	router.HandleFunc("/myaccount",
+		controller.CheckConnectionDB(controller.ValidateJWT(routers.ViewProfile))).Methods("GET")
 
 	// checks if there is an environment variable called PORT. If not, it creates it
 	PORT := os.Getenv("PORT")
