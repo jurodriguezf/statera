@@ -63,10 +63,10 @@ const WelcomeHeader = () => {
                     </Popover.Group>
                     <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
                         <div>
-                            <SecondaryButton label={"Inicia sesión"}/>
+                            <SecondaryButton label={"Inicia sesión"} link={"/login"}/>
                         </div>
                         <div>
-                            <PrimaryButton label="Regístrate"/>
+                            <PrimaryButton label="Regístrate"  link={"/signUp"}/>
                         </div>
                     </div>
                 </div>

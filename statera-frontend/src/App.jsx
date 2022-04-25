@@ -1,18 +1,25 @@
 import Login from "./pages/login/Login";
 import SignUp from "./pages/signUp/SignUp";
 import Welcome from "./pages/welcome/Welcome";
-import { Routes, Route, Link } from "react-router-dom";
+import {Routes, Route, Navigate} from "react-router-dom";
+import Home from "./pages/home/Home";
 
 function App() {
-  return (
-    <div className="App">
-        <Routes>
-            <Route path="/login" element={<Login className="h-screen"/>} />
-            <Route path="/signUp" element={<SignUp className="h-screen"/>} />
-            <Route path="/welcome" element={<Welcome/>} />
-        </Routes>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Routes>
+                <Route path="/login" element={<Login className="h-screen"/>}/>
+                <Route path="/signUp" element={<SignUp className="h-screen"/>}/>
+                <Route path="/welcome" element={<Welcome/>}/>
+                <Route path="/"
+                       element={
+                           // TODO: check for account log status
+                           1 === 0 ? <Home/> : <Navigate to="/welcome" replace/>
+                       }
+                />
+            </Routes>
+        </div>
+    );
 }
 
 export default App;
