@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-var SearchTimeout time.Duration = 15
+const SearchTimeout time.Duration = 15
 
 /*SearchProfile search a user on the database*/
 func SearchProfile(ID string) (model.User, error) {
