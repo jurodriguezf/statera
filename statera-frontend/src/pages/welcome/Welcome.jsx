@@ -2,6 +2,7 @@ import React from "react";
 import WelcomeHeader from "../../components/Header/WelcomeHeader";
 import {Popover} from "@headlessui/react";
 import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
+import MyProfile from "../myProfile/MyProfile";
 
 const Welcome = () => {
     return (
@@ -27,7 +28,6 @@ const Welcome = () => {
                     </div>
                 </div>
             </Popover>
-
         </Popover.Group>
     );
 };
