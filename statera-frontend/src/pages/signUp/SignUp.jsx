@@ -4,6 +4,7 @@ import Input from "../../components/Input/Input";
 import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
 import DivisorLine from "../../components/Misc/DivisionLine/DivisionLine";
 import {Link} from "react-router-dom";
+import HomeButtonText from "../../components/HomeButton/HomeButtonText";
 
 const SignUp = (props) => {
   return (
@@ -22,8 +23,7 @@ const SignUp = (props) => {
   function Image() {
     return <div className="relative hidden md:block w-full h-screen ">
       <div className="absolute flex items-center justify-end w-full px-10">
-        <img src="logo.png" className="object-scale-down h-24"></img>
-        <p className="font-youngserif text-wine text-xl"> Statera</p>
+        <HomeButtonText/>
       </div>
       <img src="images/vegetals.jpg" alt="" className="object-cover h-full" />
     </div>;
