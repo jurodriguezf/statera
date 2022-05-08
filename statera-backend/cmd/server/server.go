@@ -15,7 +15,7 @@ func SetupEndpoints() {
 	router := mux.NewRouter()
 
 	router.HandleFunc("/ping", func(writer http.ResponseWriter, request *http.Request) {
-		writer.WriteHeader(http.StatusCreated)
+		writer.WriteHeader(http.StatusOK)
 		json.NewEncoder(writer).Encode("pong")
 	}).Methods("GET")
 
@@ -29,6 +29,8 @@ func SetupEndpoints() {
 	if PORT == "" {
 		PORT = "8080"
 	}
+
+	log.Println("Listening at port " + PORT)
 
 	// will be necessary when we want to deply the app in Heroku
 	handler := cors.AllowAll().Handler(router)
