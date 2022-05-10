@@ -6,6 +6,7 @@ import DivisorLine from "../../components/Misc/DivisionLine/DivisionLine";
 import {Link} from "react-router-dom";
 import HomeButtonText from "../../components/HomeButton/HomeButtonText";
 import {useForm} from "react-hook-form";
+import {postRequest} from "../../api/backend";
 
 const SignUp = (props) => {
   return (
@@ -40,7 +41,10 @@ const SignUp = (props) => {
       }
     })
 
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = async (data) => {
+      const submission = await postRequest("http://localhost:8080/register", data);
+      console.log(submission);
+    }
 
     return <form className="" onSubmit={handleSubmit(onSubmit)}>
 
