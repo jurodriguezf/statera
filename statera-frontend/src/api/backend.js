@@ -10,5 +10,5 @@ export const postRequest = async (url, body) => {
     }
   ).catch(err => console.error(err));
 
-  return response.json();
+  return response?.json();
 }
