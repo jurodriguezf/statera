@@ -1,0 +1,25 @@
+import React from 'react';
+import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
+import HomeButtonText from '../../components/HomeButton/HomeButtonText';
+
+
+export default function Panel(){
+    return (
+        <div className='w-screen h-screen bg-beige flex'>
+            <div className='w-1/6 h-auto my-10 mx-5'>
+                <div className='profile-image w-full h-1/6'>
+                    <div className="rounded-full bg-white h-32 w-32 m-auto"><img src="" alt="" /></div>
+                    <div className='font-manrope text-black font-bold text-center'> A name here </div>
+                </div>
+                <div className='buttons h-4/6 flex flex-col justify-evenly px-5'>
+                        <PrimaryButton label="Home"/>
+                        <PrimaryButton label="Favoritos"/>
+                        <PrimaryButton label="Page3"/>
+                        <PrimaryButton label="Mi cuenta"/>
+                </div>
+                <HomeButtonText/>
+            </div>
+            <div className='bg-white w-5/6 h-auto m-5 rounded-2xl'></div>
+        </div>
+    )
+}
