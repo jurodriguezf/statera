@@ -45,4 +45,8 @@ func Register(writer http.ResponseWriter, request *http.Request) {
 	}
 
 	writer.WriteHeader(http.StatusCreated)
+	json.NewEncoder(writer).Encode(model.MessageResponse{
+		Status:  "success",
+		Message: "User created successfully",
+	})
 }
