@@ -3,8 +3,11 @@ import React from "react";
 import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
 import GoogleButton from "../../components/GoogleButton/GoogleButton";
 import DivisorLine from "../../components/Misc/DivisionLine/DivisionLine";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import HomeButtonText from "../../components/HomeButton/HomeButtonText";
+import {useForm} from "react-hook-form";
+import {postRequest} from "../../api/backend";
+import {makeLoginRequest} from "../../api/util";
 
 const Login = (props) => {
   return (
@@ -14,23 +17,37 @@ const Login = (props) => {
         <SignUpLink/>
         <p className="font-youngserif text-4xl my-10">Welcome back!</p>
         <LoginForm/>
-        <DivisorLine />
-        <GoogleButton label="Continue with Google" />
+        <DivisorLine/>
+        <GoogleButton label="Continue with Google"/>
       </div>
     </div>
   );
 
   function LoginForm() {
-    return <form className="">
-      <Input title="Email" />
-      <Input title="Password" password />
+    const navigate = useNavigate();
+    const {register, handleSubmit} = useForm({
+      defaultValues: {
+        email: '',
+        password: '',
+      }
+    })
+
+    const onSubmit = async (data) => {
+      if (await makeLoginRequest(data, props.setToken)) {
+        navigate("/");
+      }
+    }
+
+    return <form className="" onSubmit={handleSubmit(onSubmit)}>
+      <Input title="Email" register={register("email")}/>
+      <Input title="Password" password register={register("password")}/>
       <div className="flex justify-end mt-2">
         <a href="" className="font-youngserif text-sm">
           Forgot password?
         </a>
       </div>
       <div className="w-full flex justify-center my-10">
-        <PrimaryButton label="Sign in" className="" />
+        <PrimaryButton type="submit" label="Sign in" className=""/>
       </div>
     </form>;
   }
@@ -49,9 +66,9 @@ const Login = (props) => {
   function Image() {
     return <div className="relative hidden md:block w-full h-screen object-fill ">
       <div className="absolute flex items-center w-full px-10">
-          <HomeButtonText/>
+        <HomeButtonText/>
       </div>
-      <img src="images/bag-vegetals.jpg" alt="" className="h-full w-full object-cover" />
+      <img src="images/bag-vegetals.jpg" alt="" className="h-full w-full object-cover"/>
     </div>;
   }
 };

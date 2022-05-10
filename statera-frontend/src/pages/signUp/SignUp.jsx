@@ -3,10 +3,11 @@ import GoogleButton from "../../components/GoogleButton/GoogleButton";
 import Input from "../../components/Input/Input";
 import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
 import DivisorLine from "../../components/Misc/DivisionLine/DivisionLine";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import HomeButtonText from "../../components/HomeButton/HomeButtonText";
 import {useForm} from "react-hook-form";
 import {postRequest} from "../../api/backend";
+import {makeLoginRequest} from "../../api/util";
 
 const SignUp = (props) => {
   return (
@@ -32,6 +33,7 @@ const SignUp = (props) => {
   }
 
   function LoginForm() {
+    const navigate = useNavigate();
     const {register, handleSubmit, watch} = useForm({
       defaultValues: {
         username: '',
@@ -42,8 +44,17 @@ const SignUp = (props) => {
     })
 
     const onSubmit = async (data) => {
-      const submission = await postRequest("http://localhost:8080/register", data);
-      console.log(submission);
+      const { email, password } = data;
+
+      const signUpData = await postRequest("http://localhost:8080/register", data);
+
+      if(signUpData.status !== "success"){
+        return;
+      }
+
+      if (await makeLoginRequest({email, password}, props.setToken)) {
+        navigate("/");
+      }
     }
 
     return <form className="" onSubmit={handleSubmit(onSubmit)}>
