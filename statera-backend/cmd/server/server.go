@@ -23,7 +23,7 @@ func SetupEndpoints() {
 	router.HandleFunc("/login", controller.CheckConnectionDB(routers.Login)).Methods("POST")
 	router.HandleFunc("/myaccount",
 		controller.CheckConnectionDB(controller.ValidateJWT(routers.ViewProfile))).Methods("GET")
-	router.HandleFunc("/recipe/income-recipe",
+	router.HandleFunc("/recipes/get-recipe",
 		controller.CheckConnectionDB(controller.ValidateJWT(routers.RegisterRecipe))).Methods("POST")
 
 	// checks if there is an environment variable called PORT. If not, it creates it
