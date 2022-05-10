@@ -13,6 +13,7 @@ require (
 )
 
 require (
+	github.com/darahayes/go-boom v0.0.0-20200826120415-fa5cb724143a // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-playground/locales v0.13.0 // indirect
 	github.com/go-playground/universal-translator v0.17.0 // indirect
