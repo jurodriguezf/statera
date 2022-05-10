@@ -1,5 +1,5 @@
-import react, { useRef, useState } from "react";
-import { BsFillEyeSlashFill, BsFillEyeFill } from "react-icons/bs";
+import {useState} from "react";
+import {BsFillEyeSlashFill, BsFillEyeFill} from "react-icons/bs";
 
 const Input = (props) => {
   const [visibility, setVisibility] = useState(true);
@@ -12,6 +12,7 @@ const Input = (props) => {
           type={props.password ? (visibility ? "password" : "text") : "text"}
           placeholder={props.placeholder}
           className="input-type"
+          {...props.register}
         />
         {props.password ? (
           visibility ? (
@@ -19,7 +20,7 @@ const Input = (props) => {
               className="-mx-7 cursor-pointer"
               onClick={() => setVisibility(false)}
             />
-            
+
           ) : (
             <BsFillEyeFill
               className="-mx-7 cursor-pointer"
@@ -27,7 +28,7 @@ const Input = (props) => {
             />
           )
         ) : (
-          <div />
+          <div/>
         )}
       </div>
     </div>
