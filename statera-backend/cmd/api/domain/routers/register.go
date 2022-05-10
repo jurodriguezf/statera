@@ -2,6 +2,7 @@ package routers
 
 import (
 	"encoding/json"
+	"github.com/darahayes/go-boom"
 	"github.com/jurodriguezf/statera/cmd/api/domain/db"
 	"github.com/jurodriguezf/statera/cmd/api/domain/model"
 	"net/http"
@@ -14,32 +15,32 @@ func Register(writer http.ResponseWriter, request *http.Request) {
 
 	err := json.NewDecoder(request.Body).Decode(&user)
 	if err != nil {
-		http.Error(writer, "Data received incorrect "+err.Error(), 400)
+		boom.BadRequest(writer, "Data received incorrect.")
 		return
 	}
 
 	if len(user.Email) == 0 {
-		http.Error(writer, "User's email is required ", 400)
+		boom.BadRequest(writer, "User's email is required.")
 		return
 	}
 	if len(user.Password) < 6 {
-		http.Error(writer, "Password must be at least 6 characters long ", 400)
+		boom.BadRequest(writer, "Password must be at least 6 characters long.")
 		return
 	}
 
 	_, found, _ := db.UserExists(user.Email)
 	if found {
-		http.Error(writer, "There’s already an existing user with that email ", 400)
+		boom.BadRequest(writer, "There’s already an existing user with that email.")
 		return
 	}
 
 	_, status, err := db.InsertUser(user)
 	if err != nil {
-		http.Error(writer, "There was an error registering the user "+err.Error(), 400)
+		boom.BadRequest(writer, "There was an error registering the user.")
 		return
 	}
 	if status == false {
-		http.Error(writer, "It was not possible to register the user ", 400)
+		boom.BadRequest(writer, "It was not possible to register the user.")
 		return
 	}
 
