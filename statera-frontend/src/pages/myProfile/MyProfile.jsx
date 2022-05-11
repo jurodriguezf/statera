@@ -1,12 +1,10 @@
 import React from "react";
-import {Popover} from "@headlessui/react";
-import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
 
 import Panel from "../../layout/BasicLayout/Panel";
 
 const MyProfile = () => {
     return (
-        <Panel>
+        <Panel userName={"Peppa Perez"}>
             <h1>hola</h1>
         </Panel>
 
