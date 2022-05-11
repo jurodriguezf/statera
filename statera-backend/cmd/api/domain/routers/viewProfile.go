@@ -2,6 +2,7 @@ package routers
 
 import (
 	"encoding/json"
+	"github.com/darahayes/go-boom"
 	"github.com/jurodriguezf/statera/cmd/api/domain/db"
 	"net/http"
 )
@@ -9,15 +10,21 @@ import (
 /*ViewProfile allows to extract values of a user profile*/
 func ViewProfile(writer http.ResponseWriter, request *http.Request) {
 
-	ID := request.URL.Query().Get("id")
+	token := request.Header.Get("Authorization")
+	if token == "" {
+		boom.BadRequest(writer, "There was an error with the token ")
+		return
+	}
+
+	_, _, ID, _ := ProcessToken(token)
 	if len(ID) < 1 {
-		http.Error(writer, "You must send the parameter ID. ", http.StatusBadRequest)
+		boom.BadRequest(writer, "You must send the parameter ID. ")
 		return
 	}
 
 	profile, err := db.SearchProfile(ID)
 	if err != nil {
-		http.Error(writer, "You must send the parameter ID. "+err.Error(), http.StatusBadRequest)
+		boom.BadRequest(writer, "You must send the parameter ID. "+err.Error())
 		return
 	}
 
