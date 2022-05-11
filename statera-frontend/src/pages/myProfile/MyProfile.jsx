@@ -21,7 +21,7 @@ const MyProfile = (props) => {
   }, [token])
 
     return (
-        <Panel>
+        <Panel userName={"Peppa Perez"}>
             <h1>{JSON.stringify(profileData)}</h1>
             <div className={"px-10"}>
                 <div className={"font-youngserif text-5xl leading-normal mt-2 sm:mt-10 mb-4"}>
