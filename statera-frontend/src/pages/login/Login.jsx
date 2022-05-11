@@ -6,7 +6,6 @@ import DivisorLine from "../../components/Misc/DivisionLine/DivisionLine";
 import {Link, useNavigate} from "react-router-dom";
 import HomeButtonText from "../../components/HomeButton/HomeButtonText";
 import {useForm} from "react-hook-form";
-import {postRequest} from "../../api/backend";
 import {makeLoginRequest} from "../../api/util";
 
 const Login = (props) => {
@@ -33,9 +32,11 @@ const Login = (props) => {
     })
 
     const onSubmit = async (data) => {
-      if (await makeLoginRequest(data, props.setToken)) {
-        navigate("/");
-      }
+      await makeLoginRequest(data, props.setToken).then((response) => {
+        if(response){
+          navigate("/");
+        }
+      });
     }
 
     return <form className="" onSubmit={handleSubmit(onSubmit)}>
