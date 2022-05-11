@@ -6,23 +6,24 @@ import {makeProfileRequest} from "../../api/util";
 import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
 
 const MyProfile = (props) => {
-  const {token} = props;
-  const [profileData, setProfileData] = useState({});
+    const {token} = props;
+    const [profileData, setProfileData] = useState({});
 
-  useEffect( () => {
-    const getData = async () => {
-      const response = await makeProfileRequest(token)
-      console.log(token)
 
-      setProfileData(response);
-    }
 
-    getData();
-  }, [token])
+    useEffect( () => {
+        const getData = async () => {
+            const response = await makeProfileRequest(token)
+            console.log(token)
+
+            setProfileData(response);
+        }
+
+        getData();
+      }, [token])
 
     return (
         <Panel userName={"Peppa Perez"}>
-            <h1>{JSON.stringify(profileData)}</h1>
             <div className={"px-10"}>
                 <div className={"font-youngserif text-5xl leading-normal mt-2 sm:mt-10 mb-4"}>
                     <h1>Mi cuenta</h1>
@@ -32,7 +33,7 @@ const MyProfile = (props) => {
                         <h2>Usuario</h2>
                     </div>
                     <div className={"px-3 text-[#6D6D6D]"}>
-                        <h3>userName</h3>
+                        <h3>{JSON.stringify(profileData.userName).replace(/['"]+/g,"")}</h3>
                     </div>
                 </div>
 
