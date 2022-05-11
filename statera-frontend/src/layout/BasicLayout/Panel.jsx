@@ -3,7 +3,7 @@ import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
 import HomeButtonText from '../../components/HomeButton/HomeButtonText';
 
 
-export default function BasicLayout(props){
+export default function Panel(props){
     const {children} = props;
     console.log(props);
     return (
