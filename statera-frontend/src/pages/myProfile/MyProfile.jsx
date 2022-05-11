@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import Panel from "../../layout/BasicLayout/Panel";
 import Input from "../../components/Input/Input";
 import {makeProfileRequest} from "../../api/util";
+import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
 
 const MyProfile = (props) => {
   const {token} = props;
