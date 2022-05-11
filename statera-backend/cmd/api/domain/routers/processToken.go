@@ -30,7 +30,7 @@ func ProcessToken(token string) (*model.Claim, bool, string, error) {
 		}
 		return claims, found, IDUser, nil
 	}
-	if !tkn.Valid {
+	if tkn != nil && !tkn.Valid {
 		return claims, false, string(""), errors.New("Invalid Token")
 	}
 
