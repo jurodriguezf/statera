@@ -13,10 +13,10 @@ export default function Panel(props) {
                     <div className='font-manrope text-lg text-black font-bold text-center mt-4'> {props.userName}</div>
                 </div>
                 <div className='buttons h-4/6 flex flex-col justify-evenly px-5'>
-                    <IconButton label="Home" active/>
-                    <IconButton label="Favoritos"/>
-                    <IconButton label="Crear Receta"/>
-                    <IconButton label="Mi Cuenta"/>
+                    <IconButton label="Home" link={"/"} currentPage={props.currentPage}/>
+                    <IconButton label="Favoritos" link={"/favorites"} currentPage={props.currentPage}/>
+                    <IconButton label="Crear Receta" link={"/"} currentPage={props.currentPage}/>
+                    <IconButton label="Mi Cuenta" link={"/my-profile"} currentPage={props.currentPage}/>
                 </div>
                 <div className="flex justify-center items-center">
                     <HomeButtonText/>
