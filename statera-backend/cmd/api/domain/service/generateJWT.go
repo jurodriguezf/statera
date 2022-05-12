@@ -14,7 +14,7 @@ func GenerateJWT(user model.User) (string, error) {
 	payload := jwt.MapClaims{
 		"email":         user.Email,
 		"name":          user.Name,
-		"family_name":   user.FamilyName,
+		"family_name":   user.UserName,
 		"date_of_birth": user.DoB,
 		"location":      user.Location,
 		"_id":           user.ID.Hex(),
