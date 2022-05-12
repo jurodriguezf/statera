@@ -11,7 +11,9 @@ module.exports = {
         'darkbeige': '#f0d6bd',
         'shadow': '#f1f1f1',
         'gradient-beige': '#fff9f3',
-        'gradient-red': '#fff6f5'
+        'gradient-red': '#fff6f5',
+        'gray-button' : '#C4C4C4',
+        'darkgray-button' : '#A4A4A4'
       },
       fontFamily: {
         manrope: ["Manrope", "sans-serif"],

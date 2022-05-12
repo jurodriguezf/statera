@@ -17,6 +17,10 @@
     @apply px-5 py-2 text-wine hover:text-darkwine font-manrope font-bold rounded-lg text-base;
   }
 
+  .btn-regular {
+    @apply px-5 py-2 bg-gray-button text-black hover:bg-darkgray-button font-manrope font-bold rounded-lg text-base w-full;
+  }
+
   .btn-google {
     @apply px-5 py-2 border-2 hover:bg-slate-100 font-manrope font-bold rounded-xl text-base;
   }
