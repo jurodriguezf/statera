@@ -5,6 +5,7 @@ import {Routes, Route} from "react-router-dom";
 import Home from "./pages/home/Home";
 import MyProfile from "./pages/myProfile/MyProfile";
 import useToken from "./util/useToken";
+import EditProfile from "./pages/editProfile/EditProfile";
 
 function App() {
   const {token, setToken} = useToken();
@@ -15,6 +16,7 @@ function App() {
         <Route path="/login" element={<Login className="h-screen" setToken={setToken}/>}/>
         <Route path="/signUp" element={<SignUp className="h-screen" setToken={setToken}/>}/>
         <Route path="/my-profile" element={<MyProfile token={token}/>}/>
+          <Route path="/edit-profile" element={<EditProfile token={token}/>}/>
         <Route path="/" element={token ? <Home/> : <Welcome/>}/>
       </Routes>
     </div>
