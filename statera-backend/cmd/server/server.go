@@ -2,13 +2,14 @@ package server
 
 import (
 	"encoding/json"
+	"log"
+	"net/http"
+	"os"
+
 	"github.com/gorilla/mux"
 	"github.com/jurodriguezf/statera/cmd/api/domain/controller"
 	"github.com/jurodriguezf/statera/cmd/api/domain/routers"
 	"github.com/rs/cors"
-	"log"
-	"net/http"
-	"os"
 )
 
 func SetupEndpoints() {
@@ -25,6 +26,8 @@ func SetupEndpoints() {
 		controller.CheckConnectionDB(controller.ValidateJWT(routers.ViewProfile))).Methods("GET")
 	router.HandleFunc("/recipes/get-recipe",
 		controller.CheckConnectionDB(controller.ValidateJWT(routers.RegisterRecipe))).Methods("POST")
+	router.HandleFunc("/recipes/all-recipes",
+		controller.CheckConnectionDB(controller.ValidateJWT(routers.GetRecipes))).Methods("POST")
 
 	// checks if there is an environment variable called PORT. If not, it creates it
 	PORT := os.Getenv("PORT")
