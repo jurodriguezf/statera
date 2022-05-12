@@ -21,7 +21,7 @@ const MyProfile = (props) => {
 
         getData();
       }, [token])
-
+    console.log(JSON.stringify(profileData))
     return (
         <Panel userName={"Peppa Perez"}>
             <div className={"px-10"}>
@@ -33,7 +33,8 @@ const MyProfile = (props) => {
                         <h2>Usuario</h2>
                     </div>
                     <div className={"px-3 text-[#6D6D6D]"}>
-                        <h3>{JSON.stringify(profileData.userName).replace(/['"]+/g,"")}</h3>
+                        {/*<h3>{JSON.stringify(profileData.userName).replace(/['"]+/g,"")}</h3>*/}
+                        <h3>{JSON.stringify(profileData.userName)}</h3>
                     </div>
                 </div>
 
