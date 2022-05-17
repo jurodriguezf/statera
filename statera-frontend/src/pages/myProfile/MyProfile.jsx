@@ -23,7 +23,7 @@ const MyProfile = (props) => {
     console.log(JSON.stringify(profileData))
     return (
         <Panel userName={profileData.userName} currentPage={"Mi Cuenta"}>
-            <div className={"font-youngserif text-5xl leading-normal mt-2 sm:mt-10 mb-4 px-3"}>
+            <div className={"font-youngserif text-5xl leading-normal mt-2 sm:mt-10 mb-4 ml-5"}>
                 <h1>Mi cuenta</h1>
             </div>
             <div className={"px-10"}>
@@ -39,7 +39,7 @@ const MyProfile = (props) => {
                     </div>
                 ))}
             </div>
-            <div className={"w-48 mt-10"}>
+            <div className={"w-48 mt-10 ml-20"}>
                 <PrimaryButton type="submit" link={"/edit-profile"} label="Editar perfil" className=""/>
             </div>
         </Panel>
