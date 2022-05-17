@@ -24,7 +24,7 @@ const EditProfile = (props) => {
     }, [token])
     console.log(JSON.stringify(profileData))
     return (
-        <Panel userName={JSON.stringify(profileData.userName)}>
+        <Panel userName={(profileData.userName)}>
             <div className={"px-10"}>
                 <div className={"font-youngserif text-5xl leading-normal mt-2 sm:mt-10 mb-4"}>
                     <h1>Editar mi perfil</h1>

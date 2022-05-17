@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"github.com/darahayes/go-boom"
 	"github.com/jurodriguezf/statera/cmd/api/domain/db"
+	"github.com/jurodriguezf/statera/cmd/api/domain/model"
 	"net/http"
 )
 
@@ -30,5 +31,10 @@ func ViewProfile(writer http.ResponseWriter, request *http.Request) {
 
 	writer.Header().Set("Content-Type", "application/json")
 	writer.WriteHeader(http.StatusCreated)
-	json.NewEncoder(writer).Encode(profile)
+	json.NewEncoder(writer).Encode(model.ProfileResponse{
+		UserName: profile.UserName,
+		Email:    profile.Email,
+		DoB:      profile.DoB,
+		Location: profile.Location,
+	})
 }

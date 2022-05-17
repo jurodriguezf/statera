@@ -14,3 +14,5 @@ export const makeLoginRequest = async (data, setToken) => {
 export const makeProfileRequest = async (token) => await getRequest("http://localhost:8080/myaccount", token);
 
 export const makeAllRecipesRequest = async (token) => await getRequest("http://localhost:8080/recipes/all-recipes", token);
+
+export const postEditProfile = async (body, token) => await postRequest("http://localhost:8080/edit-profile", body, token )
