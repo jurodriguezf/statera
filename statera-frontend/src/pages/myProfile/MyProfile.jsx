@@ -14,7 +14,6 @@ const MyProfile = (props) => {
     useEffect( () => {
         const getData = async () => {
             const response = await makeProfileRequest(token)
-            console.log(token)
 
             setProfileData(response);
         }
