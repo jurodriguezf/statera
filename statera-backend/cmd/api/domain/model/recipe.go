@@ -8,6 +8,7 @@ import (
 type Recipe struct {
 	ID           primitive.ObjectID `bson:"_id,omitempty" json:"id"`
 	Name         string             `bson:"name" json:"name,omitempty"`
+	Category     string             `bson:"category" json:"category,omitempty"`
 	Ingredients  []string           `bson:"ingredients" json:"ingredients,omitempty"`
 	Instructions []string           `bson:"instructions" json:"instructions,omitempty"`
 }

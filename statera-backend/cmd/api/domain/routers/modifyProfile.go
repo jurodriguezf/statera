@@ -26,4 +26,11 @@ func ModifyProfile(writer http.ResponseWriter, request *http.Request) {
 		boom.BadRequest(writer, "It was not possible to modify the user's information")
 		return
 	}
+
+	writer.WriteHeader(http.StatusOK)
+
+	json.NewEncoder(writer).Encode(model.MessageResponse{
+		Status:  "success",
+		Message: "User EDITED successfully",
+	})
 }
