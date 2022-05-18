@@ -15,7 +15,6 @@ const EditProfile = (props) => {
     const {token} = props;
     const [profileData, setProfileData] = useState({});
 
-    console.log(JSON.stringify(profileData))
     return (
         <Panel userName={profileData.userName}>
             <div {...props} className="flex">

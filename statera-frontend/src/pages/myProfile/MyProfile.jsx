@@ -33,7 +33,6 @@ const MyProfile = (props) => {
                             <h2>{key}</h2>
                         </div>
                         <div className={"px-3 text-[#6D6D6D]"}>
-                            {/*<h3>{JSON.stringify(profileData.userName).replace(/['"]+/g,"")}</h3>*/}
                             <h3>{(profileData[key])}</h3>
                         </div>
                     </div>
