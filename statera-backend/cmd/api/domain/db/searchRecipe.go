@@ -18,7 +18,7 @@ func SearchRecipe(Query string) ([]model.Recipe, error) {
 	col := db.Collection("Recipes")
 
 	condition := bson.M{
-		"name": bson.M{"$regex": Query},
+		"name": bson.M{"$regex": Query, "$options": "i"},
 	}
 
 	result, err := col.Find(ctx, condition)
