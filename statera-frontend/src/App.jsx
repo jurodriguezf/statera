@@ -24,7 +24,7 @@ function App() {
         <Route path="/edit-profile" element={<EditProfile token={token}/>}/>
         <Route path="/favorites" element={<Favorites token={token}/>}/>
         <Route path="/get-recipe" element={<AddRecipe token={token}/>}/>
-        <Route path="/" element={token ? <Home/> : <Welcome/>}/>
+        <Route path="/" element={token ? <Home token={token}/> : <Welcome/>}/>
       </Routes>
     </div>
   );
