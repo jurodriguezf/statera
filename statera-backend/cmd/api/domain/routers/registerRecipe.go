@@ -11,13 +11,19 @@ import (
 /*RegisterRecipe function that creates the register of the recipe into DB*/
 func RegisterRecipe(writer http.ResponseWriter, request *http.Request) {
 	writer.Header().Add("content-type", "application/json")
-	var recipe model.Recipe
+	recipe := model.Recipe{
+		Name:     request.FormValue("name"),
+		Category: request.FormValue("category"),
+	}
 
-	err := json.NewDecoder(request.Body).Decode(&recipe)
+	ingredientsErr := json.Unmarshal([]byte(request.FormValue("ingredients")), &recipe.Ingredients)
+	if ingredientsErr != nil {
+		boom.BadRequest(writer, "Ingredient values are incorrect")
+	}
 
-	if err != nil {
-		http.Error(writer, "Data received incorrect "+err.Error(), 400)
-		return
+	instructionsErr := json.Unmarshal([]byte(request.FormValue("ingredients")), &recipe.Instructions)
+	if instructionsErr != nil {
+		boom.BadRequest(writer, "Instruction values are incorrect")
 	}
 
 	ID, status, err := db.InsertRecipe(recipe)

@@ -11,9 +11,9 @@ import (
 )
 
 func UploadImageRecipe(request *http.Request, ID string) error {
-	file, handler, err := request.FormFile("recipe")
+	file, handler, err := request.FormFile("image")
 	var extension = strings.Split(handler.Filename, ".")[1]
-	var fileRecipe string = "cmd/uploads/recipes/" + ID + "." + extension
+	var fileRecipe = "cmd/uploads/recipes/" + ID + "." + extension
 
 	f, err := os.OpenFile(fileRecipe, os.O_WRONLY|os.O_CREATE, 0666)
 	if err != nil {
@@ -29,7 +29,7 @@ func UploadImageRecipe(request *http.Request, ID string) error {
 	var recipe model.Recipe
 	var status bool
 
-	recipe.ImageRecipe = ID + "." + extension
+	recipe.ImageLink = ID + "." + extension
 
 	status, err = db.EditRecipe(recipe, ID)
 	if err != nil || status == false {
