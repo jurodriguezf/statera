@@ -1,6 +1,6 @@
 import React from 'react';
 import Panel from "../../layout/BasicLayout/Panel";
-import RecipeCard from "../../components/RecipeCard/RecipeCard";
+import RecipeCard from "../../components/Recipes/RecipeCard";
 
 const Favorites = () => {
     return (
@@ -13,14 +13,38 @@ const Favorites = () => {
                     <h1>Tus recetas favoritas</h1>
                 </div>
                 <div className="my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 place-items-center">
-                    <RecipeCard name="Fríjoles con kumis" category="Ensalada"/>
-                    <RecipeCard name="Fríjoles con kumis" category="Ensalada"/>
-                    <RecipeCard name="Fríjoles con kumis" category="Ensalada"/>
-                    <RecipeCard name="Fríjoles con kumis" category="Ensalada"/>
-                    <RecipeCard name="Fríjoles con kumis" category="Ensalada"/>
-                    <RecipeCard name="Fríjoles con kumis" category="Ensalada"/>
-                    <RecipeCard name="Fríjoles con kumis" category="Ensalada"/>
-                    <RecipeCard name="Fríjoles con kumis" category="Ensalada"/>
+                    <RecipeCard name="Fríjoles con kumis"
+                                category="Ensalada"
+                                ingredients="Huevos, Tomate, Cebolla, Sal, Aceite"
+                                instructions="1. Never gonna give you up"/>
+                    <RecipeCard name="Fríjoles con kumis"
+                                category="Ensalada"
+                                ingredients="Huevos, Tomate, Cebolla, Sal, Aceite"
+                                instructions="1. Never gonna give you up"/>
+                    <RecipeCard name="Fríjoles con kumis"
+                                category="Ensalada"
+                                ingredients="Huevos, Tomate, Cebolla, Sal, Aceite"
+                                instructions="1. Never gonna give you up"/>
+                    <RecipeCard name="Fríjoles con kumis"
+                                category="Ensalada"
+                                ingredients="Huevos, Tomate, Cebolla, Sal, Aceite"
+                                instructions="1. Never gonna give you up"/>
+                    <RecipeCard name="Fríjoles con kumis"
+                                category="Ensalada"
+                                ingredients="Huevos, Tomate, Cebolla, Sal, Aceite"
+                                instructions="1. Never gonna give you up"/>
+                    <RecipeCard name="Fríjoles con kumis"
+                                category="Ensalada"
+                                ingredients="Huevos, Tomate, Cebolla, Sal, Aceite"
+                                instructions="1. Never gonna give you up"/>
+                    <RecipeCard name="Fríjoles con kumis"
+                                category="Ensalada"
+                                ingredients="Huevos, Tomate, Cebolla, Sal, Aceite"
+                                instructions="1. Never gonna give you up"/>
+                    <RecipeCard name="Fríjoles con kumis"
+                                category="Ensalada"
+                                ingredients="Huevos, Tomate, Cebolla, Sal, Aceite"
+                                instructions="1. Never gonna give you up"/>
                 </div>
             </div>
         </Panel>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import RecipeCard from "../../components/RecipeCard/RecipeCard";
+import RecipeCard from "../../components/Recipes/RecipeCard";
 import Panel from "../../layout/BasicLayout/Panel";
 import { makeAllRecipesRequest } from "../../api/util";
 
