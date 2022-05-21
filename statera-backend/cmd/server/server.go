@@ -30,6 +30,10 @@ func SetupEndpoints() {
 		controller.CheckConnectionDB(controller.ValidateJWT(routers.RegisterRecipe))).Methods("POST")
 	router.HandleFunc("/recipes/all-recipes",
 		controller.CheckConnectionDB(controller.ValidateJWT(routers.GetRecipes))).Methods("GET")
+	router.HandleFunc("/uploadAvatar",
+		controller.CheckConnectionDB(controller.ValidateJWT(routers.UploadAvatar))).Methods("POST")
+	router.HandleFunc("/getAvatar",
+		controller.CheckConnectionDB(controller.ValidateJWT(routers.GetAvatar))).Methods("GET")
 	router.HandleFunc("/recipes/recipe-query",
 		controller.CheckConnectionDB(controller.ValidateJWT(routers.GetRecipesQuery))).Methods("GET")
 
