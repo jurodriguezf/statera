@@ -8,7 +8,7 @@ import (
 	"github.com/jurodriguezf/statera/cmd/api/domain/model"
 )
 
-/*RegisterRecipe function that creates the register of the recipe into DB*/
+/*GetRecipesQuery function that creates the register of the recipe into DB*/
 func GetRecipesQuery(writer http.ResponseWriter, request *http.Request) {
 	writer.Header().Add("content-type", "application/json")
 	var recipes []model.Recipe
