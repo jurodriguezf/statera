@@ -32,7 +32,8 @@ func SetupEndpoints() {
 		controller.CheckConnectionDB(controller.ValidateJWT(routers.GetRecipes))).Methods("GET")
 	router.HandleFunc("/uploadAvatar",
 		controller.CheckConnectionDB(controller.ValidateJWT(routers.UploadAvatar))).Methods("POST")
-	router.HandleFunc("/getAvatar", controller.CheckConnectionDB(controller.ValidateJWT(routers.GetAvatar))).Methods("GET")
+	router.HandleFunc("/getAvatar",
+		controller.CheckConnectionDB(controller.ValidateJWT(routers.GetAvatar))).Methods("GET")
 	// checks if there is an environment variable called PORT. If not, it creates it
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
