@@ -15,4 +15,6 @@ export const makeProfileRequest = async (token) => await getRequest("http://loca
 
 export const makeAllRecipesRequest = async (token) => await getRequest("http://localhost:8080/recipes/all-recipes", token);
 
+export const makeQueryRecipesRequest = async (body,token) => await putRequest("http://localhost:8080/recipes/recipe-query",body,token);
+
 export const putEditProfile = async (body, token) => await putRequest("http://localhost:8080/editaccount", body, token )

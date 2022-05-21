@@ -12,6 +12,7 @@ const Input = (props) => {
           type={props.password ? (visibility ? "password" : "text") : "text"}
           placeholder={props.placeholder}
           className="input-type"
+          onChange={props.onChange}
           {...props.register}
         />
         {props.password ? (
