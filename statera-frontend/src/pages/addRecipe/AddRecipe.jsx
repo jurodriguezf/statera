@@ -1,10 +1,12 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect } from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 import Input from "../../components/Input/Input";
 import Panel from "../../layout/BasicLayout/Panel";
 import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
+import { makeAddRecipeRequest } from "../../api/util";
 
-const RecipeForm = () => {
+const RecipeForm = (props) => {
+  const { token } = props;
   const { register, control, handleSubmit } = useForm({
     defaultValues: {
       name: "",
@@ -47,15 +49,25 @@ const RecipeForm = () => {
     ingredientAppend,
   ]);
 
-  const onSubmit = async (data) => console.log(data);
+  const onSubmit = async (formData) => {
+    await makeAddRecipeRequest(formData, token);
+  };
 
   return (
     <Fragment>
       <h1 className="font-youngserif text-5xl leading-normal mt-2 sm:mt-10 mb-4 px-10">
         Crear Receta
       </h1>
-      <form className="px-10" autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
-        <Input type="text" title="Nombre" register={register("name", {required: true})} />
+      <form
+        className="px-10"
+        autoComplete="off"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <Input
+          type="text"
+          title="Nombre"
+          register={register("name", { required: true })}
+        />
         <Input type="text" title="Categoría" register={register("category")} />
         <Input type="file" title="Imagen" register={register("image")} />
 
@@ -100,7 +112,7 @@ const RecipeForm = () => {
                 <h2 className="w-1 px-3 py-4 my-3">{index + 1}. </h2>
                 <Input
                   type="text"
-                  register={register(`instructions.${index}.instruction`, {
+                  register={register(`instructions.${index}.instructionValue`, {
                     required: true,
                   })}
                 />
@@ -133,9 +145,11 @@ const RecipeForm = () => {
 };
 
 const AddRecipe = (props) => {
+  const { token } = props;
+
   return (
     <Panel userName={"Peppa Perez"}>
-      <RecipeForm />
+      <RecipeForm token={token} />
     </Panel>
   );
 };

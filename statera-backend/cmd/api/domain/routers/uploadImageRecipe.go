@@ -10,7 +10,7 @@ import (
 	"strings"
 )
 
-func UploadImageRecipe(request *http.Request, ID string) error {
+func UploadRecipeImage(request *http.Request, ID string) error {
 	file, handler, err := request.FormFile("image")
 	var extension = strings.Split(handler.Filename, ".")[1]
 	var fileRecipe = "cmd/uploads/recipes/" + ID + "." + extension

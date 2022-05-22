@@ -14,6 +14,21 @@ export const postRequest = async (url, body, token) => {
   return response?.json();
 }
 
+export const postFormDataRequest = async (url, body, token) => {
+    console.log(body)
+    const response = await fetch(
+        url, {
+            method: "POST",
+            headers: {
+                'Authorization': token || "",
+            },
+            body: body
+        }
+    ).catch(err => console.error(err));
+
+    await response?.json();
+}
+
 export const putRequest = async (url, body, token) => {
     const response = await fetch(
         url, {
