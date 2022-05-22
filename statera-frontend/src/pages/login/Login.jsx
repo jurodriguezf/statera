@@ -40,8 +40,8 @@ const Login = (props) => {
     }
 
     return <form className="" onSubmit={handleSubmit(onSubmit)}>
-      <Input title="Email" register={register("email")}/>
-      <Input title="Password" password register={register("password")}/>
+      <Input type="text" title="Email" register={register("email")}/>
+      <Input type="text" title="Password" password register={register("password")}/>
       <div className="flex justify-end mt-2">
         <a href="" className="font-youngserif text-sm">
           Forgot password?

@@ -27,7 +27,7 @@ const Home = (props) => {
 
   return (
     <Panel currentPage={"Home"}>
-      <Input title="Username" onChange={getRecipesQuery}></Input>
+      <Input type="text" title="Username" onChange={getRecipesQuery}></Input>
       <div className="px-10">
         <div
           className={

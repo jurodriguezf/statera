@@ -1,95 +1,139 @@
-import React, {useEffect, useState} from "react";
-
-import Panel from "../../layout/BasicLayout/Panel";
+import React, { Fragment, useEffect, useState } from "react";
+import { useForm, useFieldArray } from "react-hook-form";
 import Input from "../../components/Input/Input";
+import Panel from "../../layout/BasicLayout/Panel";
 import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
 
+const RecipeForm = () => {
+  const { register, control, handleSubmit } = useForm({
+    defaultValues: {
+      name: "",
+      category: "",
+      instructions: [""],
+      ingredients: [""],
+    },
+  });
+
+  const {
+    fields: ingredientFields,
+    append: ingredientAppend,
+    remove: ingredientRemove,
+  } = useFieldArray({
+    control,
+    name: "ingredients",
+  });
+
+  const {
+    fields: instructionFields,
+    append: instructionAppend,
+    remove: instructionRemove,
+  } = useFieldArray({
+    control,
+    name: "instructions",
+  });
+
+  useEffect(() => {
+    if (instructionFields.length < 1) {
+      instructionAppend("");
+    }
+
+    if (ingredientFields.length < 1) {
+      ingredientAppend("");
+    }
+  }, [
+    instructionFields,
+    instructionAppend,
+    ingredientFields,
+    ingredientAppend,
+  ]);
+
+  const onSubmit = async (data) => console.log(data);
+
+  return (
+    <Fragment>
+      <h1 className="font-youngserif text-5xl leading-normal mt-2 sm:mt-10 mb-4 px-10">
+        Crear Receta
+      </h1>
+      <form className="px-10" onSubmit={handleSubmit(onSubmit)}>
+        <Input type="text" title="Nombre" register={register("name")} />
+        <Input type="text" title="Categoría" register={register("category")} />
+        <Input type="file" title="Imagen" register={register("image")} />
+
+        <div className="grid grid-cols-2 gap-5 h-full">
+          <div className="my-5 overflow-scroll">
+            <h2>Ingredientes</h2>
+
+            {ingredientFields.map((item, index) => (
+              <div className="flex" key={item.id}>
+                <h2 className="w-1 px-3 py-4 my-3">{index + 1}. </h2>
+                <Input
+                  type="text"
+                  register={register(`ingredients.${index}.ingredient`)}
+                />
+                {ingredientFields.length > 1 && (
+                  <button
+                    className="h-auto bg-beige px-2 py-2 my-5"
+                    type="button"
+                    onClick={() => ingredientRemove(index)}
+                  >
+                    -
+                  </button>
+                )}
+              </div>
+            ))}
+            <button
+              className="btn-regular w-full"
+              type="button"
+              onClick={() => ingredientAppend("")}
+            >
+              +
+            </button>
+          </div>
+
+          <div className="my-5 overflow-scroll">
+            <h2>Instrucciones</h2>
+
+            {instructionFields.map((item, index) => (
+              <div className="flex" key={item.id}>
+                <h2 className="w-1 px-3 py-4 my-3">{index + 1}. </h2>
+                <Input
+                  type="text"
+                  register={register(`instructions.${index}.instruction`)}
+                />
+                {instructionFields.length > 1 && (
+                  <button
+                    className="h-auto bg-beige px-2 py-2 my-5"
+                    type="button"
+                    onClick={() => instructionRemove(index)}
+                  >
+                    -
+                  </button>
+                )}
+              </div>
+            ))}
+
+            <button
+              className="btn-regular w-full"
+              type="button"
+              onClick={() => instructionAppend("")}
+            >
+              +
+            </button>
+          </div>
+        </div>
+
+        <PrimaryButton type="submit" label="Guardar" className="w-48 mt-10" />
+      </form>
+    </Fragment>
+  );
+};
+
 const AddRecipe = (props) => {
+  return (
+    <Panel userName={"Peppa Perez"}>
+      <RecipeForm />
+    </Panel>
+  );
+};
 
-    const [inputFieldsIngredients, setInputFieldIngredient] = useState([
-        {ingredient : ""}
-    ])
-
-    const [inputFieldsInstructions, setInputFieldInstruction] = useState([
-        {instruction : ""}
-    ])
-
-    const addFieldIngredient = () => {
-        setInputFieldIngredient([...inputFieldsIngredients, {ingredient : ""}])
-    }
-
-    const removeFieldIngredient = () => {
-        const values = [...inputFieldsIngredients]
-        values.splice(inputFieldsIngredients.length-1, 1)
-        setInputFieldIngredient(values)
-    }
-
-    const addFieldInstruction = () => {
-      setInputFieldInstruction([...inputFieldsInstructions, {instruction : ""}])
-    }
-
-    const removeFieldInstruction = () => {
-        const values = [...inputFieldsInstructions]
-        values.splice(inputFieldsInstructions.length-1, 1)
-        setInputFieldInstruction(values)
-    }
-
-    return (
-        <Panel userName={"Peppa Perez"}>
-            <div className={"px-10"}>
-                <div className={"font-youngserif text-5xl leading-normal mt-2 sm:mt-10 mb-4"}>
-                    <h1>Crear Receta</h1>
-                </div>
-
-                <div className={"mt-5"}>
-                    <div className={"font-bold text-2xl"}>
-                        <h2>Nombre Receta</h2>
-                    </div>
-                    <div className={"px-3 w-80"}>
-                        <Input/>
-                    </div>
-                </div>
-                <div className={"mt-5"}>
-                    <div className={"font-bold text-2xl"}>
-                        <h2>Ingredientes</h2>
-                    </div>
-                    <div className={"px-3 w-80"}>
-                        {inputFieldsIngredients.map((inputFieldIngredient, index) =>(
-                            <div  className="grid grid-cols-[40px_minmax(12px,_1fr)]" >
-                                <div className={"px-3 py-4 text-2xl"}><h2>{index+1}. </h2></div>
-                                <div><Input /></div>
-                            </div>
-                        ))}
-                        <div className="grid grid-cols-2 gap-4">
-                            <div><button className="btn-regular" onClick={()=> addFieldIngredient()}>+</button></div>
-                            <div><button className="btn-regular" onClick={()=> removeFieldIngredient()}>-</button></div>
-                        </div>
-                    </div>
-                </div>
-                <div className={"mt-5"}>
-                    <div className={"font-bold text-2xl" }>
-                        <h2>Instrucciones</h2>
-                    </div>
-                    <div className={"px-3 w-80"}>
-                        {inputFieldsInstructions.map((inputFieldInstruction, index) =>(
-                            <div  className="grid grid-cols-[40px_minmax(12px,_1fr)]" >
-                                <div className={"px-3 py-4 text-2xl"}><h2>{index+1}. </h2></div>
-                                <div><Input /></div>
-                            </div>
-                        ))}
-                        <div className="grid grid-cols-2 gap-4">
-                            <div><button className="btn-regular" onClick={()=> addFieldInstruction()}>+</button></div>
-                            <div><button className="btn-regular" onClick={()=> removeFieldInstruction()}>-</button></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className={"w-48 mt-10"}>
-                    <PrimaryButton type="submit" label="Guardar" className=""/>
-                </div>
-            </div>
-        </Panel>
-    );
-}
-
-export default AddRecipe
+export default AddRecipe;
