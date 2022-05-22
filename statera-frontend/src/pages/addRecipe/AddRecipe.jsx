@@ -54,8 +54,8 @@ const RecipeForm = () => {
       <h1 className="font-youngserif text-5xl leading-normal mt-2 sm:mt-10 mb-4 px-10">
         Crear Receta
       </h1>
-      <form className="px-10" onSubmit={handleSubmit(onSubmit)}>
-        <Input type="text" title="Nombre" register={register("name")} />
+      <form className="px-10" autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
+        <Input type="text" title="Nombre" register={register("name", {required: true})} />
         <Input type="text" title="Categoría" register={register("category")} />
         <Input type="file" title="Imagen" register={register("image")} />
 
@@ -68,7 +68,9 @@ const RecipeForm = () => {
                 <h2 className="w-1 px-3 py-4 my-3">{index + 1}. </h2>
                 <Input
                   type="text"
-                  register={register(`ingredients.${index}.ingredient`)}
+                  register={register(`ingredients.${index}.ingredient`, {
+                    required: true,
+                  })}
                 />
                 {ingredientFields.length > 1 && (
                   <button
@@ -98,7 +100,9 @@ const RecipeForm = () => {
                 <h2 className="w-1 px-3 py-4 my-3">{index + 1}. </h2>
                 <Input
                   type="text"
-                  register={register(`instructions.${index}.instruction`)}
+                  register={register(`instructions.${index}.instruction`, {
+                    required: true,
+                  })}
                 />
                 {instructionFields.length > 1 && (
                   <button
