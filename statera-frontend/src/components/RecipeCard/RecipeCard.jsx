@@ -7,7 +7,7 @@ const RecipeCard = (props) => {
       : "https://via.placeholder.com/350x200";
 
   return (
-    <div className="grow">
+    <div className="grow" onClick={props.onClick}>
       <div>
         <img
           alt="The current recipe"
