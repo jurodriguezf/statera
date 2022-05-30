@@ -31,18 +31,18 @@ const Home = (props) => {
 
   return (
     <Panel currentPage={"Home"}>
-      <Input title="Username" onChange={getRecipesQuery}></Input>
       <div className="px-10">
         <div
           className={
-            "font-youngserif text-5xl leading-normal mt-2 sm:mt-10 mb-4"
+            "flex mt-2 sm:mt-10"
           }
         >
-          <h1>Recetas</h1>
+          <h1 className="w-7/12 font-youngserif text-5xl leading-normal">Recetas</h1>
+          <Input className="w-5/12 h-auto" placeholder="Busca un plato" onChange={getRecipesQuery}/>
         </div>
         <div
           className={
-            "font-manrope font-bold text-2xl leading-normal mt-2 sm:mt-10 mb-4"
+            "font-manrope font-bold text-2xl leading-normal mt-2 sm:mt-10"
           }
         >
           <h1>Platos populares</h1>
