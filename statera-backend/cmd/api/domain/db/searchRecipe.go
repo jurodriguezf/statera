@@ -25,6 +25,8 @@ func SearchRecipe(Query string) ([]model.Recipe, error) {
 
 	var recipes []model.Recipe
 
+	fmt.Print(result)
+
 	for result.Next(ctx) {
 		//Create a value into which the single document can be decoded
 		var elem model.Recipe

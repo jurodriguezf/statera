@@ -1,8 +1,13 @@
 import React from "react";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
+import Rating from '../Rating/Rating.tsx'
 
 const RecipeModal = ({ recipe, visible, onClose }) => {
   if (!visible) return null;
+  
+  const handleRating = (rate) =>{
+    console.log(rate);
+  }
 
   const handleCloseClick = () => {
     onClose && onClose();
@@ -15,6 +20,7 @@ const RecipeModal = ({ recipe, visible, onClose }) => {
           <div className="font-youngserif font-bold text-4xl mr-40 pb-3">
             {recipe.name}
           </div>
+          <Rating transition allowHalfIcon ratingValue={recipe.rating} onClick={handleRating} ></Rating>
           <button
               label="Cerrar"
               onClick={handleCloseClick}
@@ -47,6 +53,7 @@ const RecipeModal = ({ recipe, visible, onClose }) => {
                   <li className="font-manrope">{instruction}</li>
                 ))}
               </ol>
+              
             </div>
           </div>
         </div>
