@@ -24,7 +24,7 @@ const RecipeModal = ({ recipe, visible, onClose }) => {
         <div className={"flex"}>
           <div className="w-3/12">
             <div>
-              <img className="my-5 rounded-xl" src="https://via.placeholder.com/250x140"/>
+              <img className="my-5 rounded-xl w-[250px] h-[140px] object-cover" src={!!recipe.imageLink ? "http://localhost:8080/static/" + recipe.imageLink : "https://via.placeholder.com/250x140"}/>
               <div className={"font-manrope font-bold text-xl my-3"}>
                 Ingredientes
               </div>

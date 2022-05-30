@@ -1,6 +1,6 @@
 import React from 'react';
 import Panel from "../../layout/BasicLayout/Panel";
-import RecipeCard from "../../components/Recipes/RecipeCard";
+import RecipeCard from "../../components/RecipeCard/RecipeCard";
 
 const Favorites = () => {
     return (

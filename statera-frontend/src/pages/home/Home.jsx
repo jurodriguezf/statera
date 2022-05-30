@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import RecipeCard from "../../components/Recipes/RecipeCard";
 import Panel from "../../layout/BasicLayout/Panel";
 import RecipeModal from "../../components/Recipes/RecipeModal";
 import Input from "../../components/Input/Input";
 import { makeAllRecipesRequest, makeQueryRecipesRequest } from "../../api/util";
+import RecipeCard from "../../components/RecipeCard/RecipeCard";
 
 const Home = (props) => {
   const { token } = props;
