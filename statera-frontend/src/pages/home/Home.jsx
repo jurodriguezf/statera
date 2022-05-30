@@ -23,11 +23,11 @@ const Home = (props) => {
   }, [token]);
 
   const getRecipesQuery = async (event) => {
-    const query = event.target?.value
-    const queryRecipes = await makeQueryRecipesRequest(query,token)
+    const query = event.target?.value;
+    const queryRecipes = await makeQueryRecipesRequest(query, token);
     console.log(queryRecipes);
-    setHomeRecipes(queryRecipes)
-}
+    setHomeRecipes(queryRecipes);
+  };
 
   return (
     <Panel currentPage={"Home"}>
@@ -38,8 +38,9 @@ const Home = (props) => {
           }
         >
           <h1 className="w-7/12 font-youngserif text-5xl leading-normal">Recetas</h1>
-          <Input className="w-5/12 h-auto" placeholder="Busca un plato" onChange={getRecipesQuery}/>
+          <Input className="w-5/12 h-auto" placeholder="Busca un plato" onChange={getRecipesQuery} />
         </div>
+
         <div
           className={
             "font-manrope font-bold text-2xl leading-normal mt-2 sm:mt-10"
@@ -53,6 +54,7 @@ const Home = (props) => {
               name={recipe.name}
               category={recipe.category || "Sin categoría"}
               onClick={() => setModalContent({ show: true, content: recipe })}
+              image={recipe.imageLink}
             />
           ))}
           <RecipeModal
@@ -65,7 +67,5 @@ const Home = (props) => {
     </Panel>
   );
 };
-
-
 
 export default Home;

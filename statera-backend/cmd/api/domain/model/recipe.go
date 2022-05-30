@@ -11,5 +11,5 @@ type Recipe struct {
 	Category     string             `bson:"category" json:"category,omitempty"`
 	Ingredients  []string           `bson:"ingredients" json:"ingredients,omitempty"`
 	Instructions []string           `bson:"instructions" json:"instructions,omitempty"`
-	ImageRecipe  string             `bson:"imagerecipe" json:"imageRecipe,omitempty"`
+	ImageLink    string             `bson:"imageLink" json:"imageLink,omitempty"`
 }

@@ -53,9 +53,9 @@ const EditProfile = (props) => {
 
         return <form className="" onSubmit={handleSubmit(onSubmit)}>
 
-            <Input title="Username" register={register("username")}/>
-            <Input title="Date of Birth" register={register("dateofbirth")}/>
-            <Input title="Location" register={register("location")}/>
+            <Input type="text" title="Username" register={register("username")}/>
+            <Input type="text" title="Date of Birth" register={register("dateofbirth")}/>
+            <Input type="text" title="Location" register={register("location")}/>
             <div className="w-full flex justify-center my-10">
                 <PrimaryButton type="submit" label="Guardar" className=""/>
             </div>

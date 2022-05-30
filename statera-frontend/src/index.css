@@ -29,7 +29,7 @@
   }
 
   .btn-regular {
-    @apply px-5 py-2 bg-gray-button text-black hover:bg-darkgray-button font-manrope font-bold rounded-lg text-base w-full;
+    @apply px-5 py-2 bg-gray-button text-black hover:bg-darkgray-button font-manrope font-bold rounded-lg text-base;
   }
 
   .btn-google {
