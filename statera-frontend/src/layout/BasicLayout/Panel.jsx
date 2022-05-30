@@ -15,14 +15,14 @@ export default function Panel(props) {
                 <div className='buttons h-4/6 flex flex-col justify-evenly px-5'>
                     <IconButton label="Home" link={"/"} currentPage={props.currentPage}/>
                     <IconButton label="Favoritos" link={"/favorites"} currentPage={props.currentPage}/>
-                    <IconButton label="Crear Receta" link={"/"} currentPage={props.currentPage}/>
+                    <IconButton label="Crear Receta" link={"/add-recipe"} currentPage={props.currentPage}/>
                     <IconButton label="Mi Cuenta" link={"/my-profile"} currentPage={props.currentPage}/>
                 </div>
                 <div className="flex justify-center items-center">
                     <HomeButtonText/>
                 </div>
             </div>
-            <div className='bg-white w-5/6 h-auto my-10 mr-10 rounded-2xl drop-shadow-xl'>
+            <div className='block overflow-y-auto bg-white w-5/6 h-auto my-5 mr-10 rounded-2xl drop-shadow-xl'>
                 {children}
             </div>
         </div>

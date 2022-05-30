@@ -11,7 +11,7 @@ const RecipeCard = (props) => {
       <div>
         <img
           alt="The current recipe"
-          className="object-cover rounded-3xl drop-shadow-lg w-[350px] h-[200px]"
+          className="object-cover rounded-3xl drop-shadow-lg w-[250px] h-[150px]"
           src={getImagePath(props.image)}
         />
       </div>
