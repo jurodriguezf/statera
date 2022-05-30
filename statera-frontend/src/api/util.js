@@ -1,14 +1,14 @@
 import {getRequest, postFormDataRequest, postRequest, putRequest} from "./backend";
 
 export const makeLoginRequest = async (data, setToken) => {
-  const loginToken = await postRequest("http://localhost:8080/login", data);
+  const loginResponse = await postRequest("http://localhost:8080/login", data);
 
-  if (loginToken?.token) {
-    setToken(loginToken.token);
-    return true;
+  if (loginResponse?.token) {
+    setToken(loginResponse.token);
+    return 200;
   }
 
-  return false;
+  return loginResponse.statusCode;
 };
 
 export const makeProfileRequest = async (token) => await getRequest("http://localhost:8080/myaccount", token);
