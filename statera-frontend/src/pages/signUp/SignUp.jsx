@@ -77,12 +77,18 @@ const SignUp = (props) => {
         <Input
           type="text"
           title="Username"
-          register={register("username", { validate: emptyFieldValidation })}
+          register={register("username", {
+            required: true,
+            validate: emptyFieldValidation,
+          })}
         />
         <Input
           type="text"
           title="Email"
-          register={register("email", { validate: emptyFieldValidation })}
+          register={register("email", {
+            required: true,
+            validate: emptyFieldValidation,
+          })}
         />
         <div className="flex justify-around">
           <div className="w-3/6">
@@ -91,6 +97,7 @@ const SignUp = (props) => {
               title="Password"
               password
               register={register("password", {
+                required: true,
                 validate: emptyFieldValidation,
               })}
             />
@@ -103,13 +110,13 @@ const SignUp = (props) => {
               register={register("confirmPassword", {
                 required: true,
                 validate: (value) => {
-                  if(value === "") {
-                    setFormWarning("Password must be confirmed!")
+                  if (value === "") {
+                    setFormWarning("Password must be confirmed!");
                     return;
                   }
                   if (watch("password") !== value) {
                     setFormWarning("Passwords don't match!");
-                  } else if(value !== "") {
+                  } else if (value !== "") {
                     setFormWarning("");
                   }
                 },

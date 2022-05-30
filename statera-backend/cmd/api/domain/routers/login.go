@@ -2,6 +2,7 @@ package routers
 
 import (
 	"encoding/json"
+	"github.com/darahayes/go-boom"
 	"github.com/jurodriguezf/statera/cmd/api/domain/db"
 	"github.com/jurodriguezf/statera/cmd/api/domain/model"
 	"github.com/jurodriguezf/statera/cmd/api/domain/service"
@@ -15,23 +16,23 @@ func Login(writer http.ResponseWriter, request *http.Request) {
 
 	err := json.NewDecoder(request.Body).Decode(&user)
 	if err != nil {
-		http.Error(writer, "Invalid username and/or password"+err.Error(), 400)
+		boom.BadRequest(writer, "Invalid email or password")
 		return
 	}
 
 	if len(user.Email) == 0 {
-		http.Error(writer, "User's email is required", 400)
+		boom.BadRequest(writer, "Email is required")
 		return
 	}
 	UserInDB, exists := db.LoginDB(user.Email, user.Password)
-	if exists == false {
-		http.Error(writer, "The user is not registered with that email and/or password", 400)
+	if !exists {
+		boom.Unathorized(writer, "Wrong email or password")
 		return
 	}
 
 	jwtKey, err := service.GenerateJWT(UserInDB)
 	if err != nil {
-		http.Error(writer, "An error occurred generating the corresponding token"+err.Error(), 400)
+		boom.BadRequest(writer, "Error generating token")
 		return
 	}
 
