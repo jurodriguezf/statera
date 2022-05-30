@@ -10,7 +10,7 @@ import Favorites from "./pages/favorites/Favorites";
 
 import useToken from "./util/useToken";
 import EditProfile from "./pages/editProfile/EditProfile";
-import AddRecipe from "./pages/AddRecipe/AddRecipe";
+import AddRecipe from "./pages/addRecipe/AddRecipe";
 
 function App() {
     const {token, setToken} = useToken();

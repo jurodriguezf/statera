@@ -20,6 +20,6 @@ func InsertRecipe(recipe model.Recipe) (string, bool, error) {
 		return "", false, err
 	}
 
-	ObjID, _ := result.InsertedID.(primitive.ObjectID)
-	return ObjID.String(), true, nil
+	ObjID := result.InsertedID.(primitive.ObjectID).Hex()
+	return ObjID, true, nil
 }

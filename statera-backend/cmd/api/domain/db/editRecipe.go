@@ -17,8 +17,8 @@ func EditRecipe(recipe model.Recipe, ID string) (bool, error) {
 
 	register := make(map[string]interface{})
 
-	if len(recipe.ImageRecipe) > 0 {
-		register["imageRecipe"] = recipe.ImageRecipe
+	if len(recipe.ImageLink) > 0 {
+		register["imageLink"] = recipe.ImageLink
 	}
 
 	updateString := bson.M{

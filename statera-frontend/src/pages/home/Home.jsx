@@ -15,27 +15,33 @@ const Home = (props) => {
     };
 
     getData();
-    console.log(homeRecipes);
   }, [token]);
 
   const getRecipesQuery = async (event) => {
-    const query = event.target?.value
-    const queryRecipes = await makeQueryRecipesRequest(query,token)
+    const query = event.target?.value;
+    const queryRecipes = await makeQueryRecipesRequest(query, token);
     console.log(queryRecipes);
-    setHomeRecipes(queryRecipes)
-}
+    setHomeRecipes(queryRecipes);
+  };
 
   return (
     <Panel currentPage={"Home"}>
-      <Input title="Username" onChange={getRecipesQuery}></Input>
       <div className="px-10">
-        <div
-          className={
-            "font-youngserif text-5xl leading-normal mt-2 sm:mt-10 mb-4"
-          }
-        >
-          <h1>Recetas</h1>
+        <div className="flex space-around">
+          <div
+            className={
+              "font-youngserif text-5xl leading-normal mt-2 sm:mt-10 mb-4"
+            }
+          >
+            <h1>Recetas</h1>
+          </div>
+          <Input
+            type="text"
+            title="Username"
+            onChange={getRecipesQuery}
+          />
         </div>
+
         <div
           className={
             "font-manrope font-bold text-2xl leading-normal mt-2 sm:mt-10 mb-4"
@@ -48,6 +54,7 @@ const Home = (props) => {
             <RecipeCard
               name={recipe.name}
               category={recipe.category || "Sin categoría"}
+              image={recipe.imageLink}
             />
           ))}
         </div>
@@ -55,7 +62,5 @@ const Home = (props) => {
     </Panel>
   );
 };
-
-
 
 export default Home;

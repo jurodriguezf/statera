@@ -59,14 +59,14 @@ const SignUp = (props) => {
 
     return <form className="" onSubmit={handleSubmit(onSubmit)}>
 
-      <Input title="Username" register={register("username")}/>
-      <Input title="Email" register={register("email")}/>
+      <Input type="text" title="Username" register={register("username")}/>
+      <Input type="text" title="Email" register={register("email")}/>
       <div className="flex justify-around">
         <div className="w-3/6">
-          <Input title="Password" password register={register("password")}/>
+          <Input type="text" title="Password" password register={register("password")}/>
         </div>
         <div className="w-3/6">
-          <Input title="Confirm" password register={register("confirmPassword", {
+          <Input type="text" title="Confirm" password register={register("confirmPassword", {
             required: true,
             validate: (value => watch("password") !== value ? "Passwords don't match" : null)
           })}/>
