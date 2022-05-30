@@ -38,7 +38,7 @@ const Home = (props) => {
           }
         >
           <h1 className="w-7/12 font-youngserif text-5xl leading-normal">Recetas</h1>
-          <Input className="w-5/12 h-auto" placeholder="Busca un plato" onChange={getRecipesQuery} />
+          <Input className="sm:invisible md:visible w-5/12 h-auto" placeholder="Busca un plato" onChange={getRecipesQuery} />
         </div>
 
         <div

@@ -9,10 +9,10 @@ const RecipeModal = ({ recipe, visible, onClose }) => {
   };
 
   return (
-    <div className="transition-opacity ease-in duration-700 opacity-100 fixed inset-0 mx-8 mb-8 mt-32 p-10 backdrop-blur-sm bg-white global-shadow rounded-3xl">
-      <div className="p-4">
+    <div className="overflow-y-auto block fixed inset-0 mx-8 mb-8 mt-32 p-10 backdrop-blur-sm bg-white global-shadow rounded-3xl">
+      <div className="px-3">
         <div className="flex justify-between">
-          <div className="font-youngserif font-bold text-3xl mr-40 pb-3">
+          <div className="font-youngserif font-bold text-4xl mr-40 pb-3">
             {recipe.name}
           </div>
           <button
@@ -21,23 +21,23 @@ const RecipeModal = ({ recipe, visible, onClose }) => {
               className={"font-manrope font-extrabold text-2xl"}
           >X</button>
         </div>
-        <div className={"flex"}>
-          <div className="w-3/12">
+        <div className={"lg:flex lg:flex-auto"}>
+          <div className="lg:w-5/12">
             <div>
-              <img className="my-5 rounded-xl w-[250px] h-[140px] object-cover" src={!!recipe.imageLink ? "http://localhost:8080/static/" + recipe.imageLink : "https://via.placeholder.com/250x140"}/>
+              <img className="my-5 rounded-xl w-full h-[18rem] object-cover rounded-3xl" src={!!recipe.imageLink ? "http://localhost:8080/static/" + recipe.imageLink : "https://via.placeholder.com/250x140"}/>
               <div className={"font-manrope font-bold text-xl my-3"}>
                 Ingredientes
               </div>
               <div className={"w-3/4 text-md overflow-y-auto h-auto"}>
-                <ul className="inline-block">
+                <ul className="flex flex-wrap">
                   {recipe.ingredients.map((ingredient) => (
-                      <li className="align-middle rounded-full bg-shadow py-1 px-3 my-1.5">{ingredient}</li>
+                      <li className="align-middle rounded-full bg-shadow py-1 px-3 m-1.5">{ingredient}</li>
                   ))}
                 </ul>
               </div>
             </div>
           </div>
-          <div className="w-9/12">
+          <div className="lg:w-7/12 lg:px-10">
             <div className={"col-span-1 font-manrope font-bold text-xl my-3"}>
               Instrucciones
             </div>
