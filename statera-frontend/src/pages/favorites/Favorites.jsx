@@ -1,13 +1,17 @@
 import React from 'react';
 import Panel from "../../layout/BasicLayout/Panel";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 const Favorites = () => {
     return (
         <Panel userName={"Peppa Perez"} currentPage={"Favoritos"}>
             <div className="px-10">
-                <div className={"font-youngserif text-5xl leading-normal mt-2 sm:mt-10 mb-4"}>
-                    <h1>Favoritos</h1>
+                <div className={"grid grid-cols-2 justify-between mt-2 sm:mt-10 mb-4"}>
+                    <div className={"font-youngserif text-5xl leading-normal"}>
+                        <h1>Favoritos</h1>
+                    </div>
+                    <SearchBar/>
                 </div>
                 <div className={"font-manrope font-bold text-2xl leading-normal mt-2 sm:mt-10 mb-4"}>
                     <h1>Tus recetas favoritas</h1>
