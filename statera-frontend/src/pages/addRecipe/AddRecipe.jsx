@@ -148,7 +148,7 @@ const AddRecipe = (props) => {
   const { token } = props;
 
   return (
-    <Panel userName={"Peppa Perez"}>
+    <Panel currentPage={"Crear Receta"} userName={"Peppa Perez"}>
       <RecipeForm token={token} />
     </Panel>
   );

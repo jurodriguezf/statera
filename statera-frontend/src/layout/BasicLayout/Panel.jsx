@@ -15,7 +15,7 @@ export default function Panel(props) {
                 <div className='buttons h-4/6 flex flex-col justify-evenly px-5'>
                     <IconButton label="Home" link={"/"} currentPage={props.currentPage}/>
                     <IconButton label="Favoritos" link={"/favorites"} currentPage={props.currentPage}/>
-                    <IconButton label="Crear Receta" link={"/"} currentPage={props.currentPage}/>
+                    <IconButton label="Crear Receta" link={"/get-recipe"} currentPage={props.currentPage}/>
                     <IconButton label="Mi Cuenta" link={"/my-profile"} currentPage={props.currentPage}/>
                 </div>
                 <div className="flex justify-center items-center">

@@ -1,5 +1,8 @@
 import React from "react";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
+import IconButton from "../IconButton/IconButton";
+import SecondaryButton from "../SecondaryButton/SecondaryButton";
+import CommentSection from "../../pages/Comments/CommentSection";
 
 const RecipeModal = ({ recipe, visible, onClose }) => {
   if (!visible) return null;
@@ -7,6 +10,8 @@ const RecipeModal = ({ recipe, visible, onClose }) => {
   const handleCloseClick = () => {
     onClose && onClose();
   };
+
+  const token = "XD"
 
   return (
     <div className="transition-opacity ease-in duration-700 opacity-100 fixed inset-0 mx-8 mb-8 mt-32 p-10 backdrop-blur-sm bg-white global-shadow rounded-3xl">
@@ -48,6 +53,11 @@ const RecipeModal = ({ recipe, visible, onClose }) => {
                 ))}
               </ol>
             </div>
+          </div>
+        </div>
+        <div className="flex">
+          <div className="w-3/12 ml-8 mt-8 mb-8">
+            <SecondaryButton link={"/comment-recipe"} label="Add Comment"/>
           </div>
         </div>
       </div>

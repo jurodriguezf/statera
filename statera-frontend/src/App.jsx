@@ -11,6 +11,7 @@ import Favorites from "./pages/favorites/Favorites";
 import useToken from "./util/useToken";
 import EditProfile from "./pages/editProfile/EditProfile";
 import AddRecipe from "./pages/addRecipe/AddRecipe";
+import CommentSection from "./pages/Comments/CommentSection";
 
 function App() {
     const {token, setToken} = useToken();
@@ -24,6 +25,7 @@ function App() {
         <Route path="/edit-profile" element={<EditProfile token={token}/>}/>
         <Route path="/favorites" element={<Favorites token={token}/>}/>
         <Route path="/get-recipe" element={<AddRecipe token={token}/>}/>
+          <Route path="/comment-recipe" element={<CommentSection token={token}/>}/>
         <Route path="/" element={token ? <Home token={token}/> : <Welcome/>}/>
       </Routes>
     </div>
