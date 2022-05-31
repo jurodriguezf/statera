@@ -14,7 +14,7 @@ const RecipeModal = ({ recipe, visible, onClose }) => {
   const token = "XD"
 
   return (
-    <div className="transition-opacity ease-in duration-700 opacity-100 fixed inset-0 mx-8 mb-8 mt-32 p-10 backdrop-blur-sm bg-white global-shadow rounded-3xl">
+    <div className="transition-opacity ease-in duration-700 opacity-100 fixed inset-0 mx-8 mb-8 mt-32 p-10 backdrop-blur-sm bg-white global-shadow rounded-3xl max-h-max">
       <div className="p-4">
         <div className="flex justify-between">
           <div className="font-youngserif font-bold text-3xl mr-40 pb-3">
