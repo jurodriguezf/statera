@@ -23,7 +23,7 @@ export default function Panel(props) {
                     <HomeButtonText/>
                 </div>
             </div>
-            <div className='bg-white w-5/6 h-auto my-10 mr-10 rounded-2xl drop-shadow-xl'>
+            <div className='block overflow-y-auto bg-white w-5/6 h-auto my-5 mr-10 rounded-2xl drop-shadow-xl'>
                 {children}
             </div>
         </div>
