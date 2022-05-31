@@ -43,10 +43,10 @@ const CommentSection = (props) => {
                             </div>
                         </div>
                         <div className="mb-3 xl:w-96 h-full">
-                            <div className="grid ">
-                                <textarea className="form-control w-full border border-solid p-3 border-gray-300"
+                            <div className="grid space-y-5">
+                                <textarea className="form-control w-full border-2 resize-none outline-none rounded-md border-wine border-solid p-3 "
                                     placeholder="Esta receta es..."
-                                    maxLength={100}
+                                    maxLength={200}
                                     onInput={(e) => {
                                         const minHeight = 200
                                         comment.current.style.height = ""
@@ -54,10 +54,8 @@ const CommentSection = (props) => {
                                     }}
                                     ref={comment}
                                 />
+                                 <PrimaryButton type="submit" link={"/"} label="Enviar"/>
                             </div>
-                        </div>
-                        <div className={"w-48 mt-10 ml-20"}>
-                            <PrimaryButton type="submit" link={"/"} label="Enviar" className=""/>
                         </div>
                     </div>
                 </div>
