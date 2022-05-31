@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 
 import Panel from "../../layout/BasicLayout/Panel";
 import Input from "../../components/Input/Input";
@@ -8,6 +8,8 @@ import StarRating from "../../components/StarRating/StarRating";
 
 const CommentSection = (props) => {
     const { token } = props;
+
+    let comment = useRef()
     return (
         <Panel currentPage={"Home"} userName={"Peppa Perez"}>
             <div className="px-10">
@@ -41,9 +43,18 @@ const CommentSection = (props) => {
                             </div>
                         </div>
                         <div className="mb-3 xl:w-96 h-full">
-                            <textarea className="form-control block w-full border border-solid border-gray-300 h-full"
-                                placeholder="Esta receta es..."
-                            />
+                            <div className="grid ">
+                                <textarea className="form-control w-full border border-solid p-3 border-gray-300"
+                                    placeholder="Esta receta es..."
+                                    maxLength={100}
+                                    onInput={(e) => {
+                                        const minHeight = 200
+                                        comment.current.style.height = ""
+                                        comment.current.style.height = Math.min(comment.current.scrollHeight,minHeight)+"px"
+                                    }}
+                                    ref={comment}
+                                />
+                            </div>
                         </div>
                         <div className={"w-48 mt-10 ml-20"}>
                             <PrimaryButton type="submit" link={"/"} label="Enviar" className=""/>
