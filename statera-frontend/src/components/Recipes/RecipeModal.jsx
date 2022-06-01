@@ -1,6 +1,5 @@
 import React, {useRef} from "react";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
-<<<<<<< HEAD
 import IconButton from "../IconButton/IconButton";
 import SecondaryButton from "../SecondaryButton/SecondaryButton";
 import StarRating from "../../components/StarRating/StarRating";
@@ -8,18 +7,9 @@ import CommentSection from "../Comments/CommentSection";
 
 const RecipeModal = ({ recipe, visible, onClose, token }) => {
 
-=======
-import Rating from '../Rating/Rating.tsx'
->>>>>>> feature/rating-recipes
 
   if (!visible) return null;
   
-<<<<<<< HEAD
-=======
-  const handleRating = (rate) =>{
-    console.log(rate);
-  }
->>>>>>> feature/rating-recipes
 
   const handleCloseClick = () => {
     onClose && onClose();
