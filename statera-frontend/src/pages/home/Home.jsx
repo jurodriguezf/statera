@@ -15,7 +15,7 @@ const Home = (props) => {
 
   useEffect(() => {
     const getData = async () => {
-      const response = await makeAllRecipesRequest(token);
+      const response = await makeQueryRecipesRequest("",token);
       setHomeRecipes(response);
     };
 
