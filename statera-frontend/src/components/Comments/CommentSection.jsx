@@ -3,18 +3,15 @@ import React, {useRef, useState} from "react";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
 import {FaStar} from "react-icons/fa";
 import {useForm} from "react-hook-form";
-import {putEditProfile} from "../../api/util";
-import Input from "../Input/Input";
 
 const CommentSection = ({token, recipe}) => {
 
     const [rating, setRating] = useState(null)
     const [hover, setHover] = useState(null)
     const [commentary, setCommentary] = useState('')
-    const data = new FormData();
     const comment = useRef();
 
-    const {register, handleSubmit} = useForm({
+    const {handleSubmit, setValue} = useForm({
         defaultValues: {
             numberOfStars: '',
             commentary: ''
@@ -25,7 +22,9 @@ const CommentSection = ({token, recipe}) => {
         setCommentary(event.target.value);
     };
 
-    const onSubmit = async (data) => {
+    const onSubmit = (data) => {
+        setValue("numberOfStars", rating)
+        setValue("commentary", commentary)
         console.log(rating)
         console.log(commentary)
         console.log(data)
