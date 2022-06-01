@@ -1,4 +1,4 @@
-const SearchBar = () => {
+const SearchBar = (props) => {
     return (
         <form className="flex items-center">
             <label htmlFor="simple-search" className="sr-only">Search</label>
@@ -13,16 +13,10 @@ const SearchBar = () => {
                 </div>
                 <input type="text"
                        className="bg-gray-50 border border-gray-300 font-manrope font-semibold text-gray-900 text-m rounded-lg focus:ring-red-100 focus:outline-wine focus:border-wine block w-full pl-10 p-2.5"
-                       placeholder="Busca una receta" required/>
+                       placeholder={props.placeholder} required
+                       onChange={props.onChange}
+                />
             </div>
-            <button type="submit"
-                    className="p-2.5 ml-2 text-sm font-medium text-white bg-wine rounded-lg border-0 hover:bg-darkwine focus:ring-4 focus:outline-none focus:ring-wine">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                     xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                </svg>
-            </button>
         </form>
     )
 }
