@@ -30,7 +30,7 @@ const Home = (props) => {
   };
 
   return (
-    <Panel userName={"Peppa Perez"} currentPage={"Home"}>
+    <Panel currentPage={"Home"}>
       <div className="px-10">
         <div className={"grid grid-cols-2 justify-between mt-2 sm:mt-10 mb-4"}>
           <div className={"font-youngserif text-5xl leading-normal"}>
