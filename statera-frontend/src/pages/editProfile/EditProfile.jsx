@@ -16,7 +16,7 @@ const EditProfile = (props) => {
     const [profileData, setProfileData] = useState({});
 
     return (
-        <Panel userName={profileData.userName}>
+        <Panel userName={profileData.userName} currentPage={"Mi Cuenta"}>
             <div {...props} className="flex">
                 <div className="relative w-full my-auto px-10 md:px-20 sm:w-full">
                     <p className="font-youngserif text-4xl my-10">Edit Profile</p>

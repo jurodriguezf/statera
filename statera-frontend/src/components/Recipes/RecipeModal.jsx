@@ -1,20 +1,19 @@
-import React, { useRef } from "react";
+import React, {useRef} from "react";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
 import IconButton from "../IconButton/IconButton";
 import SecondaryButton from "../SecondaryButton/SecondaryButton";
 import StarRating from "../../components/StarRating/StarRating";
-import CommentSection from "../../pages/Comments/CommentSection";
+import CommentSection from "../Comments/CommentSection";
 
 const RecipeModal = ({ recipe, visible, onClose, token }) => {
 
-  const comment = useRef();
+
   if (!visible) return null;
   
 
   const handleCloseClick = () => {
     onClose && onClose();
   };
-  
 
 
   return (
@@ -59,40 +58,8 @@ const RecipeModal = ({ recipe, visible, onClose, token }) => {
             </div>
           </div>
         </div>
-        <div className="flex">
-          <div className="w-3/12 ml-8 mt-8 mb-8">
-            <div className="w-9/12 m-8">
-                    <div className={"col-span-1 font-manrope font-bold text-xl my-3 h-96"}>
-                        ¿Qué piensa usted de esta receta?
-                        <div className="mt-10 mb-2">
-                            <StarRating/>
-                        </div>
-                        <div className="grid grid-cols-3 mb-10">
-                            <div>
-                                Malo
-                            </div>
-                            <div>
-                                Excelente
-                            </div>
-                        </div>
-                        <div className="mb-3 xl:w-96 h-full">
-                            <div className="grid space-y-5">
-                                <textarea className="form-control w-full border-2 resize-none outline-none rounded-md border-wine border-solid p-3 "
-                                    placeholder="Esta receta es..."
-                                    maxLength={200}
-                                    onInput={(e) => {
-                                        const minHeight = 200
-                                        comment.current.style.height = ""
-                                        comment.current.style.height = Math.min(comment.current.scrollHeight,minHeight)+"px"
-                                    }}
-                                    ref={comment}
-                                />
-                                 <PrimaryButton type="submit" link={"/"} label="Enviar"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-          </div>
+        <div>
+            <CommentSection token={token} recipe={recipe}/>
         </div>
       </div>
     </div>

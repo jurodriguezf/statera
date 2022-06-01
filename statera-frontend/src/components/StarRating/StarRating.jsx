@@ -7,8 +7,8 @@ const StarRating = () => {
     const [hover, setHover] = useState(null)
     return (
         <div>
-            <div className="w-5/12">
-                <div className="grid grid-cols-5 place-items-center">
+            <div className="">
+                <div className="flex space-x-5">
                     {[...Array(5)].map((star, i)=> {
                         const ratingValue = i+1;
                         return <label>
