@@ -13,20 +13,25 @@ const CommentSection = ({token, recipe}) => {
 
     const {handleSubmit, setValue} = useForm({
         defaultValues: {
+            token: '',
+            recipeID: '',
             numberOfStars: '',
             commentary: ''
         }
     })
 
     const handleCommentaryChange = event => {
-        setCommentary(event.target.value);
+        setCommentary(event.target.value)
     };
 
-    const onSubmit = (data) => {
+    const setAllValues = event => {
+        setValue("token", token)
+        setValue("recipeID", recipe.id)
         setValue("numberOfStars", rating)
         setValue("commentary", commentary)
-        console.log(rating)
-        console.log(commentary)
+    }
+
+    const onSubmit = async (data) => {
         console.log(data)
     }
     
@@ -85,7 +90,7 @@ const CommentSection = ({token, recipe}) => {
                                           value={commentary}
                                           onChange={handleCommentaryChange}
                                 />
-                                    <PrimaryButton type="submit" label="Enviar"/>
+                                    <PrimaryButton onClick={setAllValues} type="submit" label="Enviar"/>
                                 </div>
                             </div>
                         </div>
