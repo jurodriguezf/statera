@@ -1,5 +1,5 @@
 import React from "react";
-import PrimaryButton from "../PrimaryButton/PrimaryButton";
+import LikeButton from "../LikeButton/LikeButton";
 
 const RecipeModal = ({ recipe, visible, onClose }) => {
   if (!visible) return null;
@@ -12,19 +12,30 @@ const RecipeModal = ({ recipe, visible, onClose }) => {
     <div className="overflow-y-auto block fixed inset-0 mx-8 mb-8 mt-32 p-10 backdrop-blur-sm bg-white global-shadow rounded-3xl">
       <div className="px-3">
         <div className="flex justify-between">
-          <div className="font-youngserif font-bold text-4xl mr-40 pb-3">
+          <div className="font-youngserif font-bold text-4xl pb-3">
             {recipe.name}
+            <div>
+              <LikeButton
+                  //!TODO: Change to recipe.likes and recipes.isFavorite
+                  likes={"10"}
+                  isFavorite={true}
+              />
+            </div>
           </div>
           <button
               label="Cerrar"
               onClick={handleCloseClick}
-              className={"font-manrope font-extrabold text-2xl"}
+              className={"font-arial font-extrabold text-2xl h-10"}
           >X</button>
         </div>
         <div className={"lg:flex lg:flex-auto"}>
           <div className="lg:w-5/12">
             <div>
-              <img className="my-5 rounded-xl w-full h-[18rem] object-cover rounded-3xl" src={!!recipe.imageLink ? "http://localhost:8080/static/" + recipe.imageLink : "https://via.placeholder.com/250x140"}/>
+              <img
+                  className="my-5 rounded-xl w-full h-[18rem] object-cover rounded-3xl"
+                  src={!!recipe.imageLink ? "http://localhost:8080/static/" + recipe.imageLink : "https://via.placeholder.com/250x140"}
+                  alt={"Recipe"}
+              />
               <div className={"font-manrope font-bold text-xl my-3"}>
                 Ingredientes
               </div>
