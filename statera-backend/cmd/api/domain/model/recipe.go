@@ -12,4 +12,6 @@ type Recipe struct {
 	Ingredients  []string           `bson:"ingredients" json:"ingredients,omitempty"`
 	Instructions []string           `bson:"instructions" json:"instructions,omitempty"`
 	ImageLink    string             `bson:"imageLink" json:"imageLink,omitempty"`
+	Rating       float32            `bson:"rating" json:"rating,omitempty"`
+	Ratings      []Rating           `bson:"ratings" json:"ratings,omitempty"`
 }

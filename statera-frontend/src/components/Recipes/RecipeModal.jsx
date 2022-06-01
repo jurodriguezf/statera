@@ -1,5 +1,6 @@
 import React, {useRef} from "react";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
+<<<<<<< HEAD
 import IconButton from "../IconButton/IconButton";
 import SecondaryButton from "../SecondaryButton/SecondaryButton";
 import StarRating from "../../components/StarRating/StarRating";
@@ -7,9 +8,18 @@ import CommentSection from "../Comments/CommentSection";
 
 const RecipeModal = ({ recipe, visible, onClose, token }) => {
 
+=======
+import Rating from '../Rating/Rating.tsx'
+>>>>>>> feature/rating-recipes
 
   if (!visible) return null;
   
+<<<<<<< HEAD
+=======
+  const handleRating = (rate) =>{
+    console.log(rate);
+  }
+>>>>>>> feature/rating-recipes
 
   const handleCloseClick = () => {
     onClose && onClose();
@@ -23,6 +33,7 @@ const RecipeModal = ({ recipe, visible, onClose, token }) => {
           <div className="font-youngserif font-bold text-4xl mr-40 pb-3">
             {recipe.name}
           </div>
+          <Rating transition allowHalfIcon ratingValue={recipe.rating} onClick={handleRating} ></Rating>
           <button
               label="Cerrar"
               onClick={handleCloseClick}
@@ -55,6 +66,7 @@ const RecipeModal = ({ recipe, visible, onClose, token }) => {
                   <li className="font-manrope">{instruction}</li>
                 ))}
               </ol>
+              
             </div>
           </div>
         </div>
