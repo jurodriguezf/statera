@@ -26,7 +26,7 @@ const WelcomeFooter = () => {
                 </div>
                 <hr className="my-6 border-gray-300 sm:mx-auto lg:my-8"/>
                 <div className="sm:flex sm:items-center sm:justify-between max-w-7xl mx-auto px-4 sm:px-6">
-                    <span className="text-m text-gray-500 sm:text-center dark:text-gray-400 font-manrope">© 2022
+                    <span className="text-m text-gray-500 font-semibold sm:text-center dark:text-gray-400 font-manrope">© 2022
                         <a href="#" className="hover:underline"> Statera™</a>. All Rights Reserved.
                     </span>
                     <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
