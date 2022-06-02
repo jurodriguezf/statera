@@ -138,7 +138,7 @@ const RecipeForm = (props) => {
           </div>
         </div>
         <div className={"w-2/4 flex items-center"}>
-          <PrimaryButton type="submit" label="Guardar" className="mt-10"/>
+          <PrimaryButton type="submit" label="Guardar" className="mt-10" link={"/"}/>
         </div>
       </form>
     </Fragment>
