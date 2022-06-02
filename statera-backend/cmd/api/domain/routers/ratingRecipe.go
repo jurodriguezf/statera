@@ -3,8 +3,11 @@ package routers
 import (
 	"net/http"
 
+	"encoding/json"
+
 	"github.com/darahayes/go-boom"
 	"github.com/jurodriguezf/statera/cmd/api/domain/db"
+	"github.com/jurodriguezf/statera/cmd/api/domain/model"
 )
 
 func RatingRecipe(writer http.ResponseWriter, request *http.Request) {
@@ -15,9 +18,17 @@ func RatingRecipe(writer http.ResponseWriter, request *http.Request) {
 		return
 	}
 
-	db.RatingRecipe(recipe, ID)
+	var rating model.Rating
 
-	if find {
+	err := json.NewDecoder(request.Body).Decode(&rating)
+	if err != nil {
+		boom.BadRequest(writer, "Wrong Data")
+		return
+	}
+
+	_, err = db.RatingRecipe(rating, ID)
+	if err != nil {
+		http.Error(writer, "It is not possible rate this recipe"+err.Error(), 400)
 		return
 	}
 
