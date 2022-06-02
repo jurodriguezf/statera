@@ -15,7 +15,13 @@ export const makeProfileRequest = async (token) => await getRequest("http://loca
 
 export const makeAllRecipesRequest = async (token) => await getRequest("http://localhost:8080/recipes/all-recipes", token);
 
+//!TODO: Implement query
+export const makeFavoriteRecipesRequest = async (token) => await getRequest("http://localhost:8080/recipes/favorite-recipes", token);
+
 export const makeQueryRecipesRequest = async (body,token) => await putRequest("http://localhost:8080/recipes/recipe-query",body,token);
+
+//!TODO: Implement query
+export const makeQueryFavoriteRecipesRequest = async (body,token) => await putRequest("http://localhost:8080/recipes/favorite-recipe-query",body,token);
 
 export const putEditProfile = async (body, token) => await putRequest("http://localhost:8080/editaccount", body, token );
 

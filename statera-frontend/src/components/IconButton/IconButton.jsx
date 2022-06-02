@@ -3,8 +3,8 @@ import React from "react";
 
 const classes = {
     buttonVariant: {
-        primary: "main-page-active-button",
-        secondary: "main-page-inactive-button"
+        primary: "main-page-active-button transition ease-in-out delay-100 hover:scale-105 duration-50",
+        secondary: "main-page-inactive-button transition ease-in-out delay-100 hover:scale-105 duration-50"
     },
     iconVariant: {
         active: "main-page-active-icon",
