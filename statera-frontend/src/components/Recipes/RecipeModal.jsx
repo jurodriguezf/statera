@@ -56,6 +56,7 @@ const RecipeModal = ({ recipe, visible, onClose}) => {
                   <li className="font-manrope">{instruction}</li>
                 ))}
               </ol>
+              
             </div>
           </div>
         </div>

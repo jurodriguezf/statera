@@ -32,11 +32,13 @@ func SetupEndpoints() {
 		controller.CheckConnectionDB(controller.ValidateJWT(routers.GetRecipes))).Methods("GET")
 	router.HandleFunc("/uploadAvatar",
 		controller.CheckConnectionDB(controller.ValidateJWT(routers.UploadAvatar))).Methods("POST")
+	router.HandleFunc("/ratingRecipe",
+		controller.CheckConnectionDB(controller.ValidateJWT(routers.RatingRecipe))).Methods("PUT")
 	router.HandleFunc("/getAvatar",
 		controller.CheckConnectionDB(controller.ValidateJWT(routers.GetAvatar))).Methods("GET")
 	router.HandleFunc("/recipes/recipe-query",
-		controller.CheckConnectionDB(controller.ValidateJWT(routers.GetRecipesQuery))).Methods("PUT")
-	// Serve static files
+		controller.CheckConnectionDB(routers.GetRecipesQuery)).Methods("PUT")
+
 	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./cmd/uploads/recipes"))))
 
 	// checks if there is an environment variable called PORT. If not, it creates it
