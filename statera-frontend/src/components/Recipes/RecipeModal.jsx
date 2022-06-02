@@ -1,8 +1,5 @@
 import React, {useRef} from "react";
-import PrimaryButton from "../PrimaryButton/PrimaryButton";
-import IconButton from "../IconButton/IconButton";
-import SecondaryButton from "../SecondaryButton/SecondaryButton";
-import StarRating from "../../components/StarRating/StarRating";
+
 import CommentAndRating from "../Comments/CommentAndRating";
 import CommentsRecipeSection from "../CommentsSection/CommentsRecipeSection";
 
@@ -60,7 +57,7 @@ const RecipeModal = ({ recipe, visible, onClose}) => {
             </div>
           </div>
         </div>
-        <div className="flex">
+        <div className="lg:flex lg:flex-auto">
           <CommentAndRating recipe={recipe}/>
           <CommentsRecipeSection />
         </div>

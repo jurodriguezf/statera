@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React from "react";
 import StarRating from "../StarRating/StarRating";
 
 
@@ -20,7 +20,7 @@ const CommentsRecipeSection = (name) => {
                 <div className="w-8/12">
                     <StarRating value={5}/>
                     <div className="mt-6">
-                        Tremenda sopa un 5 estrellas
+                        Excelente receta, le doy un 5 estrellas
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@ const CommentsRecipeSection = (name) => {
                 <div className="w-8/12">
                     <StarRating value={4}/>
                     <div className="mt-6">
-                        Buena Sopa
+                        Buena receta
                     </div>
                 </div>
             </div>
@@ -56,7 +56,7 @@ const CommentsRecipeSection = (name) => {
                 <div className="w-8/12">
                     <StarRating value={1}/>
                     <div className="mt-6">
-                        No me gusto esta sopa, no la recomiendo
+                        No me gusto para nada esta receta
                     </div>
                 </div>
             </div>
@@ -74,7 +74,7 @@ const CommentsRecipeSection = (name) => {
                 <div className="w-8/12">
                     <StarRating value={3}/>
                     <div className="mt-6">
-                        Buena Sopa
+                        Me gusto esta receta
                     </div>
                 </div>
             </div>
