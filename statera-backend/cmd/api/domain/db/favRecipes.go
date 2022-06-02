@@ -2,8 +2,10 @@ package db
 
 import (
 	"context"
+	"fmt"
 	"github.com/jurodriguezf/statera/cmd/api/domain/model"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"log"
 	"time"
@@ -14,20 +16,34 @@ func FavRecipes(ID string) ([]*model.Recipe, bool) {
 	defer cancel()
 
 	db := MongoCN.Database("StateraDB")
-	col := db.Collection("Recipes")
+	colRecipe := db.Collection("Recipes")
 
-	var recipes []*model.Recipe
+	var favrecipes []*model.Recipe
+
+	user, err := SearchProfile(ID)
+	if err != nil {
+		fmt.Println("Record not found. " + err.Error())
+		return favrecipes, false
+	}
+
+	Idrecipes := user.FavRecipes
+
+	var objIdRecipes []primitive.ObjectID
+	for _, rec := range Idrecipes {
+		obj, _ := primitive.ObjectIDFromHex(rec)
+		objIdRecipes = append(objIdRecipes, obj)
+	}
 
 	condition := bson.M{
-		"_id": ID,
+		"_id": objIdRecipes,
 	}
 
 	opt := options.Find()
 
-	cursor, err := col.Find(ctx, condition, opt)
+	cursor, err := colRecipe.Find(ctx, condition, opt)
 	if err != nil {
 		log.Fatal(err.Error())
-		return recipes, false
+		return favrecipes, false
 	}
 
 	for cursor.Next(context.TODO()) {
@@ -35,10 +51,10 @@ func FavRecipes(ID string) ([]*model.Recipe, bool) {
 
 		err := cursor.Decode(&register)
 		if err != nil {
-			return recipes, false
+			return favrecipes, false
 		}
-		recipes = append(recipes, &register)
+		favrecipes = append(favrecipes, &register)
 	}
 
-	return recipes, true
+	return favrecipes, true
 }
