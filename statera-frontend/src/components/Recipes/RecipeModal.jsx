@@ -23,7 +23,6 @@ const RecipeModal = ({ recipe, visible, onClose, token }) => {
           <div className="font-youngserif font-bold text-4xl mr-40 pb-3">
             {recipe.name}
           </div>
-          <Rating transition allowHalfIcon ratingValue={recipe.rating} onClick={handleRating} ></Rating>
           <button
               label="Cerrar"
               onClick={handleCloseClick}
