@@ -20,7 +20,7 @@ const MyProfile = (props) => {
     console.log(JSON.stringify(profileData))
 
     return (
-        <Panel currentPage={"Mi Cuenta"}>
+        <Panel token={token} currentPage={"Mi Cuenta"}>
             <div className={"font-youngserif text-5xl leading-normal mt-2 sm:mt-10 mb-4 ml-5"}>
                 <h1>Mi cuenta</h1>
             </div>

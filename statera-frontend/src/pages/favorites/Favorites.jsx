@@ -37,7 +37,7 @@ const Favorites = (props) => {
     };
 
     return (
-        <Panel currentPage={"Favoritos"}>
+        <Panel token={token} currentPage={"Favoritos"}>
             <div className="px-10">
                 <div className={"grid grid-cols-2 justify-between mt-2 sm:mt-10 mb-4"}>
                     <div className={"font-youngserif text-5xl leading-normal"}>
