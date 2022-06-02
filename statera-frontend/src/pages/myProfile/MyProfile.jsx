@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 
 import Panel from "../../layout/BasicLayout/Panel";
-import Input from "../../components/Input/Input";
 import {makeProfileRequest} from "../../api/util";
 import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
 
@@ -9,20 +8,19 @@ const MyProfile = (props) => {
     const {token} = props;
     const [profileData, setProfileData] = useState({});
 
-
-
     useEffect( () => {
         const getData = async () => {
             const response = await makeProfileRequest(token)
-
             setProfileData(response);
         }
 
         getData();
       }, [token])
+
     console.log(JSON.stringify(profileData))
+
     return (
-        <Panel userName={profileData.userName} currentPage={"Mi Cuenta"}>
+        <Panel token={token} currentPage={"Mi Cuenta"}>
             <div className={"font-youngserif text-5xl leading-normal mt-2 sm:mt-10 mb-4 ml-5"}>
                 <h1>Mi cuenta</h1>
             </div>

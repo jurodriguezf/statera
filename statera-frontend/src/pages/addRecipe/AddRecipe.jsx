@@ -137,8 +137,9 @@ const RecipeForm = (props) => {
             </button>
           </div>
         </div>
-
-        <PrimaryButton type="submit" label="Guardar" className="w-48 mt-10" />
+        <div className={"w-2/4 flex items-center"}>
+          <PrimaryButton type="submit" label="Guardar" className="mt-10"/>
+        </div>
       </form>
     </Fragment>
   );
@@ -148,7 +149,7 @@ const AddRecipe = (props) => {
   const { token } = props;
 
   return (
-    <Panel userName={"Peppa Perez"}>
+    <Panel token={token} currentPage={"Crear Receta"}>
       <RecipeForm token={token} />
     </Panel>
   );

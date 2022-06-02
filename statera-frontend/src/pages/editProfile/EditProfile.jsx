@@ -1,28 +1,22 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 
 import Panel from "../../layout/BasicLayout/Panel";
 import Input from "../../components/Input/Input";
-import {makeLoginRequest, makeProfileRequest, putEditProfile} from "../../api/util";
+import {putEditProfile} from "../../api/util";
 import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
-import MyProfile from "../myProfile/MyProfile";
-import DivisorLine from "../../components/Misc/DivisionLine/DivisionLine";
-import GoogleButton from "../../components/GoogleButton/GoogleButton";
 import {useNavigate} from "react-router-dom";
 import {useForm} from "react-hook-form";
-import {postRequest, putRequest} from "../../api/backend";
 
 const EditProfile = (props) => {
     const {token} = props;
-    const [profileData, setProfileData] = useState({});
+    const [profileData] = useState({});
 
     return (
         <Panel userName={profileData.userName}>
             <div {...props} className="flex">
                 <div className="relative w-full my-auto px-10 md:px-20 sm:w-full">
                     <p className="font-youngserif text-4xl my-10">Edit Profile</p>
-
                     <LoginForm/>
-
                 </div>
 
             </div>

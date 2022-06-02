@@ -7,7 +7,7 @@ const RecipeCard = (props) => {
       : "https://via.placeholder.com/350x200";
 
   return (
-    <div className="grow" onClick={props.onClick}>
+    <div className="grow transition ease-in-out delay-100 hover:scale-105 duration-100" onClick={props.onClick}>
       <div>
         <img
           alt="The current recipe"

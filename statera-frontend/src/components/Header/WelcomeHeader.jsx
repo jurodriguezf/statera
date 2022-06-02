@@ -12,22 +12,12 @@ import HomeButtonNoText from "../HomeButton/HomeButtonNoText";
 
 const pages = [
     {
-        name: 'Inicio',
-        description: 'CHANGE THIS IN THE FUTURE',
-        href: '#'
-    },
-    {
         name: 'Nosotros',
         description: 'CHANGE THIS IN THE FUTURE',
         href: '#'
     },
     {
-        name: 'Page',
-        description: 'CHANGE THIS IN THE FUTURE',
-        href: '#'
-    },
-    {
-        name: 'Page',
+        name: 'Acerca de',
         description: 'CHANGE THIS IN THE FUTURE',
         href: '#'
     }
@@ -49,7 +39,7 @@ const WelcomeHeader = () => {
                     </div>
                     <Popover.Group as="nav" className="hidden md:flex space-x-10">
                         <a className={"tab-item-active"} href={'#'}>
-                            Active
+                            Home
                         </a>
                         {pages.map((item) => (
                             <a
