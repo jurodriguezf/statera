@@ -36,7 +36,7 @@ const CommentAndRating = ({recipe}) => {
     return (
         <form className="" onSubmit={handleSubmit(onSubmit)}>
             <div className="flex">
-                <div className="w-6/12 mt-8 mb-8 place-content-center">
+                <div className="mt-8 mb-8 place-content-center">
                     <div className="m-8">
                         <div className={"col-span-1 font-manrope font-bold text-xl my-3 h-96"}>
                             ¿Qué piensa usted de esta receta?
