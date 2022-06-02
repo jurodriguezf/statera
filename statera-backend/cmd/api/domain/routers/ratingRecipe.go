@@ -11,12 +11,6 @@ import (
 )
 
 func RatingRecipe(writer http.ResponseWriter, request *http.Request) {
-	ID := request.URL.Query().Get("id")
-
-	if len(ID) < 1 {
-		boom.BadRequest(writer, "ID parammeter is needed")
-		return
-	}
 
 	var rating model.Rating
 
@@ -26,10 +20,13 @@ func RatingRecipe(writer http.ResponseWriter, request *http.Request) {
 		return
 	}
 
-	_, err = db.RatingRecipe(rating, ID)
+	_, err = db.RatingRecipe(rating, IDUserOBJ)
 	if err != nil {
 		http.Error(writer, "It is not possible rate this recipe"+err.Error(), 400)
 		return
 	}
 
+	writer.Header().Set("Content-Type", "application/json")
+	writer.WriteHeader(http.StatusCreated)
+	json.NewEncoder(writer).Encode(rating)
 }
