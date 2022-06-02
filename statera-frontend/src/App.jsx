@@ -11,7 +11,6 @@ import Favorites from "./pages/favorites/Favorites";
 import useToken from "./util/useToken";
 import EditProfile from "./pages/editProfile/EditProfile";
 import AddRecipe from "./pages/addRecipe/AddRecipe";
-import CommentSection from "./components/Comments/CommentSection";
 
 function App() {
     const {token, setToken} = useToken();

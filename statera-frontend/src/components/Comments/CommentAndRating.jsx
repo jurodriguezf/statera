@@ -4,7 +4,7 @@ import PrimaryButton from "../PrimaryButton/PrimaryButton";
 import {FaStar} from "react-icons/fa";
 import {useForm} from "react-hook-form";
 
-const CommentSection = ({token, recipe}) => {
+const CommentAndRating = ({recipe}) => {
 
     const [rating, setRating] = useState(null)
     const [hover, setHover] = useState(null)
@@ -13,7 +13,6 @@ const CommentSection = ({token, recipe}) => {
 
     const {handleSubmit, setValue} = useForm({
         defaultValues: {
-            token: '',
             recipeID: '',
             numberOfStars: '',
             commentary: ''
@@ -25,7 +24,6 @@ const CommentSection = ({token, recipe}) => {
     };
 
     const setAllValues = event => {
-        setValue("token", token)
         setValue("recipeID", recipe.id)
         setValue("numberOfStars", rating)
         setValue("commentary", commentary)
@@ -38,7 +36,7 @@ const CommentSection = ({token, recipe}) => {
     return (
         <form className="" onSubmit={handleSubmit(onSubmit)}>
             <div className="flex">
-                <div className="w-6/12 ml-8 mt-8 mb-8 place-content-center">
+                <div className="w-6/12 mt-8 mb-8 place-content-center">
                     <div className="m-8">
                         <div className={"col-span-1 font-manrope font-bold text-xl my-3 h-96"}>
                             ¿Qué piensa usted de esta receta?
@@ -101,4 +99,4 @@ const CommentSection = ({token, recipe}) => {
     );
 }
 
-export default CommentSection
+export default CommentAndRating

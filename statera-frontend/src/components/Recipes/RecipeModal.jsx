@@ -3,9 +3,10 @@ import PrimaryButton from "../PrimaryButton/PrimaryButton";
 import IconButton from "../IconButton/IconButton";
 import SecondaryButton from "../SecondaryButton/SecondaryButton";
 import StarRating from "../../components/StarRating/StarRating";
-import CommentSection from "../Comments/CommentSection";
+import CommentAndRating from "../Comments/CommentAndRating";
+import CommentsRecipeSection from "../CommentsSection/CommentsRecipeSection";
 
-const RecipeModal = ({ recipe, visible, onClose, token }) => {
+const RecipeModal = ({ recipe, visible, onClose}) => {
 
 
   if (!visible) return null;
@@ -58,8 +59,9 @@ const RecipeModal = ({ recipe, visible, onClose, token }) => {
             </div>
           </div>
         </div>
-        <div>
-            <CommentSection token={token} recipe={recipe}/>
+        <div className="flex">
+          <CommentAndRating recipe={recipe}/>
+          <CommentsRecipeSection />
         </div>
       </div>
     </div>
