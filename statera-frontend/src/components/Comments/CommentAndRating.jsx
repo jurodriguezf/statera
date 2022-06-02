@@ -3,8 +3,10 @@ import React, {useRef, useState} from "react";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
 import {FaStar} from "react-icons/fa";
 import {useForm} from "react-hook-form";
+import { putRecipeRating } from "../../api/util";
 
-const CommentAndRating = ({recipe}) => {
+
+const CommentAndRating = ({recipe,token}) => {
 
     const [rating, setRating] = useState(null)
     const [hover, setHover] = useState(null)
@@ -13,6 +15,7 @@ const CommentAndRating = ({recipe}) => {
 
     const {handleSubmit, setValue} = useForm({
         defaultValues: {
+            token: token,
             recipeID: '',
             numberOfStars: '',
             commentary: ''
@@ -30,7 +33,7 @@ const CommentAndRating = ({recipe}) => {
     }
 
     const onSubmit = async (data) => {
-        console.log(data)
+        putRecipeRating(data,token)
     }
     
     return (

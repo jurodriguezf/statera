@@ -25,6 +25,8 @@ export const makeQueryFavoriteRecipesRequest = async (body,token) => await putRe
 
 export const putEditProfile = async (body, token) => await putRequest("http://localhost:8080/editaccount", body, token );
 
+export const putRecipeRating = async (body, token) => await putRequest("http://localhost:8080/ratingRecipe", body, token );
+
 export const makeAddRecipeRequest = async (formData, token) => {
   const data = new FormData();
 
