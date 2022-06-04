@@ -15,10 +15,9 @@ const CommentAndRating = ({recipe,token}) => {
 
     const {handleSubmit, setValue} = useForm({
         defaultValues: {
-            token: token,
-            recipeID: '',
-            numberOfStars: '',
-            commentary: ''
+            id: '',
+            rate: '',
+            comment: ''
         }
     })
 
@@ -27,9 +26,9 @@ const CommentAndRating = ({recipe,token}) => {
     };
 
     const setAllValues = event => {
-        setValue("recipeID", recipe.id)
-        setValue("numberOfStars", rating)
-        setValue("commentary", commentary)
+        setValue("id", recipe.id)
+        setValue("rate", rating)
+        setValue("comment", commentary)
     }
 
     const onSubmit = async (data) => {
