@@ -20,18 +20,20 @@ const CommentAndRating = ({recipe,token}) => {
             comment: ''
         }
     })
-
-    const handleCommentaryChange = event => {
-        setCommentary(event.target.value)
-    };
-
     const setAllValues = event => {
         setValue("id", recipe.id)
         setValue("rate", rating)
         setValue("comment", commentary)
     }
 
+
+    const handleCommentaryChange = event => {
+        setCommentary(event.target.value)
+    };
+
     const onSubmit = async (data) => {
+        
+        console.log(data)
         putRecipeRating(data,token)
     }
     
@@ -90,7 +92,9 @@ const CommentAndRating = ({recipe,token}) => {
                                           value={commentary}
                                           onChange={handleCommentaryChange}
                                 />
-                                    <PrimaryButton onClick={setAllValues} type="submit" label="Enviar"/>
+                                    <PrimaryButton onClick={()=>{
+                                        setAllValues()
+                                    }} type="submit" label="Enviar"/>
                                 </div>
                             </div>
                         </div>

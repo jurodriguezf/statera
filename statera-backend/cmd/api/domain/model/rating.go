@@ -7,6 +7,6 @@ import (
 /*Recipe is the model of recipe in MongoDB*/
 type Rating struct {
 	ID      primitive.ObjectID `bson:"_id,omitempty" json:"id"`
-	Rate    float64            `bson:"rate" json:"rate,omitempty"`
-	Comment string             `bson:"comment" json:"comment,omitempty"`
+	Rate    float64            `bson:"rate,omitempty" json:"rate,omitempty"`
+	Comment string             `bson:"comment,omitempty" json:"comment,omitempty"`
 }

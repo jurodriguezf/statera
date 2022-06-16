@@ -47,6 +47,7 @@ export const makeAddRecipeRequest = async (formData, token) => {
     else {
       data.append(key, formData[key]);
     }
+    data.append("ratings", JSON.stringify([]));
   }
 
   return await postFormDataRequest("http://localhost:8080/recipes/add-recipe", data, token);

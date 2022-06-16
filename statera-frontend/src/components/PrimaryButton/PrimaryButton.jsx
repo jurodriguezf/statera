@@ -7,7 +7,10 @@ const PrimaryButton = (props) => {
   return (
     <button
       type={props.type}
-      onClick={props.link ? () => navigate(props.link) : props.onClick}
+      onClick={() => {
+        props.onClick()
+        navigate(props.link);
+      }}
       className="btn-primary"
     >
       {props.label}
