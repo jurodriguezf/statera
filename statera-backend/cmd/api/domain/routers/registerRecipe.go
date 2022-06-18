@@ -14,7 +14,7 @@ import (
 func RegisterRecipe(writer http.ResponseWriter, request *http.Request) {
 	writer.Header().Add("content-type", "application/json")
 	replacer := strings.NewReplacer("[", "", "]", "", "\"", "")
-	var list []model.Rating
+	var list *[]model.Rating
 
 	recipe := model.Recipe{
 		Name:         request.FormValue("name"),

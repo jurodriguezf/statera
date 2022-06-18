@@ -30,6 +30,7 @@ export const postFormDataRequest = async (url, body, token) => {
 }
 
 export const putRequest = async (url, body, token) => {
+  console.log(token)
     const response = await fetch(
         url, {
             method: "PUT",

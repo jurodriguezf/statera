@@ -56,6 +56,7 @@ const Home = (props) => {
             />
           ))}
           <RecipeModal
+            token={token}
             visible={modalContent.show}
             recipe={modalContent.content}
             onClose={() => setModalContent({ show: false, content: {} })}

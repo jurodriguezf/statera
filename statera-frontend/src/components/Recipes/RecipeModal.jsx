@@ -2,9 +2,15 @@ import React from "react";
 import LikeButton from "../LikeButton/LikeButton";
 
 import CommentAndRating from "../Comments/CommentAndRating";
-import CommentsRecipeSection from "../CommentsSection/CommentsRecipeSection";
+import Commentary from "../CommentsSection/Commentary";
+import { useEffect } from "react";
 
-const RecipeModal = ({ recipe, visible, onClose}) => {
+const RecipeModal = ({ recipe, visible, onClose,token}) => {
+
+  useEffect(()=>{
+    
+  },[recipe])
+
 
   if (!visible) return null;
   
@@ -13,6 +19,9 @@ const RecipeModal = ({ recipe, visible, onClose}) => {
     onClose && onClose();
   };
 
+  const handleSyncOnRating = () => {
+    console.log()
+  }
 
   return (
     <div className="transition-opacity ease-in duration-700 opacity-100 fixed inset-0 mx-8 mb-8 mt-32 p-10 backdrop-blur-sm bg-white global-shadow rounded-3xl max-h-max">
@@ -69,8 +78,8 @@ const RecipeModal = ({ recipe, visible, onClose}) => {
           </div>
         </div>
         <div className="lg:flex lg:flex-auto">
-          <CommentAndRating recipe={recipe}/>
-          <CommentsRecipeSection />
+          <CommentAndRating recipe={recipe} token={token} onRating={handleSyncOnRating}/>
+          <div classname="flex">{recipe.ratings?.map((comment) => <Commentary message={comment.comment} id={comment.id} rate={comment.rate}/>)}</div>
         </div>
       </div>
     </div>
