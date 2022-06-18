@@ -6,7 +6,7 @@ import {useForm} from "react-hook-form";
 import { putRecipeRating } from "../../api/util";
 
 
-const CommentAndRating = ({recipe,token}) => {
+const CommentAndRating = ({recipe,token,onRating}) => {
 
     const [rating, setRating] = useState(null)
     const [hover, setHover] = useState(null)
@@ -34,7 +34,7 @@ const CommentAndRating = ({recipe,token}) => {
     const onSubmit = async (data) => {
         
         console.log(data)
-        putRecipeRating(data,token)
+        await putRecipeRating(data,token)
     }
     
     return (
@@ -94,6 +94,7 @@ const CommentAndRating = ({recipe,token}) => {
                                 />
                                     <PrimaryButton onClick={()=>{
                                         setAllValues()
+                                        onRating()
                                     }} type="submit" label="Enviar"/>
                                 </div>
                             </div>
