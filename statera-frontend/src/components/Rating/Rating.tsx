@@ -98,7 +98,7 @@ export default function Rating({
   iconsCount = 5,
   size = 40,
   readonly = false,
-  fillColor = '#ffbc0b',
+  fillColor = '#C2384F',
   fillColorArray = [],
   emptyColor = '#cccccc',
   fullIcon = null,

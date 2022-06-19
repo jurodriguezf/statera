@@ -4,6 +4,7 @@ import LikeButton from "../LikeButton/LikeButton";
 import CommentAndRating from "../Comments/CommentAndRating";
 import Commentary from "../CommentsSection/Commentary";
 import { useEffect } from "react";
+import Rating  from '../Rating/Rating.tsx'
 
 const RecipeModal = ({ recipe, visible, onClose,token}) => {
 
@@ -29,12 +30,18 @@ const RecipeModal = ({ recipe, visible, onClose,token}) => {
         <div className="flex justify-between">
           <div className="font-youngserif font-bold text-4xl pb-3">
             {recipe.name}
-            <div>
-              <LikeButton
-                  //!TODO: Change to recipe.likes and recipes.isFavorite
-                  likes={"10"}
-                  isFavorite={true}
-              />
+            <div className="flex">
+              <div className={"mt-1"}>
+                <LikeButton
+                    //!TODO: Change to recipe.likes and recipes.isFavorite
+                    likes={"10"}
+                    isFavorite={true}
+                />
+              </div>
+              <div className={"font-manrope font-bold text-xl my-3 align-middle"}>
+                <Rating className={"ml-4 mb-2"} size="30" transition allowHalfIcon ratingValue={recipe.rating*2*10} readonly={true}></Rating>
+                {recipe.rating? recipe.rating.toFixed(1) : 0}
+              </div>
             </div>
           </div>
           <button
