@@ -13,6 +13,10 @@ func RatingRecipe(recipe model.Rating, actualUser primitive.ObjectID) (bool, err
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*15)
 	defer cancel()
 
+	var recipeAux model.Recipe
+	var ratingsArray *[]model.Rating
+	var status bool
+
 	db := MongoCN.Database("StateraDB")
 	col := db.Collection("Recipes")
 	var recipeID = recipe.ID
@@ -20,7 +24,15 @@ func RatingRecipe(recipe model.Rating, actualUser primitive.ObjectID) (bool, err
 
 	_, err := col.UpdateByID(ctx, recipeID, bson.M{"$push": bson.M{"ratings": recipe}})
 
-	if err != nil {
+	recipeAux, err = GetRecipe(recipeID)
+
+	recipeAux.SumOfRatings = recipeAux.SumOfRatings + recipe.Rate
+	ratingsArray = recipeAux.Ratings
+	recipeAux.Rating = recipeAux.SumOfRatings / float64(len(*ratingsArray))
+
+	status, err = EditRecipeRating(recipeAux, recipeID)
+
+	if err != nil || status == false {
 		return false, err
 	}
 	return true, nil

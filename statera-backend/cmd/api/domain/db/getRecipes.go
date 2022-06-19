@@ -8,7 +8,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 )
 
-/*InsertRecipe inserts user's data into DB, returns the id of the user inserted*/
+/*GetRecipes inserts user's data into DB, returns the id of the user inserted*/
 func GetRecipes() ([]model.Recipe, bool, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), SearchTimeout*time.Second)
 	defer cancel()

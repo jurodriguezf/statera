@@ -2,7 +2,7 @@ import React from "react";
 import StarRating from "../StarRating/StarRating";
 
 
-const Comentary = ({message, rate, id}) => {
+const Commentary = ({message, rate, id}) => {
     console.log(message,rate,id)
     return (
         <div className="flex ml-10 my-8">
@@ -26,4 +26,4 @@ const Comentary = ({message, rate, id}) => {
     );
 }
 
-export default Comentary
+export default Commentary

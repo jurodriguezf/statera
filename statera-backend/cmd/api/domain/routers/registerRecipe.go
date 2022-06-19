@@ -23,6 +23,7 @@ func RegisterRecipe(writer http.ResponseWriter, request *http.Request) {
 		Instructions: strings.Split(replacer.Replace(request.FormValue("instructions")), ","),
 		Ratings:      list,
 		Rating:       0,
+		SumOfRatings: 0,
 	}
 
 	ID, status, err := db.InsertRecipe(recipe)
