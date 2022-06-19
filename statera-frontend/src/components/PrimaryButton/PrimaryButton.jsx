@@ -8,8 +8,8 @@ const PrimaryButton = (props) => {
     <button
       type={props.type}
       onClick={() => {
-        props.onClick()
-        navigate(props.link);
+        if(props.onClick) props.onClick()
+        if(props.link) navigate(props.link);
       }}
       className="btn-primary"
     >
