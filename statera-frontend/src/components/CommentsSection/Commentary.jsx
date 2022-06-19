@@ -3,7 +3,7 @@ import StarRating from "../StarRating/StarRating";
 import {makeProfileCommentRequest} from "../../api/util";
 
 
-const Commentary = ({message, rate, id, token}) => {
+const Commentary = ({message, rate, id}) => {
 
     const [profileData, setProfileData] = useState({})
 
