@@ -42,6 +42,7 @@ func SetupEndpoints() {
 		controller.CheckConnectionDB(routers.GetRecipesQuery)).Methods("PUT")
 
 	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./cmd/uploads/recipes"))))
+	router.PathPrefix("/static2/").Handler(http.StripPrefix("/static2/", http.FileServer(http.Dir("./cmd/uploads/avatars"))))
 
 	// checks if there is an environment variable called PORT. If not, it creates it
 	PORT := os.Getenv("PORT")

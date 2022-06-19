@@ -23,6 +23,7 @@ func ViewCommentProfile(writer http.ResponseWriter, request *http.Request) {
 	writer.WriteHeader(http.StatusCreated)
 	json.NewEncoder(writer).Encode(model.CommentProfileResponse{
 		UserName: profile.UserName,
+		Name:     profile.Name,
 		Avatar:   profile.Avatar,
 	})
 }
