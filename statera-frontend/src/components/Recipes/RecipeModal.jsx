@@ -79,7 +79,7 @@ const RecipeModal = ({ recipe, visible, onClose,token}) => {
         </div>
         <div className="lg:flex lg:flex-auto">
           <CommentAndRating recipe={recipe} token={token} onRating={handleSyncOnRating}/>
-          <div>{recipe.ratings?.map((comment) => <Commentary message={comment.comment} id={comment.id} rate={comment.rate}/>)}</div>
+          <div>{recipe.ratings?.map((comment) => <Commentary message={comment.comment} id={comment.id} rate={comment.rate} token={token}/>)}</div>
         </div>
       </div>
     </div>

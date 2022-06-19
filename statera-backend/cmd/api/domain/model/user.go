@@ -24,3 +24,8 @@ type ProfileResponse struct {
 	Email    string    `bson:"email" json:"email"`
 	Location string    `bson:"location" json:"location,omitempty"`
 }
+
+type CommentProfileResponse struct {
+	UserName string `bson:"username" json:"UserName,omitempty"`
+	Avatar   string `bson:"avatar" json:"Avatar,omitempty"`
+}
