@@ -24,6 +24,8 @@ func SetupEndpoints() {
 	router.HandleFunc("/login", controller.CheckConnectionDB(routers.Login)).Methods("POST")
 	router.HandleFunc("/myaccount",
 		controller.CheckConnectionDB(controller.ValidateJWT(routers.ViewProfile))).Methods("GET")
+	router.HandleFunc("/commentProfile",
+		controller.CheckConnectionDB(routers.ViewCommentProfile)).Methods("GET")
 	router.HandleFunc("/editaccount",
 		controller.CheckConnectionDB(controller.ValidateJWT(routers.ModifyProfile))).Methods("PUT")
 	router.HandleFunc("/recipes/add-recipe",
@@ -32,6 +34,8 @@ func SetupEndpoints() {
 		controller.CheckConnectionDB(controller.ValidateJWT(routers.GetRecipes))).Methods("GET")
 	router.HandleFunc("/uploadAvatar",
 		controller.CheckConnectionDB(controller.ValidateJWT(routers.UploadAvatar))).Methods("POST")
+	router.HandleFunc("/ratingRecipe",
+		controller.CheckConnectionDB(controller.ValidateJWT(routers.RatingRecipe))).Methods("PUT")
 	router.HandleFunc("/getAvatar",
 		controller.CheckConnectionDB(controller.ValidateJWT(routers.GetAvatar))).Methods("GET")
 	router.HandleFunc("/recipes/recipe-query",
@@ -42,6 +46,7 @@ func SetupEndpoints() {
 		controller.CheckConnectionDB(controller.ValidateJWT(routers.GetMenu))).Methods("POST")
 	// Serve static files
 	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./cmd/uploads/recipes"))))
+	router.PathPrefix("/static2/").Handler(http.StripPrefix("/static2/", http.FileServer(http.Dir("./cmd/uploads/avatars"))))
 
 	// checks if there is an environment variable called PORT. If not, it creates it
 	PORT := os.Getenv("PORT")

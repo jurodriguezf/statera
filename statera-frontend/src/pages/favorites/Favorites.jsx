@@ -58,6 +58,7 @@ const Favorites = (props) => {
                             category={recipe.category || "Sin categoría"}
                             onClick={() => setModalContent({ show: true, content: recipe })}
                             image={recipe.imageLink}
+                            rating={recipe.rating}
                         />
                     ))}
                     <RecipeModal

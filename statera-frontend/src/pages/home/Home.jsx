@@ -15,7 +15,7 @@ const Home = (props) => {
 
   useEffect(() => {
     const getData = async () => {
-      const response = await makeAllRecipesRequest(token);
+      const response = await makeQueryRecipesRequest("",token);
       setHomeRecipes(response);
     };
 
@@ -52,13 +52,16 @@ const Home = (props) => {
               category={recipe.category || "Sin categoría"}
               onClick={() => setModalContent({ show: true, content: recipe })}
               image={recipe.imageLink}
+              rating={recipe.rating}
             />
           ))}
           <RecipeModal
+            token={token}
             visible={modalContent.show}
             recipe={modalContent.content}
             onClose={() => setModalContent({ show: false, content: {} })}
           />
+          
         </div>
       </div>
     </Panel>

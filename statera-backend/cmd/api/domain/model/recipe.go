@@ -13,4 +13,7 @@ type Recipe struct {
 	Instructions []string           `bson:"instructions" json:"instructions,omitempty"`
 	ImageLink    string             `bson:"imageLink" json:"imageLink,omitempty"`
 	Likes        uint64             `bson:"likes" json:"likes,omitempty"`
+	Rating       float64            `bson:"rating,omitempty" json:"rating,omitempty"`
+	SumOfRatings float64            `bson:"sumOfRatings,omitempty" json:"sumOfRatings,omitempty"`
+	Ratings      *[]Rating          `bson:"ratings,omitempty" json:"ratings,omitempty"`
 }

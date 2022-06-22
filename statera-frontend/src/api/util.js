@@ -12,6 +12,7 @@ export const makeLoginRequest = async (data, setToken) => {
 };
 
 export const makeProfileRequest = async (token) => await getRequest("http://localhost:8080/myaccount", token);
+export const makeProfileCommentRequest = async (body) => await getRequest("http://localhost:8080/commentProfile", body);
 
 export const makeAllRecipesRequest = async (token) => await getRequest("http://localhost:8080/recipes/all-recipes", token);
 
@@ -26,6 +27,8 @@ export const makeQueryFavoriteRecipesRequest = async (body,token) => await putRe
 export const makeRecipesMenuRequest = async (body,token) => await postRequest("http://localhost:8080/recipes/get-menu", body, token);
 
 export const putEditProfile = async (body, token) => await putRequest("http://localhost:8080/editaccount", body, token );
+
+export const putRecipeRating = async (body, token) => await putRequest("http://localhost:8080/ratingRecipe", body, token );
 
 export const makeAddRecipeRequest = async (formData, token) => {
   const data = new FormData();
@@ -47,6 +50,7 @@ export const makeAddRecipeRequest = async (formData, token) => {
     else {
       data.append(key, formData[key]);
     }
+    data.append("ratings", JSON.stringify([]));
   }
 
   return await postFormDataRequest("http://localhost:8080/recipes/add-recipe", data, token);
