@@ -1,11 +1,12 @@
 package routers
 
 import (
-	"github.com/darahayes/go-boom"
-	"github.com/jurodriguezf/statera/cmd/api/domain/db"
 	"io"
 	"net/http"
 	"os"
+
+	"github.com/darahayes/go-boom"
+	"github.com/jurodriguezf/statera/cmd/api/domain/db"
 )
 
 func GetAvatar(writer http.ResponseWriter, request *http.Request) {

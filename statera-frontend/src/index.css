@@ -20,6 +20,18 @@
 }
 
 @layer components {
+
+  input[type="radio"]{
+    display: none;
+  }
+
+  .textarea {
+    border: black;
+  }
+  .star {
+    cursor: pointer;
+    transition: color 200ms;
+  }
   .btn-primary {
     @apply px-5 py-2 bg-wine hover:bg-darkwine text-beige font-manrope font-bold rounded-lg text-base w-full;
   }
