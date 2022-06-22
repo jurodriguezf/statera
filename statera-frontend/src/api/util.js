@@ -23,6 +23,8 @@ export const makeQueryRecipesRequest = async (body,token) => await putRequest("h
 //!TODO: Implement query
 export const makeQueryFavoriteRecipesRequest = async (body,token) => await putRequest("http://localhost:8080/recipes/favorite-recipe-query",body,token);
 
+export const makeRecipesMenuRequest = async (body,token) => await postRequest("http://localhost:8080/recipes/get-menu", body, token);
+
 export const putEditProfile = async (body, token) => await putRequest("http://localhost:8080/editaccount", body, token );
 
 export const makeAddRecipeRequest = async (formData, token) => {
