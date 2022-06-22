@@ -17,7 +17,7 @@ const RecipeModal = ({ recipe, visible, onClose }) => {
             <div>
               <LikeButton
                   //!TODO: Change to recipe.likes and recipes.isFavorite
-                  likes={"10"}
+                  likes={recipe.likes}
                   isFavorite={true}
               />
             </div>
