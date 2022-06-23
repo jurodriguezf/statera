@@ -26,16 +26,14 @@ func FavRecipes(ID string) ([]*model.Recipe, bool) {
 		return favrecipes, false
 	}
 
-	Idrecipes := user.FavRecipes
-
 	var objIdRecipes []primitive.ObjectID
-	for _, rec := range Idrecipes {
+	for _, rec := range user.FavRecipes {
 		obj, _ := primitive.ObjectIDFromHex(rec)
 		objIdRecipes = append(objIdRecipes, obj)
 	}
 
 	condition := bson.M{
-		"_id": objIdRecipes,
+		"_id": bson.M{"$in": objIdRecipes},
 	}
 
 	opt := options.Find()
