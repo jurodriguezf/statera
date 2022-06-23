@@ -48,4 +48,8 @@ func LikeRecipe(writer http.ResponseWriter, request *http.Request) {
 	}
 
 	writer.WriteHeader(http.StatusOK)
+	json.NewEncoder(writer).Encode(model.MessageResponse{
+		Status:  "success",
+		Message: "recipe EDITED successfully",
+	})
 }
