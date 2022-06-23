@@ -1,4 +1,6 @@
 import React from "react";
+import Rating  from '../Rating/Rating.tsx'
+
 
 const RecipeCard = (props) => {
   const getImagePath = (fileName) =>
@@ -17,6 +19,7 @@ const RecipeCard = (props) => {
       </div>
       <div className="m-3">
         <div className="font-bold font-manrope text-xl ">{props.name}</div>
+        <Rating size="20" transition allowHalfIcon ratingValue={props.rating*2*10} readonly={true}></Rating>
         <div className="font-bold font-manrope text-base text-gray-400">
           {props.category}
         </div>

@@ -4,9 +4,11 @@ import Input from "../../components/Input/Input";
 import Panel from "../../layout/BasicLayout/Panel";
 import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
 import { makeAddRecipeRequest } from "../../api/util";
+import { useNavigate } from "react-router-dom";
 
 const RecipeForm = (props) => {
   const { token } = props;
+  const navigate = useNavigate()
   const { register, control, handleSubmit } = useForm({
     defaultValues: {
       name: "",
@@ -51,6 +53,8 @@ const RecipeForm = (props) => {
 
   const onSubmit = async (formData) => {
     await makeAddRecipeRequest(formData, token);
+    
+    navigate("/")
   };
 
   return (

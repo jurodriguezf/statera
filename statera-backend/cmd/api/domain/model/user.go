@@ -15,7 +15,7 @@ type User struct {
 	Password   string             `bson:"password" json:"password,omitempty"`
 	Avatar     string             `bson:"avatar" json:"avatar,omitempty"`
 	Location   string             `bson:"location" json:"location,omitempty"`
-	FavRecipes []Recipe           `bson:"favrecipes" json:"favRecipes,omitempty"`
+	FavRecipes []string           `bson:"favrecipes" json:"favRecipes,omitempty"`
 }
 
 type ProfileResponse struct {
@@ -23,4 +23,10 @@ type ProfileResponse struct {
 	DoB      time.Time `bson:"dateofbirth" json:"dateOfBirth,omitempty"`
 	Email    string    `bson:"email" json:"email"`
 	Location string    `bson:"location" json:"location,omitempty"`
+}
+
+type CommentProfileResponse struct {
+	UserName string `bson:"username" json:"UserName,omitempty"`
+	Name     string `bson:"name" json:"Name,omitempty"`
+	Avatar   string `bson:"avatar" json:"Avatar,omitempty"`
 }

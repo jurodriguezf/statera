@@ -1,25 +1,47 @@
 import React from "react";
 import LikeButton from "../LikeButton/LikeButton";
 
-const RecipeModal = ({ recipe, visible, onClose }) => {
+import CommentAndRating from "../Comments/CommentAndRating";
+import Commentary from "../CommentsSection/Commentary";
+import { useEffect } from "react";
+import Rating  from '../Rating/Rating.tsx'
+
+const RecipeModal = ({ recipe, visible, onClose,token}) => {
+
+  useEffect(()=>{
+    
+  },[recipe])
+
+
   if (!visible) return null;
+  
 
   const handleCloseClick = () => {
     onClose && onClose();
   };
 
+  const handleSyncOnRating = () => {
+    console.log()
+  }
+
   return (
-    <div className="overflow-y-auto block fixed inset-0 mx-8 mb-8 mt-32 p-10 backdrop-blur-sm bg-white global-shadow rounded-3xl">
-      <div className="px-3">
+    <div className="transition-opacity ease-in duration-700 opacity-100 fixed inset-0 mx-8 mb-8 mt-32 p-10 backdrop-blur-sm bg-white global-shadow rounded-3xl max-h-max">
+      <div className="p-4">
         <div className="flex justify-between">
           <div className="font-youngserif font-bold text-4xl pb-3">
             {recipe.name}
-            <div>
-              <LikeButton
-                  //!TODO: Change to recipe.likes and recipes.isFavorite
-                  likes={"10"}
-                  isFavorite={true}
-              />
+            <div className="flex">
+              <div className={"mt-1"}>
+                <LikeButton
+                    //!TODO: Change to recipe.likes and recipes.isFavorite
+                    likes={"10"}
+                    isFavorite={true}
+                />
+              </div>
+              <div className={"font-manrope font-bold text-xl my-3 align-middle"}>
+                <Rating className={"ml-4 mb-2"} size="30" transition allowHalfIcon ratingValue={recipe.rating*2*10} readonly={true}></Rating>
+                {recipe.rating? recipe.rating.toFixed(1) : 0}
+              </div>
             </div>
           </div>
           <button
@@ -58,8 +80,13 @@ const RecipeModal = ({ recipe, visible, onClose }) => {
                   <li className="font-manrope">{instruction}</li>
                 ))}
               </ol>
+              
             </div>
           </div>
+        </div>
+        <div className="lg:flex lg:flex-auto">
+          <CommentAndRating recipe={recipe} token={token} onRating={handleSyncOnRating}/>
+          <div>{recipe.ratings?.map((comment) => <Commentary message={comment.comment} id={comment.id} rate={comment.rate}/>)}</div>
         </div>
       </div>
     </div>
