@@ -39,6 +39,24 @@ func LikeRecipe(writer http.ResponseWriter, request *http.Request) {
 
 	status, err := db.EditRecipe(newRecipe, idRecipe)
 	if err != nil {
+		boom.BadRequest(writer, "There was an error modifying the recipe's information")
+		return
+	}
+	if status == false {
+		boom.BadRequest(writer, "It was not possible to modify the recipe's information")
+		return
+	}
+
+	user, err := db.SearchProfile(IDUser)
+	if err != nil {
+		boom.BadRequest(writer, "It was not possible to retrieve the user")
+		return
+	}
+
+	newUser := model.User{FavRecipes: append(user.FavRecipes, idRecipe)}
+
+	status, err = db.EditProfile(newUser, IDUser)
+	if err != nil {
 		boom.BadRequest(writer, "There was an error modifying the user's information")
 		return
 	}
