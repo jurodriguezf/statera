@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
+import jwt_decode from "jwt-decode";
 import Panel from "../../layout/BasicLayout/Panel";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import {
-    makeAllRecipesRequest,
+    makeFavoriteRecipesRequest,
     makeQueryRecipesRequest
 } from "../../api/util";
 import RecipeModal from "../../components/Recipes/RecipeModal";
@@ -18,10 +19,8 @@ const Favorites = (props) => {
 
     useEffect(() => {
         const getData = async () => {
-            //!TODO: Uncomment the line below when query is available
-            //const response = await makeFavoriteRecipesRequest(token);
-            const response = await makeAllRecipesRequest(token);
-            setFavoriteRecipes(response);
+            const favResponse = await makeFavoriteRecipesRequest(token, jwt_decode(token)["_id"]);
+            setFavoriteRecipes(favResponse);
         };
 
         getData();

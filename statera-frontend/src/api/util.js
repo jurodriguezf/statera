@@ -16,8 +16,7 @@ export const makeProfileCommentRequest = async (body) => await getRequest("http:
 
 export const makeAllRecipesRequest = async (token) => await getRequest("http://localhost:8080/recipes/all-recipes", token);
 
-//!TODO: Implement query
-export const makeFavoriteRecipesRequest = async (token) => await getRequest("http://localhost:8080/recipes/favorite-recipes", token);
+export const makeFavoriteRecipesRequest = async (token, id) => await getRequest(`http://localhost:8080/recipes/fav-recipes?id=${id}`, token);
 
 export const makeQueryRecipesRequest = async (body,token) => await putRequest("http://localhost:8080/recipes/recipe-query",body,token);
 
