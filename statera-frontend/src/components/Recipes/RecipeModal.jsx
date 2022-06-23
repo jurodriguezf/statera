@@ -1,12 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import LikeButton from "../LikeButton/LikeButton";
 
 import CommentAndRating from "../Comments/CommentAndRating";
 import Commentary from "../CommentsSection/Commentary";
 import { useEffect } from "react";
 import Rating from '../Rating/Rating.tsx'
+import {likeRecipeRequest} from "../../api/util";
 
 const RecipeModal = ({ recipe, visible, onClose, token }) => {
+
+  const [isFavorite, setFavorite] = useState(false);
 
   useEffect(() => {
 
@@ -35,7 +38,12 @@ const RecipeModal = ({ recipe, visible, onClose, token }) => {
                 <LikeButton
                   //!TODO: Change to recipe.likes and recipes.isFavorite
                   likes={recipe.likes}
-                  isFavorite={true}
+                  isFavorite={isFavorite}
+                  action={async () => {
+                    setFavorite((prevState => !prevState));
+                    console.log({recipe_id: recipe.id, token});
+                    await likeRecipeRequest({recipe_id: recipe.id, token}, token);
+                  }}
                 />
               </div>
               <div className={"font-manrope font-bold text-xl my-3 align-middle"}>

@@ -26,6 +26,8 @@ export const makeQueryFavoriteRecipesRequest = async (body,token) => await putRe
 
 export const makeRecipesMenuRequest = async (body,token) => await postRequest("http://localhost:8080/recipes/get-menu", body, token);
 
+export const likeRecipeRequest = async (body,token) => await postRequest("http://localhost:8080/recipes/like", body, token);
+
 export const putEditProfile = async (body, token) => await putRequest("http://localhost:8080/editaccount", body, token );
 
 export const putRecipeRating = async (body, token) => await putRequest("http://localhost:8080/ratingRecipe", body, token );
