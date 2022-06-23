@@ -21,6 +21,10 @@ func EditRecipe(recipe model.Recipe, ID string) (bool, error) {
 		register["imageLink"] = recipe.ImageLink
 	}
 
+	if recipe.Likes != 0 {
+		register["likes"] = recipe.Likes
+	}
+
 	updateString := bson.M{
 		"$set": register,
 	}
