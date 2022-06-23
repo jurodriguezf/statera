@@ -15,7 +15,7 @@ type User struct {
 	Password   string             `bson:"password" json:"password,omitempty"`
 	Avatar     string             `bson:"avatar" json:"avatar,omitempty"`
 	Location   string             `bson:"location" json:"location,omitempty"`
-	FavRecipes []Recipe           `bson:"favrecipes" json:"favRecipes,omitempty"`
+	FavRecipes []string           `bson:"favrecipes" json:"favRecipes,omitempty"`
 }
 
 type ProfileResponse struct {
