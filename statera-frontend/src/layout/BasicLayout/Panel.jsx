@@ -24,17 +24,17 @@ export default function Panel(props) {
     return (
         <div className='w-screen h-screen main-page-bg flex'>
             <div className='w-1/6 h-auto my-10 mx-5 grid '>
-                <div className='profile-image w-full h-auto my-10'>
+                <div className='profile-image w-full h-auto my-10 pb-5'>
                     <div className="rounded-full bg-gray-300 h-20 w-20 m-auto"><img src="" alt=""/></div>
                     <div className='font-manrope text-lg text-black font-bold text-center mt-4 pb-4'>
-                        {console.log(profileData.userName)}
                         {profileData.userName}
 
                     </div>
                 </div>
-                <div className='buttons h-4/6 flex flex-col justify-evenly px-5'>
+                <div className='buttons h-4/6 flex flex-col justify-center px-5'>
                     <IconButton label="Home" link={"/"} currentPage={props.currentPage}/>
                     <IconButton label="Favoritos" link={"/favorites"} currentPage={props.currentPage}/>
+                    <IconButton label="Ingredientes" link={"/ingredients"} currentPage={props.currentPage}/>
                     <IconButton label="Crear Receta" link={"/add-recipe"} currentPage={props.currentPage}/>
                     <IconButton label="Mi Cuenta" link={"/my-profile"} currentPage={props.currentPage}/>
                 </div>
