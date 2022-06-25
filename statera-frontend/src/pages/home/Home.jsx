@@ -15,7 +15,7 @@ const Home = (props) => {
 
   useEffect(() => {
     const getData = async () => {
-      const response = await makeQueryRecipesRequest("",token);
+      const response = await makeQueryRecipesRequest("", token);
       setHomeRecipes(response);
     };
 
@@ -37,12 +37,16 @@ const Home = (props) => {
             <h1>Recetas</h1>
           </div>
           <SearchBar
-              placeholder={"Busca una receta"}
-              onChange={getRecipesQuery}
+            placeholder={"Busca una receta"}
+            onChange={getRecipesQuery}
           />
         </div>
 
-        <div className={"font-manrope font-bold text-2xl leading-normal mt-2 sm:mt-10"}>
+        <div
+          className={
+            "font-manrope font-bold text-2xl leading-normal mt-2 sm:mt-10"
+          }
+        >
           <h1>Platos populares</h1>
         </div>
         <div className="my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 place-items-center">
@@ -61,7 +65,6 @@ const Home = (props) => {
             recipe={modalContent.content}
             onClose={() => setModalContent({ show: false, content: {} })}
           />
-          
         </div>
       </div>
     </Panel>
