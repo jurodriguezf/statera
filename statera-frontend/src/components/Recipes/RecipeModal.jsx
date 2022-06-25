@@ -14,6 +14,7 @@ const RecipeModal = ({ recipe, visible, onClose, token }) => {
 
   const handleCloseClick = () => {
     onClose && onClose();
+    setNewRecipe(null)
   };
 
   const handleSyncOnRating = (data) => {
