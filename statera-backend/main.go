@@ -5,8 +5,6 @@ import (
 
 	"github.com/jurodriguezf/statera/cmd/api/domain/db"
 	"github.com/jurodriguezf/statera/cmd/server"
-	//! Descomentar esta importación para probar el ejemplo
-	//"go.mongodb.org/mongo-driver/bson"
 )
 
 func main() {

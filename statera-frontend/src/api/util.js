@@ -1,7 +1,9 @@
 import {getRequest, postFormDataRequest, postRequest, putRequest} from "./backend";
 
+const api_url = "https://stateraun.ml"
+
 export const makeLoginRequest = async (data, setToken) => {
-  const loginResponse = await postRequest("http://localhost:8080/login", data);
+  const loginResponse = await postRequest(api_url + "/login", data);
 
   if (loginResponse?.token) {
     setToken(loginResponse.token);
@@ -11,22 +13,22 @@ export const makeLoginRequest = async (data, setToken) => {
   return loginResponse.statusCode;
 };
 
-export const makeProfileRequest = async (token) => await getRequest("http://localhost:8080/myaccount", token);
-export const makeProfileCommentRequest = async (body) => await getRequest("http://localhost:8080/commentProfile", body);
+export const makeProfileRequest = async (token) => await getRequest(api_url + "/myaccount", token);
+export const makeProfileCommentRequest = async (body) => await getRequest(api_url + "/commentProfile", body);
 
-export const makeAllRecipesRequest = async (token) => await getRequest("http://localhost:8080/recipes/all-recipes", token);
-
-//!TODO: Implement query
-export const makeFavoriteRecipesRequest = async (token) => await getRequest("http://localhost:8080/recipes/favorite-recipes", token);
-
-export const makeQueryRecipesRequest = async (body,token) => await putRequest("http://localhost:8080/recipes/recipe-query",body,token);
+export const makeAllRecipesRequest = async (token) => await getRequest(api_url + "/recipes/all-recipes", token);
 
 //!TODO: Implement query
-export const makeQueryFavoriteRecipesRequest = async (body,token) => await putRequest("http://localhost:8080/recipes/favorite-recipe-query",body,token);
+export const makeFavoriteRecipesRequest = async (token) => await getRequest(api_url + "/recipes/favorite-recipes", token);
 
-export const putEditProfile = async (body, token) => await putRequest("http://localhost:8080/editaccount", body, token );
+export const makeQueryRecipesRequest = async (body,token) => await putRequest(api_url + "/recipes/recipe-query",body,token);
 
-export const putRecipeRating = async (body, token) => await putRequest("http://localhost:8080/ratingRecipe", body, token );
+//!TODO: Implement query
+export const makeQueryFavoriteRecipesRequest = async (body,token) => await putRequest(api_url + "/recipes/favorite-recipe-query",body,token);
+
+export const putEditProfile = async (body, token) => await putRequest(api_url + "/editaccount", body, token );
+
+export const putRecipeRating = async (body, token) => await putRequest(api_url + "/ratingRecipe", body, token );
 
 export const makeAddRecipeRequest = async (formData, token) => {
   const data = new FormData();
@@ -51,5 +53,5 @@ export const makeAddRecipeRequest = async (formData, token) => {
     data.append("ratings", JSON.stringify([]));
   }
 
-  return await postFormDataRequest("http://localhost:8080/recipes/add-recipe", data, token);
+  return await postFormDataRequest(api_url + "/recipes/add-recipe", data, token);
 }
