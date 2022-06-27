@@ -8,6 +8,7 @@ import HomeButtonText from "../../components/HomeButton/HomeButtonText";
 import { useForm } from "react-hook-form";
 import { postRequest } from "../../api/backend";
 import { makeLoginRequest } from "../../api/util";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const SignUp = (props) => {
   return (
@@ -16,12 +17,16 @@ const SignUp = (props) => {
         <LoginLink />
         <p className="font-youngserif text-4xl my-10">Create an account</p>
         <LoginForm />
+          <GoogleButton label="Continue with Google" />
         <DivisorLine />
-        <GoogleButton label="Continue with Google" />
       </div>
       <Image />
     </div>
   );
+
+  function onChange(value){
+      console.log("Captcha value:", value)
+  }
 
   function Image() {
     return (
@@ -129,6 +134,13 @@ const SignUp = (props) => {
             {formWarning}
           </h3>
         </div>
+          <div className="w-full flex justify-center mt-4">
+              <ReCAPTCHA
+                  sitekey="6LdVuqEgAAAAALa-Oby2m_cuKnGPHMo5JsTTIGM9"
+                  onChange={onChange}
+              />
+          </div>
+
         <div className="w-full flex justify-center my-10">
           <PrimaryButton type="submit" label="Sign up" className="" />
         </div>
