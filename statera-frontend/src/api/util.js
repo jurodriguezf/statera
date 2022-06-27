@@ -20,10 +20,7 @@ export const makeFavoriteRecipesRequest = async (token, id) => await getRequest(
 
 export const makeQueryRecipesRequest = async (body,token) => await putRequest("http://localhost:8080/recipes/recipe-query",body,token);
 
-//!TODO: Implement query
-export const makeQueryFavoriteRecipesRequest = async (body,token) => await putRequest("http://localhost:8080/recipes/favorite-recipe-query",body,token);
-
-export const makeRecipesMenuRequest = async (body,token) => await postRequest("http://localhost:8080/recipes/get-menu", body, token);
+export const makeRecipesMenuRequest = async (body,token, id) => await postRequest(`http://localhost:8080/recipes/get-menu?id=${id}`, body, token);
 
 export const likeRecipeRequest = async (body,token) => await postRequest("http://localhost:8080/recipes/like", body, token);
 

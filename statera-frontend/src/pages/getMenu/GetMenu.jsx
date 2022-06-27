@@ -1,30 +1,40 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { useForm, useFieldArray } from "react-hook-form";
-import Input from "../../components/Input/Input";
+import React, { Fragment, useState } from "react";
+import { useForm } from "react-hook-form";
 import Panel from "../../layout/BasicLayout/Panel";
 import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
-import { makeAddRecipeRequest, makeRecipesMenuRequest } from "../../api/util";
+import { makeRecipesMenuRequest } from "../../api/util";
 import RadioInput from "../../components/RadioInput/RadioInput";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import RecipeModal from "../../components/Recipes/RecipeModal";
+import jwt_decode from "jwt-decode";
 
 const MenuForm = (props) => {
   const { token } = props;
-  const { register, control, handleSubmit } = useForm({
+  const { register, handleSubmit } = useForm({
     defaultValues: {
       quantity: 0,
     },
   });
 
+  const [formWarning, setFormWarning] = useState("");
   const [menuRecipes, setMenuRecipes] = useState([]);
   const [modalContent, setModalContent] = useState({
     show: false,
     content: {},
   });
 
+  const emptyFieldValidation = (value) => {
+    if (!value || value === 0) {
+      setFormWarning("Debes escoger una opción");
+      return false;
+    } else {
+      setFormWarning("");
+      return true;
+    }
+  };
+
   const onSubmit = async (formData) => {
-    console.log(formData);
-    const obtainedMenuRecipes = await makeRecipesMenuRequest(formData, token);
+    const obtainedMenuRecipes = await makeRecipesMenuRequest(formData, token, jwt_decode(token)["_id"]);
     setMenuRecipes(obtainedMenuRecipes);
   };
 
@@ -51,21 +61,27 @@ const MenuForm = (props) => {
             type="radio"
             label="Una receta"
             value={1}
-            register={register("quantity")}
+            register={register("quantity", {
+              validate: emptyFieldValidation,
+            })}
           />
           <RadioInput
             className="w-1/3"
             type="radio"
             label="Fin de semana (dos recetas)"
             value={2}
-            register={register("quantity")}
+            register={register("quantity", {
+              validate: emptyFieldValidation,
+            })}
           />
           <RadioInput
             className="w-1/3"
             type="radio"
             label="Una semana (cinco recetas)"
             value={5}
-            register={register("quantity")}
+            register={register("quantity", {
+              validate: emptyFieldValidation,
+            })}
           />
         </div>
 
@@ -74,13 +90,20 @@ const MenuForm = (props) => {
         </div>
       </form>
 
-      <div className="my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 place-items-center">
+      <div className="w-full flex justify-center">
+        <h3 className="text-center flex font-manrope font-bold text-sm text-wine">
+          {formWarning}
+        </h3>
+      </div>
+
+      <div className="p-16 my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 place-items-center">
         {menuRecipes?.map((recipe) => (
           <RecipeCard
             name={recipe.name}
             category={recipe.category || "Sin categoría"}
             onClick={() => setModalContent({ show: true, content: recipe })}
             image={recipe.imageLink}
+            rating={recipe.rating}
           />
         ))}
         <RecipeModal
@@ -97,7 +120,7 @@ const GetMenu = (props) => {
   const { token } = props;
 
   return (
-    <Panel token={token} currentPage={"Crear Receta"}>
+    <Panel token={token} currentPage={"Crear Menú"}>
       <MenuForm token={token} />
     </Panel>
   );

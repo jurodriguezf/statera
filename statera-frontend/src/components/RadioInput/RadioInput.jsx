@@ -1,14 +1,7 @@
-import { useState } from "react";
-import { BsFillEyeSlashFill, BsFillEyeFill } from "react-icons/bs";
-
 const RadioInput = (props) => {
   return (
-    <div className={props.className}>
-      <div className="font-manrope font-bold text-sm py-2 px-2">
-        {props.title}
-      </div>
-      <div className="flex items-center px-2 my-3">
-        <label>
+    <div className={`${props.className} `}>
+        <label className="flex items-center p-5 m-3 hover:bg-gray-button checked:bg-darkwine rounded-lg font-manrope font-medium">
           <input
             className="mx-2"
             type="radio"
@@ -19,7 +12,6 @@ const RadioInput = (props) => {
           />
           {props.label}
         </label>
-      </div>
     </div>
   );
 };
