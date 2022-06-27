@@ -8,6 +8,7 @@ import HomeButtonText from "../../components/HomeButton/HomeButtonText";
 import { useForm } from "react-hook-form";
 import { postRequest } from "../../api/backend";
 import { makeLoginRequest } from "../../api/util";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const SignUp = (props) => {
   return (
@@ -16,12 +17,12 @@ const SignUp = (props) => {
         <LoginLink />
         <p className="font-youngserif text-4xl my-10">Create an account</p>
         <LoginForm />
-        <DivisorLine />
-        <GoogleButton label="Continue with Google" />
+
       </div>
       <Image />
     </div>
   );
+
 
   function Image() {
     return (
@@ -42,13 +43,22 @@ const SignUp = (props) => {
         email: "",
         password: "",
         confirmPassword: "",
+        captcha: "",
       },
     });
 
     const [formWarning, setFormWarning] = useState("");
+    const [validateCaptcha, setValidateCaptcha] = useState(false)
+
+  function onChange(value){
+      console.log("Captcha value:", value)
+
+      setValidateCaptcha(true)
+      value.reset()
+  }
 
     const onSubmit = async (data) => {
-      const { email, password } = data;
+      const { email, password, captcha } = data;
 
       const signUpData = await postRequest(
         "http://localhost:8080/register",
@@ -59,7 +69,7 @@ const SignUp = (props) => {
         return;
       }
 
-      if (await makeLoginRequest({ email, password }, props.setToken)) {
+      if (await makeLoginRequest({ email, password}, props.setToken)) {
         navigate("/");
       }
     };
@@ -129,8 +139,20 @@ const SignUp = (props) => {
             {formWarning}
           </h3>
         </div>
+          <div className="w-full flex justify-center mt-4">
+              <ReCAPTCHA
+                  sitekey="6LdVuqEgAAAAALa-Oby2m_cuKnGPHMo5JsTTIGM9"
+                  onChange={onChange}
+                  onExpired={() => {
+                      setValidateCaptcha(false)
+                  }
+                  }
+              />
+
+          </div>
+
         <div className="w-full flex justify-center my-10">
-          <PrimaryButton type="submit" label="Sign up" className="" />
+            {validateCaptcha ? <PrimaryButton type="submit" label="Sign up" className="" /> : <div/>}
         </div>
       </form>
     );
