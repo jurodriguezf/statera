@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "build",
+    "site": "stateraun",
     "ignore": [
       "firebase.json",
       "**/.*",
