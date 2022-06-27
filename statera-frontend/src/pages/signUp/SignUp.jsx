@@ -17,16 +17,12 @@ const SignUp = (props) => {
         <LoginLink />
         <p className="font-youngserif text-4xl my-10">Create an account</p>
         <LoginForm />
-          <GoogleButton label="Continue with Google" />
-        <DivisorLine />
+
       </div>
       <Image />
     </div>
   );
 
-  function onChange(value){
-      console.log("Captcha value:", value)
-  }
 
   function Image() {
     return (
@@ -47,13 +43,22 @@ const SignUp = (props) => {
         email: "",
         password: "",
         confirmPassword: "",
+        captcha: "",
       },
     });
 
     const [formWarning, setFormWarning] = useState("");
+    const [validateCaptcha, setValidateCaptcha] = useState(false)
+
+  function onChange(value){
+      console.log("Captcha value:", value)
+
+      setValidateCaptcha(true)
+      value.reset()
+  }
 
     const onSubmit = async (data) => {
-      const { email, password } = data;
+      const { email, password, captcha } = data;
 
       const signUpData = await postRequest(
         "http://localhost:8080/register",
@@ -64,7 +69,7 @@ const SignUp = (props) => {
         return;
       }
 
-      if (await makeLoginRequest({ email, password }, props.setToken)) {
+      if (await makeLoginRequest({ email, password}, props.setToken)) {
         navigate("/");
       }
     };
@@ -138,11 +143,16 @@ const SignUp = (props) => {
               <ReCAPTCHA
                   sitekey="6LdVuqEgAAAAALa-Oby2m_cuKnGPHMo5JsTTIGM9"
                   onChange={onChange}
+                  onExpired={() => {
+                      setValidateCaptcha(false)
+                  }
+                  }
               />
+
           </div>
 
         <div className="w-full flex justify-center my-10">
-          <PrimaryButton type="submit" label="Sign up" className="" />
+            {validateCaptcha ? <PrimaryButton type="submit" label="Sign up" className="" /> : <div/>}
         </div>
       </form>
     );

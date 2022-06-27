@@ -5,7 +5,7 @@ import (
 	"github.com/darahayes/go-boom"
 	"github.com/jurodriguezf/statera/cmd/api/domain/db"
 	"github.com/jurodriguezf/statera/cmd/api/domain/model"
-	"github.com/jurodriguezf/statera/cmd/api/domain/service"
+	"log"
 	"net/http"
 )
 
@@ -14,20 +14,22 @@ func Register(writer http.ResponseWriter, request *http.Request) {
 	writer.Header().Add("content-type", "application/json")
 	var user model.User
 
-	//trying to implement capthca
-	var body model.RegisterRequest
-
 	err := json.NewDecoder(request.Body).Decode(&user)
 	if err != nil {
 		boom.BadRequest(writer, "Data received incorrect.")
 		return
 	}
 
+	//trying to implement capthca
+	/*var body model.RegisterRequest
+
 	err = json.NewDecoder(request.Body).Decode(&body)
 	if err != nil {
 		boom.BadRequest(writer, "Data received incorrect.")
+		log.Fatal("Data received incorrect. CAPTCHA")
 		return
 	}
+	fmt.Println(body)*/
 
 	if len(user.Email) == 0 {
 		boom.BadRequest(writer, "User's email is required.")
@@ -41,6 +43,7 @@ func Register(writer http.ResponseWriter, request *http.Request) {
 	_, found, _ := db.UserExists(user.Email)
 	if found {
 		boom.BadRequest(writer, "There’s already an existing user with that email.")
+		log.Fatal("User exists")
 		return
 	}
 
@@ -55,10 +58,11 @@ func Register(writer http.ResponseWriter, request *http.Request) {
 	}
 
 	// trying to implement captcha
-	if err := service.CheckGoogleCaptcha(body.RecaptchaResponse); err != nil {
+	/*if err := service.CheckGoogleCaptcha(body.RecaptchaResponse); err != nil {
 		boom.BadRequest(writer, "Unauthorized captcha")
+		log.Fatal("unauthorized captcha")
 		return
-	}
+	}*/
 
 	writer.WriteHeader(http.StatusCreated)
 	json.NewEncoder(writer).Encode(model.MessageResponse{
