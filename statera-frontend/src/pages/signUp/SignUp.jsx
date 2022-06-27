@@ -61,9 +61,11 @@ const SignUp = (props) => {
       const { email, password, captcha } = data;
 
       const signUpData = await postRequest(
-        "http://localhost:8080/register",
+        "https://stateraun.ml/register",
         data
       );
+
+      
 
       if (signUpData.status !== "success") {
         return;
@@ -141,7 +143,7 @@ const SignUp = (props) => {
         </div>
           <div className="w-full flex justify-center mt-4">
               <ReCAPTCHA
-                  sitekey="6LdVuqEgAAAAALa-Oby2m_cuKnGPHMo5JsTTIGM9"
+                  sitekey="6Lc0JKIgAAAAABoQv9XjHO4S9dwPKk40YSkGFgDA"
                   onChange={onChange}
                   onExpired={() => {
                       setValidateCaptcha(false)
