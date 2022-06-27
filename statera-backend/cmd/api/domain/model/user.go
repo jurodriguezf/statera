@@ -30,3 +30,9 @@ type CommentProfileResponse struct {
 	Name     string `bson:"name" json:"Name,omitempty"`
 	Avatar   string `bson:"avatar" json:"Avatar,omitempty"`
 }
+
+type RegisterRequest struct {
+	Email             string `json:"email"`
+	Password          string `json:"password"`
+	RecaptchaResponse string `json:"g-recaptcha-response"`
+}

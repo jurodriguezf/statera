@@ -5,6 +5,7 @@ import (
 	"github.com/darahayes/go-boom"
 	"github.com/jurodriguezf/statera/cmd/api/domain/db"
 	"github.com/jurodriguezf/statera/cmd/api/domain/model"
+	"github.com/jurodriguezf/statera/cmd/api/domain/service"
 	"net/http"
 )
 
@@ -13,7 +14,16 @@ func Register(writer http.ResponseWriter, request *http.Request) {
 	writer.Header().Add("content-type", "application/json")
 	var user model.User
 
+	//trying to implement capthca
+	var body model.RegisterRequest
+
 	err := json.NewDecoder(request.Body).Decode(&user)
+	if err != nil {
+		boom.BadRequest(writer, "Data received incorrect.")
+		return
+	}
+
+	err = json.NewDecoder(request.Body).Decode(&body)
 	if err != nil {
 		boom.BadRequest(writer, "Data received incorrect.")
 		return
@@ -41,6 +51,12 @@ func Register(writer http.ResponseWriter, request *http.Request) {
 	}
 	if status == false {
 		boom.BadRequest(writer, "It was not possible to register the user.")
+		return
+	}
+
+	// trying to implement captcha
+	if err := service.CheckGoogleCaptcha(body.RecaptchaResponse); err != nil {
+		boom.BadRequest(writer, "Unauthorized captcha")
 		return
 	}
 
