@@ -2,6 +2,7 @@ package server
 
 import (
 	"encoding/json"
+	"github.com/jurodriguezf/statera/cmd/api/domain/utils"
 	"log"
 	"net/http"
 	"os"
@@ -14,6 +15,8 @@ import (
 
 func SetupEndpoints() {
 	router := mux.NewRouter()
+
+	utils.InitializeLogging("logging.log")
 
 	router.HandleFunc("/ping", func(writer http.ResponseWriter, request *http.Request) {
 		writer.WriteHeader(http.StatusOK)

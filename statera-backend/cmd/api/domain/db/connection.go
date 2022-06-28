@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/jurodriguezf/statera/cmd/api/domain/utils"
+	"github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"log"
@@ -20,15 +21,21 @@ var clientOptions = options.Client().ApplyURI(
 func Connect() *mongo.Client {
 	client, err := mongo.Connect(context.TODO(), clientOptions)
 	if err != nil {
+		logrus.WithFields(logrus.Fields{"EventTYpe": utils.LoggingEvents.FailedDBConnection}).Info(fmt.
+			Sprintf("Error connecting to DB: %s", err.Error()))
 		log.Fatal(err.Error())
 		return client
 	}
 
 	err = client.Ping(context.TODO(), nil)
 	if err != nil {
+		logrus.WithFields(logrus.Fields{"EventTYpe": utils.LoggingEvents.FailedDBConnection}).Info(fmt.
+			Sprintf("Ping error to DB: %s", err.Error()))
 		log.Fatal(err.Error())
 		return client
 	}
+	logrus.WithFields(logrus.Fields{"EventTYpe": utils.LoggingEvents.DBConnection}).Info(fmt.
+		Sprintf("Connected succesfully to DB"))
 	log.Println("Connected succesfully to DB")
 
 	return client
