@@ -21,23 +21,28 @@ const MyProfile = (props) => {
 
     return (
         <Panel token={token} currentPage={"Mi Cuenta"}>
-            <div className={"font-youngserif text-5xl leading-normal mt-2 sm:mt-10 mb-4 ml-5"}>
-                <h1>Mi cuenta</h1>
-            </div>
-            <div className={"px-10"}>
-                {Object.keys(profileData).map((key) => (
-                    <div className={"mt-5 mb-5"}>
-                        <div className={"font-bold"}>
-                            <h2>{key}</h2>
+            <div className="px-10">
+                <div className={"font-youngserif text-5xl leading-normal mt-2 sm:mt-10 mb-4"}>
+                    <h1>Mi cuenta</h1>
+                </div>
+                <div className={"font-manrope font-bold text-xl leading-normal mt-2 sm:mt-10 mb-4"}>
+                    <h1>Estos son los datos que tienes configurados actualmente:</h1>
+                </div>
+                <div className={"ml-5 pt-3"}>
+                    {Object.keys(profileData).map((key) => (
+                        <div className={"mt-5 mb-5 font-manrope grid grid-cols-3"}>
+                            <div className={"font-bold"}>
+                                <h2>{key}</h2>
+                            </div>
+                            <div className={"text-gray-500"}>
+                                <h3>{(profileData[key])}</h3>
+                            </div>
                         </div>
-                        <div className={"px-3 text-[#6D6D6D]"}>
-                            <h3>{(profileData[key])}</h3>
-                        </div>
-                    </div>
-                ))}
-            </div>
-            <div className={"w-48 mt-10 ml-20"}>
-                <PrimaryButton type="submit" link={"/edit-profile"} label="Editar perfil" className=""/>
+                    ))}
+                </div>
+                <div className={"w-40 mt-10"}>
+                    <PrimaryButton type="submit" link={"/edit-profile"} label="Editar perfil" className=""/>
+                </div>
             </div>
         </Panel>
     );
