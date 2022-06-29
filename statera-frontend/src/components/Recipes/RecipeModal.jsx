@@ -3,12 +3,14 @@ import LikeButton from "../LikeButton/LikeButton";
 
 import CommentAndRating from "../Comments/CommentAndRating";
 import Commentary from "../CommentsSection/Commentary";
-import { useEffect } from "react";
 import Rating from "../Rating/Rating.tsx";
 import { useState } from "react";
 
-const RecipeModal = ({ recipe, visible, onClose, token }) => {
+const RecipeModal = ({ recipe, visible, onClose, token, id }) => {
   const [newRecipe,setNewRecipe] = useState(null);
+  let ownComment = []
+  if(recipe.ratings) ownComment = recipe.ratings.filter(comment => comment.id === id);
+  console.log(ownComment)
 
   if (!visible) return null;
 
@@ -21,7 +23,7 @@ const RecipeModal = ({ recipe, visible, onClose, token }) => {
     setNewRecipe(data);
     console.log(data);
   };
- 
+
   return (
     <div className="transition-opacity ease-in duration-700 opacity-100 fixed inset-0 mx-8 mb-8 mt-32 p-10 backdrop-blur-sm bg-white global-shadow rounded-3xl max-h-max">
       <div className="p-4">
@@ -99,17 +101,48 @@ const RecipeModal = ({ recipe, visible, onClose, token }) => {
           </div>
         </div>
         <div className="lg:flex lg:flex-auto">
-          <CommentAndRating
-            recipe={recipe}
-            token={token}
-            onRating={handleSyncOnRating}
-          />
+          {
+            (() => {
+            if (newRecipe)
+              return <div>
+                <div
+                    className="font-manrope font-bold text-xl my-3">
+                  Tu Comentario
+                </div>
+                <Commentary
+                    message={newRecipe.comment}
+                    id={id}
+                    rate={newRecipe.rate}
+                />
+              </div>
+            if (ownComment.length>0)
+              return ownComment?.map((comment) => (
+                  <div>
+                    <div
+                        className="font-manrope font-bold text-xl my-3">
+                      Tu Comentario
+                    </div>
+                    <Commentary
+                        message={comment.comment}
+                        id={comment.id}
+                        rate={comment.rate}
+                    />
+                  </div>
+              ))
+            else
+            return <CommentAndRating
+                recipe={recipe}
+                token={token}
+                onRating={handleSyncOnRating}
+            />
+            })()
+          }
           <div>
           
         { newRecipe != null?
-         <Commentary
+            <Commentary
                 message={newRecipe.comment}
-                id={newRecipe.id}
+                id={id}
                 rate={newRecipe.rate}
               />:<div/>}
             {recipe.ratings?.map((comment) => (

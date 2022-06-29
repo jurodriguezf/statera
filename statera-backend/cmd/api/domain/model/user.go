@@ -30,3 +30,7 @@ type CommentProfileResponse struct {
 	Name     string `bson:"name" json:"Name,omitempty"`
 	Avatar   string `bson:"avatar" json:"Avatar,omitempty"`
 }
+
+type IdProfileResponse struct {
+	ID string `bson:"_id,omitempty" json:"id,omitempty"`
+}

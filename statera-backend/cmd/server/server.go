@@ -26,6 +26,8 @@ func SetupEndpoints() {
 		controller.CheckConnectionDB(controller.ValidateJWT(routers.ViewProfile))).Methods("GET")
 	router.HandleFunc("/commentProfile",
 		controller.CheckConnectionDB(routers.ViewCommentProfile)).Methods("GET")
+	router.HandleFunc("/myaccountID",
+		controller.CheckConnectionDB(controller.ValidateJWT(routers.GetProfileID))).Methods("GET")
 	router.HandleFunc("/editaccount",
 		controller.CheckConnectionDB(controller.ValidateJWT(routers.ModifyProfile))).Methods("PUT")
 	router.HandleFunc("/recipes/add-recipe",
