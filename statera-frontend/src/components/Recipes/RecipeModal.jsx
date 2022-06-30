@@ -1,22 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import LikeButton from "../LikeButton/LikeButton";
 
 import CommentAndRating from "../Comments/CommentAndRating";
 import Commentary from "../CommentsSection/Commentary";
 import Rating from "../Rating/Rating.tsx";
-import { useState } from "react";
+import { likeRecipeRequest } from "../../api/util";
+
 
 const RecipeModal = ({ recipe, visible, onClose, token, id }) => {
-  const [newRecipe,setNewRecipe] = useState(null);
   let ownComment = []
   if(recipe.ratings) ownComment = recipe.ratings.filter(comment => comment.id === id);
   console.log(ownComment)
+
+  console.log(recipe);
+
+  const [isFavorite, setFavorite] = useState(false);
+  const [rlikes, setrLikes] = useState(0);
+
+  useEffect(() => {
+    setrLikes(recipe.likes);
+  }, [recipe]);
+
+  const [newRecipe, setNewRecipe] = useState(null);
+
 
   if (!visible) return null;
 
   const handleCloseClick = () => {
     onClose && onClose();
-    setNewRecipe(null)
+    setNewRecipe(null);
   };
 
   const handleSyncOnRating = (data) => {
@@ -34,8 +46,21 @@ const RecipeModal = ({ recipe, visible, onClose, token, id }) => {
               <div className={"mt-1"}>
                 <LikeButton
                   //!TODO: Change to recipe.likes and recipes.isFavorite
-                  likes={"10"}
-                  isFavorite={true}
+                  likes={rlikes}
+                  isFavorite={isFavorite}
+                  action={async () => {
+                    setFavorite((prevState) => !prevState);
+                    console.log({ recipe_id: recipe.id, token });
+                    await likeRecipeRequest(
+                      { recipe_id: recipe.id, token },
+                      token
+                    );
+                    if (isFavorite) {
+                      setrLikes((prevLikes) => prevLikes - 1);
+                    } else {
+                      setrLikes((prevLikes) => prevLikes + 1);
+                    }
+                  }}
                 />
               </div>
               <div
@@ -48,13 +73,12 @@ const RecipeModal = ({ recipe, visible, onClose, token, id }) => {
                   allowHalfIcon
                   ratingValue={recipe.rating * 2 * 10}
                   readonly={true}
-                ></Rating>
+                />
                 {recipe.rating ? recipe.rating.toFixed(1) : 0}
               </div>
             </div>
           </div>
           <button
-            label="Cerrar"
             onClick={handleCloseClick}
             className={"font-arial font-extrabold text-2xl h-10"}
           >
@@ -138,13 +162,16 @@ const RecipeModal = ({ recipe, visible, onClose, token, id }) => {
             })()
           }
           <div>
-          
-        { newRecipe != null?
-            <Commentary
+
+            {newRecipe != null ? (
+              <Commentary
                 message={newRecipe.comment}
                 id={id}
                 rate={newRecipe.rate}
-              />:<div/>}
+              />
+            ) : (
+              <div />
+            )}
             {recipe.ratings?.map((comment) => (
               <Commentary
                 message={comment.comment}
