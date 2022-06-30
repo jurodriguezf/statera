@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Panel from "../../layout/BasicLayout/Panel";
 import RecipeModal from "../../components/Recipes/RecipeModal";
-import { makeAllRecipesRequest, makeQueryRecipesRequest } from "../../api/util";
+import {makeProfileIDCommentRequest, makeQueryRecipesRequest} from "../../api/util";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import SearchBar from "../../components/SearchBar/SearchBar";
 
 const Home = (props) => {
   const { token } = props;
   const [homeRecipes, setHomeRecipes] = useState([]);
+  const [profileDataID, setProfileDataID] = useState({});
   const [modalContent, setModalContent] = useState({
     show: false,
     content: {},
@@ -17,6 +18,8 @@ const Home = (props) => {
     const getData = async () => {
       const response = await makeQueryRecipesRequest("", token);
       setHomeRecipes(response);
+      const responseForID = await makeProfileIDCommentRequest(token)
+      setProfileDataID(responseForID);
     };
 
     getData();
@@ -60,6 +63,7 @@ const Home = (props) => {
             />
           ))}
           <RecipeModal
+            id={profileDataID["id"]}
             token={token}
             visible={modalContent.show}
             recipe={modalContent.content}

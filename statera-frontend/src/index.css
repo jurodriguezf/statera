@@ -20,11 +20,6 @@
 }
 
 @layer components {
-
-  input[type="radio"]{
-    display: none;
-  }
-
   .textarea {
     border: black;
   }

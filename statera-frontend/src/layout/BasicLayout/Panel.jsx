@@ -37,7 +37,7 @@ export default function Panel(props) {
                         />
                     </div>
                     <div className='font-manrope text-lg text-black font-bold text-center mt-4 pb-4'>
-                        {console.log(profileData.avatar)}
+
                         {profileData.userName}
                     </div>
 
@@ -46,6 +46,7 @@ export default function Panel(props) {
                     <IconButton label="Home" link={"/"} currentPage={props.currentPage}/>
                     <IconButton label="Favoritos" link={"/favorites"} currentPage={props.currentPage}/>
                     <IconButton label="Crear Receta" link={"/add-recipe"} currentPage={props.currentPage}/>
+                    <IconButton label="Crear Menú" link={"/get-menu"} currentPage={props.currentPage}/>
                     <IconButton label="Mi Cuenta" link={"/my-profile"} currentPage={props.currentPage}/>
                 </div>
                 </div>

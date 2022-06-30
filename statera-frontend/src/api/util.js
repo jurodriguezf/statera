@@ -13,16 +13,17 @@ export const makeLoginRequest = async (data, setToken) => {
 
 export const makeProfileRequest = async (token) => await getRequest("http://localhost:8080/myaccount", token);
 export const makeProfileCommentRequest = async (body) => await getRequest("http://localhost:8080/commentProfile", body);
+export const makeProfileIDCommentRequest = async (token) => await getRequest("http://localhost:8080/myaccountID", token);
 
 export const makeAllRecipesRequest = async (token) => await getRequest("http://localhost:8080/recipes/all-recipes", token);
 
-//!TODO: Implement query
-export const makeFavoriteRecipesRequest = async (token) => await getRequest("http://localhost:8080/recipes/favorite-recipes", token);
+export const makeFavoriteRecipesRequest = async (token, id) => await getRequest(`http://localhost:8080/recipes/fav-recipes?id=${id}`, token);
 
 export const makeQueryRecipesRequest = async (body,token) => await putRequest("http://localhost:8080/recipes/recipe-query",body,token);
 
-//!TODO: Implement query
-export const makeQueryFavoriteRecipesRequest = async (body,token) => await putRequest("http://localhost:8080/recipes/favorite-recipe-query",body,token);
+export const makeRecipesMenuRequest = async (body,token, id) => await postRequest(`http://localhost:8080/recipes/get-menu?id=${id}`, body, token);
+
+export const likeRecipeRequest = async (body,token) => await postRequest("http://localhost:8080/recipes/like", body, token);
 
 export const putEditProfile = async (formData, token) =>{
   const data = new FormData();
