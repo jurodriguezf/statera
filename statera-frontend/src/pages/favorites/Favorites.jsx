@@ -4,7 +4,11 @@ import Panel from "../../layout/BasicLayout/Panel";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import {
+
+    makeAllRecipesRequest, makeProfileIDCommentRequest,
+
     makeFavoriteRecipesRequest,
+
     makeQueryRecipesRequest
 } from "../../api/util";
 import RecipeModal from "../../components/Recipes/RecipeModal";
@@ -12,6 +16,7 @@ import RecipeModal from "../../components/Recipes/RecipeModal";
 const Favorites = (props) => {
     const { token } = props;
     const [favoriteRecipes, setFavoriteRecipes] = useState([]);
+    const [profileDataID, setProfileDataID] = useState({});
     const [modalContent, setModalContent] = useState({
         show: false,
         content: {},
@@ -19,8 +24,14 @@ const Favorites = (props) => {
 
     useEffect(() => {
         const getData = async () => {
+
+            //!TODO: Uncomment the line below when query is available
+            //const response = await makeFavoriteRecipesRequest(token)
+            const responseOther = await makeProfileIDCommentRequest(token)
+            setProfileDataID(responseOther);
             const favResponse = await makeFavoriteRecipesRequest(token, jwt_decode(token)["_id"]);
             setFavoriteRecipes(favResponse);
+
         };
 
         getData();
@@ -61,6 +72,8 @@ const Favorites = (props) => {
                         />
                     ))}
                     <RecipeModal
+                        id={profileDataID["id"]}
+                        token={token}
                         visible={modalContent.show}
                         recipe={modalContent.content}
                         onClose={() => setModalContent({ show: false, content: {} })}

@@ -13,6 +13,7 @@ export const makeLoginRequest = async (data, setToken) => {
 
 export const makeProfileRequest = async (token) => await getRequest("http://localhost:8080/myaccount", token);
 export const makeProfileCommentRequest = async (body) => await getRequest("http://localhost:8080/commentProfile", body);
+export const makeProfileIDCommentRequest = async (token) => await getRequest("http://localhost:8080/myaccountID", token);
 
 export const makeAllRecipesRequest = async (token) => await getRequest("http://localhost:8080/recipes/all-recipes", token);
 
