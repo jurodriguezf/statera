@@ -35,6 +35,7 @@ func ViewProfile(writer http.ResponseWriter, request *http.Request) {
 		UserName: profile.UserName,
 		Email:    profile.Email,
 		DoB:      profile.DoB,
+		Avatar:   profile.Avatar,
 		Location: profile.Location,
 	})
 }

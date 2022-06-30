@@ -22,6 +22,7 @@ type ProfileResponse struct {
 	UserName string    `bson:"username" json:"userName,omitempty"`
 	DoB      time.Time `bson:"dateofbirth" json:"dateOfBirth,omitempty"`
 	Email    string    `bson:"email" json:"email"`
+	Avatar   string    `bson:"avatar" json:"Avatar,omitempty"`
 	Location string    `bson:"location" json:"location,omitempty"`
 }
 

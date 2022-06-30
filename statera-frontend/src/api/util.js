@@ -25,7 +25,20 @@ export const makeRecipesMenuRequest = async (body,token, id) => await postReques
 
 export const likeRecipeRequest = async (body,token) => await postRequest("http://localhost:8080/recipes/like", body, token);
 
-export const putEditProfile = async (body, token) => await putRequest("http://localhost:8080/editaccount", body, token );
+export const putEditProfile = async (formData, token) =>{
+  const data = new FormData();
+  for (const key in formData){
+    if (key === "avatar"){
+      console.log(formData[key].item(0))
+      data.append(key, formData[key].item(0))
+    }else {
+      data.append(key, formData[key]);
+    }
+  }
+
+
+  return await putRequest("http://localhost:8080/editaccount", formData, token );
+}
 
 export const putRecipeRating = async (body, token) => await putRequest("http://localhost:8080/ratingRecipe", body, token );
 
