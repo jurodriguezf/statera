@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {Fragment, useState} from "react";
 
 import Panel from "../../layout/BasicLayout/Panel";
 import Input from "../../components/Input/Input";
@@ -6,6 +6,56 @@ import {putEditProfile} from "../../api/util";
 import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
 import {useNavigate} from "react-router-dom";
 import {useForm} from "react-hook-form";
+
+const EditForm = (props) =>{
+    const {token} = props;
+    const navigate = useNavigate();
+    const {register, handleSubmit} = useForm({
+        defaultValues: {
+            userName: '',
+            dateOfBirth: '',
+            location: '',
+            avatar: '',
+        }
+    })
+
+    const onSubmit = async (data) => {
+        const { userName, dateOfBirth, location } = data;
+        //console.log(data)
+        //data.dateOfBirth = data.dateOfBirth + "T00:00:00Z"
+
+        const modifyData = await putEditProfile(data, token);
+
+        if(modifyData.status !== "success"){
+            return;
+        }
+        navigate("/my-profile")
+    }
+
+
+    return (
+        <Fragment>
+            <form
+                className="px-10"
+                //autoComplete="off"
+                onSubmit={handleSubmit(onSubmit)}
+            >
+                <Input
+                    type="text"
+                    title="Nombre"
+                    register={register("userName", { required: true })}
+                />
+                <Input type="text" title="Fecha" register={register("dateOfBirth")} />
+                <Input type="text" title="Ubicación" register={register("location")} />
+                <Input type="file" title="Imagen" register={register("avatar")} />
+
+                <div className={"w-2/4 flex items-center"}>
+                    <PrimaryButton type="submit" label="Guardar" className="mt-10" link={"/my-profile"}/>
+                </div>
+            </form>
+        </Fragment>
+        );
+}
 
 const EditProfile = (props) => {
     const {token} = props;
@@ -21,52 +71,13 @@ const EditProfile = (props) => {
                     <div className={"font-manrope font-bold text-xl leading-normal mt-2 sm:mt-10 mb-7"}>
                         <h1>Puedes cambiar tus datos a continuación:</h1>
                     </div>
-                    <LoginForm/>
+                    <EditForm token={token}/>
                 </div>
 
             </div>
         </Panel>
     );
-
-    function LoginForm() {
-        const navigate = useNavigate();
-        const {register, handleSubmit} = useForm({
-            defaultValues: {
-                userName: '',
-                dateOfBirth: '',
-                location: '',
-                avatar: '',
-            }
-        })
-
-        const onSubmit = async (data) => {
-            const { userName, dateOfBirth, location } = data;
-            //console.log(data)
-            //data.dateOfBirth = data.dateOfBirth + "T00:00:00Z"
-
-            const modifyData = await putEditProfile(data, token);
-
-            if(modifyData.status !== "success"){
-                return;
-            }
-            navigate("/my-profile")
-        }
-
-
-        return <form className="" onSubmit={handleSubmit(onSubmit)}>
-            <div className={"max-w-xl"}>
-                <Input type="text" title="Nombre de usuario" placeholder={"Ingresa tu nombre de usuario"}
-                       register={register("userName")}/>
-                <Input type="text" title="Fecha de nacimiento" register={register("dateOfBirth")}/>
-                <Input type="text" title="Ciudad y país" placeholder={"Bogotá, Colombia"} register={register("location")}/>
-                <Input type="file" title="Foto de perfil" register={register("avatar")} />
-                <div className="w-full max-w-xs flex justify-center my-10">
-                    <PrimaryButton type="submit" label="Guardar" className=""/>
-                </div>
-            </div>
-
-        </form>;
-    }
 }
+
 
 export default EditProfile
