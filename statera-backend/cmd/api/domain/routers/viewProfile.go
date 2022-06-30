@@ -2,10 +2,11 @@ package routers
 
 import (
 	"encoding/json"
+	"net/http"
+
 	"github.com/darahayes/go-boom"
 	"github.com/jurodriguezf/statera/cmd/api/domain/db"
 	"github.com/jurodriguezf/statera/cmd/api/domain/model"
-	"net/http"
 )
 
 /*ViewProfile allows to extract values of a user profile*/

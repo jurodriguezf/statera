@@ -54,6 +54,7 @@ func SetupEndpoints() {
 
 	// will be necessary when we want to deply the app in Heroku
 	handler := cors.AllowAll().Handler(router)
+	log.Fatal(http.ListenAndServeTLS(":"+PORT, "cert/www_stateraun_ml.crt", "cert/custom.key", handler))
 	// http listens to port an sets it
-	log.Fatal(http.ListenAndServe(":"+PORT, handler))
+	//log.Fatal(http.ListenAndServe(":"+PORT, handler))
 }
