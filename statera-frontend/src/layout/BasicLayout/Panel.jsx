@@ -24,7 +24,7 @@ export default function Panel(props) {
     const getImagePath = (fileName) =>
         !!fileName
             ? "http://localhost:8080/static2/" + fileName
-            : "https://i.pravatar.cc/300";
+            : "https://www.seekpng.com/png/full/110-1100707_person-avatar-placeholder.png";
     return (
         <div className='w-screen h-auto min-h-screen main-page-bg flex'>
             <div className='w-1/6 h-auto my-10 mx-5'>
