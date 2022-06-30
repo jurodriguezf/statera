@@ -16,8 +16,6 @@ const Login = (props) => {
         <SignUpLink />
         <p className="font-youngserif text-4xl my-10">Welcome back!</p>
         <LoginForm />
-        <DivisorLine />
-        <GoogleButton label="Continue with Google" />
       </div>
     </div>
   );

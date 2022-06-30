@@ -32,9 +32,10 @@ const EditProfile = (props) => {
         const navigate = useNavigate();
         const {register, handleSubmit} = useForm({
             defaultValues: {
-                username: '',
-                dateofbirth: '',
-                location: ''
+                userName: '',
+                dateOfBirth: '',
+                location: '',
+                avatar: '',
             }
         })
 
@@ -54,10 +55,10 @@ const EditProfile = (props) => {
         return <form className="" onSubmit={handleSubmit(onSubmit)}>
             <div className={"max-w-xl"}>
                 <Input type="text" title="Nombre de usuario" placeholder={"Ingresa tu nombre de usuario"}
-                       register={register("username")}/>
-                <Input type="date" title="Fecha de nacimiento" register={register("dateofbirth")}/>
+                       register={register("userName")}/>
+                <Input type="date" title="Fecha de nacimiento" register={register("dateOfBirth")}/>
                 <Input type="text" title="Ciudad y país" placeholder={"Bogotá, Colombia"} register={register("location")}/>
-                <Input type="file" title="Foto de perfil" register={register("profilepicture")} />
+                <Input type="file" title="Foto de perfil" register={register("avatar")} />
                 <div className="w-full max-w-xs flex justify-center my-10">
                     <PrimaryButton type="submit" label="Guardar" className=""/>
                 </div>

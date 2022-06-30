@@ -16,18 +16,28 @@ export default function Panel(props) {
         }
 
         getData();
+        //console.log(JSON.stringify(profileData))
     }, [token])
 
-    console.log(JSON.stringify(profileData))
 
     const {children} = props;
+    const getImagePath = (fileName) =>
+        !!fileName
+            ? "http://localhost:8080/static2/" + fileName
+            : "https://i.pravatar.cc/300";
     return (
         <div className='w-screen h-auto min-h-screen main-page-bg flex'>
             <div className='w-1/6 h-auto my-10 mx-5'>
                 <div className='profile-image w-full h-auto my-10'>
-                    <div className="rounded-full bg-gray-300 h-20 w-20 m-auto"><img src="" alt=""/></div>
+                    <div className="rounded-full bg-gray-300 h-20 w-20 m-auto">
+                        <img
+                            alt="The current recipe"
+                            className="object-fill w-20 h-20 mr-2 rounded-full"
+                            src={getImagePath(profileData.avatar)}
+                        />
+                    </div>
                     <div className='font-manrope text-lg text-black font-bold text-center mt-4 pb-4'>
-                        {console.log(profileData.userName)}
+                        {console.log(profileData.avatar)}
                         {profileData.userName}
                     </div>
 

@@ -16,8 +16,6 @@ const SignUp = (props) => {
         <LoginLink />
         <p className="font-youngserif text-4xl my-10">Create an account</p>
         <LoginForm />
-        <DivisorLine />
-        <GoogleButton label="Continue with Google" />
       </div>
       <Image />
     </div>
