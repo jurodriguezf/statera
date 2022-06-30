@@ -41,8 +41,12 @@ func SetupEndpoints() {
 	router.HandleFunc("/recipes/fav-recipes",
 		controller.CheckConnectionDB(controller.ValidateJWT(routers.GetFavRecipes))).Methods("GET")
 	router.HandleFunc("/recipes/recipe-query",
-		controller.CheckConnectionDB(routers.GetRecipesQuery)).Methods("PUT")
-
+		controller.CheckConnectionDB(controller.ValidateJWT(routers.GetRecipesQuery))).Methods("PUT")
+	router.HandleFunc("/recipes/like",
+		controller.CheckConnectionDB(controller.ValidateJWT(routers.LikeRecipe))).Methods("POST")
+	router.HandleFunc("/recipes/get-menu",
+		controller.CheckConnectionDB(controller.ValidateJWT(routers.GetMenu))).Methods("POST")
+	// Serve static files
 	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./cmd/uploads/recipes"))))
 	router.PathPrefix("/static2/").Handler(http.StripPrefix("/static2/", http.FileServer(http.Dir("./cmd/uploads/avatars"))))
 

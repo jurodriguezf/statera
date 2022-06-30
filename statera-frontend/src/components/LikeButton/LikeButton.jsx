@@ -9,7 +9,6 @@ const buttonVariants = {
 
 const LikeButton = (props) => {
     return (
-        //!TODO: Define button action
         <button onClick={props.action} className={"transition ease-in-out delay-100 hover:scale-110 duration-100"}>
             <div className="cursor-pointer">
                 <span className={props.isFavorite ? buttonVariants.liked.button : buttonVariants.unliked.button}>

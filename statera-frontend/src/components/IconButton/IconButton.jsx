@@ -42,6 +42,15 @@ const renderIcon = (label, currentPage) => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                   d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
         </svg>;
+        case 'Crear Menú': return <svg className={label===currentPage ? classes.iconVariant.active : classes.iconVariant.inactive}
+                                      width="24" height="24" viewBox="0 0 24 24"
+                                      strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round"
+                                      strokeLinejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z"/>
+            <path d="M12 20l-7 -7a4 4 0 0 1 6.5 -6a.9 .9 0 0 0 1 0a4 4 0 0 1 6.5 6l-7 7"/>
+        </svg>;
+
+        default: return <></>
     }
 }
 
