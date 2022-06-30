@@ -16,9 +16,9 @@ export default function Panel(props) {
         }
 
         getData();
-        //console.log(JSON.stringify(profileData))
-    }, [token])
 
+    }, [token])
+    console.log(JSON.stringify(profileData))
 
     const {children} = props;
     const getImagePath = (fileName) =>
@@ -33,7 +33,7 @@ export default function Panel(props) {
                         <img
                             alt="The current recipe"
                             className="object-fill w-20 h-20 mr-2 rounded-full"
-                            src={getImagePath(profileData.avatar)}
+                            src={profileData["Avatar"] ? "http://localhost:8080/static2/" + profileData["Avatar"]  : "https://via.placeholder.com/250x140"}
                         />
                     </div>
                     <div className='font-manrope text-lg text-black font-bold text-center mt-4 pb-4'>

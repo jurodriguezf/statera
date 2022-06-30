@@ -40,8 +40,9 @@ const EditProfile = (props) => {
         })
 
         const onSubmit = async (data) => {
-            const { username, dob, location } = data;
-            console.log(data)
+            const { userName, dateOfBirth, location } = data;
+            //console.log(data)
+            //data.dateOfBirth = data.dateOfBirth + "T00:00:00Z"
 
             const modifyData = await putEditProfile(data, token);
 
@@ -56,7 +57,7 @@ const EditProfile = (props) => {
             <div className={"max-w-xl"}>
                 <Input type="text" title="Nombre de usuario" placeholder={"Ingresa tu nombre de usuario"}
                        register={register("userName")}/>
-                <Input type="date" title="Fecha de nacimiento" register={register("dateOfBirth")}/>
+                <Input type="text" title="Fecha de nacimiento" register={register("dateOfBirth")}/>
                 <Input type="text" title="Ciudad y país" placeholder={"Bogotá, Colombia"} register={register("location")}/>
                 <Input type="file" title="Foto de perfil" register={register("avatar")} />
                 <div className="w-full max-w-xs flex justify-center my-10">
