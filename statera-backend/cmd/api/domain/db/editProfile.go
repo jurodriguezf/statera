@@ -29,6 +29,10 @@ func EditProfile(user model.User, ID string) (bool, error) {
 		register["location"] = user.Location
 	}
 
+	if len(user.FavRecipes) > 0 {
+		register["favRecipes"] = user.FavRecipes
+	}
+
 	updateString := bson.M{
 		"$set": register,
 	}

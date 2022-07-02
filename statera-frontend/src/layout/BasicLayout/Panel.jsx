@@ -27,7 +27,6 @@ export default function Panel(props) {
                 <div className='profile-image w-full h-auto my-10'>
                     <div className="rounded-full bg-gray-300 h-20 w-20 m-auto"><img src="" alt=""/></div>
                     <div className='font-manrope text-lg text-black font-bold text-center mt-4 pb-4'>
-                        {console.log(profileData.userName)}
                         {profileData.userName}
                     </div>
 
@@ -36,6 +35,7 @@ export default function Panel(props) {
                     <IconButton label="Home" link={"/"} currentPage={props.currentPage}/>
                     <IconButton label="Favoritos" link={"/favorites"} currentPage={props.currentPage}/>
                     <IconButton label="Crear Receta" link={"/add-recipe"} currentPage={props.currentPage}/>
+                    <IconButton label="Crear Menú" link={"/get-menu"} currentPage={props.currentPage}/>
                     <IconButton label="Mi Cuenta" link={"/my-profile"} currentPage={props.currentPage}/>
                 </div>
                 </div>
